@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+//        if (\Request::isAdmin()) {
+            $this->app->register(AdminServiceProvider::class);
+//        }
     }
 
     /**
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->loadViewsFrom(resource_path('views/app'), 'app');
     }
 }
