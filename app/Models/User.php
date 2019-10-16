@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -10,13 +10,20 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const TYPES = [
+        "admin" => "admin",
+        "moder" => "moder",
+        "cook" => "cook",
+        "customer" => "customer",
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -36,4 +43,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(){
+        return self::TYPES['admin'] === $this->role;
+    }
 }

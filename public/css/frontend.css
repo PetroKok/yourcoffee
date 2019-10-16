@@ -1,0 +1,43 @@
+.container{
+	padding: 20px;
+}
+
+.btn{
+	margin: 20px;
+	background: white;
+	color: black;
+	font-size: 20px;
+	padding: 5px 40px;
+	border: white 2px solid;
+	text-decoration: none;
+	cursor:pointer;
+	transition: .2s;
+	-webkit-transition: .2s;
+}
+
+.btn:hover{
+	color: white;
+	background: gray;
+	border: gray 2px solid;
+}
+
+.btn-outline{
+	background: none;
+	color: white;
+}
+
+.btn-outline:hover{
+	background: none;
+	border: gray 2px solid;
+}
+
+.btn-yellow{
+	color: #ffd607;
+	border: #ffd607 2px solid;
+}
+
+.btn-yellow:hover{
+	color: black;
+	background: #ffd607;
+	border: #ffd607 2px solid;
+}

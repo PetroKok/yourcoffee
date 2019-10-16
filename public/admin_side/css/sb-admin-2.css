@@ -2345,9 +2345,8 @@ textarea.form-control {
 }
 
 .invalid-feedback {
-  display: none;
   width: 100%;
-  margin-top: 0.25rem;
+  margin: 1.5rem;
   font-size: 80%;
   color: #e74a3b;
 }
@@ -11641,7 +11640,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url('/admin_side/img/burger-login.jpeg');
   background-position: center;
   background-size: cover;
 }

@@ -22,7 +22,8 @@ class AdministratorMiddleware extends Middleware
             "Auth\LoginController",
             "Auth\ForgotPasswordController",
             "Auth\ResetPasswordController",
-            "Auth\VerificationController"
+            "Auth\VerificationController",
+            "Auth\RegisterController",
         ];
 
         $hasAccessToController = false;
@@ -31,7 +32,7 @@ class AdministratorMiddleware extends Middleware
 
         foreach($controllerAccess as $controller){
             if(strpos($actionName, $controller) !== false){
-                $hasAccessToController = true;                
+                $hasAccessToController = true;
             }
         }
 
