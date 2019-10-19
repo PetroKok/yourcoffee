@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Resources\Admin\CategoryResource;
+use App\Http\Resources\Admin\StandartJsonResource;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,9 +19,20 @@ class CategoryController extends Controller
    {
    }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.pages.category');
+        if($request->ajax()){
+            return response([
+                "message" => "",
+                "status" => true,
+                "result" => [
+                    "data" => CategoryResource::collection(Category::all()),
+                    "fields" => Category::FIELDS,
+                ],
+            ], 200);
+        }
+
+        return view('admin.pages.index');
     }
 
     /**

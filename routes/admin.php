@@ -6,4 +6,4 @@ Route::auth();
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
 
-Route::resource('/categories', 'CategoryController');
+Route::resource("/categories", 'CategoryController');
