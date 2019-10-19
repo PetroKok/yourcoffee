@@ -8,6 +8,10 @@ class Category extends Model
 {
     protected $fillable = [];
 
+    const FIELDS = [
+        'id', 'title', 'created_at', 'actions'
+    ];
+
     /** START RELATIONSHIP **/
 
     // code

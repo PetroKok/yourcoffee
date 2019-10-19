@@ -13,4 +13,5 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/custom.js', 'public/admin_side/js')
+    .react('resources/js/ReactTable.js', 'public/admin_side/js')
     .sass('resources/sass/app.scss', 'public/css');
