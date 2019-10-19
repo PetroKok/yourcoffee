@@ -14,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (\Request::isAdmin()) {
             $this->app->register(AdminServiceProvider::class);
-        }
     }
 
     /**
