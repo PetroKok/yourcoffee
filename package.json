@@ -24,7 +24,9 @@
     "vue": "^2.5.17",
     "vue-template-compiler": "^2.6.10"
   },
-    "dependencies": {
-        "react-dom": "latest"
-    }
+  "dependencies": {
+    "react": "^16.10.2",
+    "react-dom": "latest",
+    "react-table": "^6.10.3"
+  }
 }
