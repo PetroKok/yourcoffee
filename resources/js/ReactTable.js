@@ -1,8 +1,12 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
-import {fetchData} from './actions/fetchData'
+import {fetchData} from './actions/fetchData';
+import ReactTable from 'react-table';
+import FoldableTableHOC from 'react-table/lib/hoc/foldableTable';
 
-class ReactTable extends React.Component {
+import 'react-table/react-table.css';
+
+class ReactTableComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -20,9 +24,9 @@ class ReactTable extends React.Component {
                 const a = res.data.result.data;
                 const fields = res.data.result.fields;
                 const results = a.length !== 0 ? a : undefined;
-                this.setState({results: results, fields: fields}, () => {
-                    console.log(this.state)
-                })
+                // this.setState({results: results, fields: fields}, () => {
+                //     console.log(this.state)
+                // })
             });
     }
 
@@ -73,6 +77,65 @@ class ReactTable extends React.Component {
 
     render() {
         const {results, fields} = this.state;
+
+        const data = [{
+            name: 'Tanner Linsley 1',
+            age: 26,
+            friend: {
+                name: 'Jason Maurer',
+                age: 23,
+            }
+        },{
+            name: 'Tanner Linsley 2',
+            age: 26,
+            friend: {
+                name: 'Jason Maurer',
+                age: 23,
+            }
+        },{
+            name: 'Tanner Linsley 3',
+            age: 26,
+            friend: {
+                name: 'Jason Maurer',
+                age: 23,
+            }
+        },{
+            name: 'Tanner Linsley 4',
+            age: 26,
+            friend: {
+                name: 'Jason Maurer',
+                age: 23,
+            }
+        }];
+
+        const columns = [{
+            Header: 'Name',
+            foldable: true,
+            accessor: 'name' // String-based value accessors!
+        }, {
+            Header: 'Age',
+            foldable: true,
+            accessor: 'age',
+            Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+        }, {
+            id: 'friendName', // Required because our accessor is not a string
+            foldable: true,
+            Header: 'Friend Name',
+            accessor: 'friend.name' // Custom value accessors!
+        }, {
+            Header: <span>Friend Age</span>, // Custom header components!
+            foldable: true,
+            accessor: 'friend.age'
+        }]
+
+        const FoldableTable = FoldableTableHOC(ReactTable);
+
+        return <FoldableTable
+            data={data}
+            defaultPageSize={5}
+            columns={columns}
+        />
+
         if (results && fields) {
             return (
                 <div>
@@ -91,4 +154,4 @@ class ReactTable extends React.Component {
     }
 }
 
-hydrate(<ReactTable/>, document.getElementById('table'));
+hydrate(<ReactTableComponent/>, document.getElementById('table'));
