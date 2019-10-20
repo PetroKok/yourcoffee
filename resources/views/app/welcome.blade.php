@@ -8,7 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        
+
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
         <!-- Styles -->
@@ -22,7 +22,7 @@
             }
 
         </style>
-        <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{secure_asset('css/frontend.css')}}">
     </head>
     <body>
         <div class="container">
