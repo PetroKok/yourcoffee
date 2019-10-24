@@ -17,5 +17,11 @@ return [
         'name' => 'Назва',
         'username' => 'Ім\'я',
         'email' => 'Емейл',
+        'created_at' => 'Дата створення',
+        'updated_at' => 'Дата оновлення',
+        'deleted_at' => 'Дата видалення',
+        'category' => [
+            'title' => 'Назва'
+        ]
     ]
 ];

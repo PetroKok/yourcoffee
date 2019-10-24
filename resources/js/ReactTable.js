@@ -1,10 +1,47 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {hydrate} from 'react-dom';
-import {fetchData} from './actions/fetchData';
-import ReactTable from 'react-table';
-import FoldableTableHOC from 'react-table/lib/hoc/foldableTable';
+import {fetchData, fetchDeleteData} from './actions/fetchData';
+import MaterialTable from "material-table";
 
-import 'react-table/react-table.css';
+import AddBox from '@material-ui/icons/AddBox';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import Check from '@material-ui/icons/Check';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Clear from '@material-ui/icons/Clear';
+import DeleteOutline from '@material-ui/icons/DeleteOutline';
+import Edit from '@material-ui/icons/Edit';
+import FilterList from '@material-ui/icons/FilterList';
+import FirstPage from '@material-ui/icons/FirstPage';
+import LastPage from '@material-ui/icons/LastPage';
+import Remove from '@material-ui/icons/Remove';
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import Search from '@material-ui/icons/Search';
+import ViewColumn from '@material-ui/icons/ViewColumn';
+import Save from '@material-ui/icons/Save';
+import {Loading} from "./components/Loading";
+import {DeleteModal} from "./components/DeleteModal";
+
+const tableIcons = {
+    Add: forwardRef((props, ref) => <AddBox {...props} ref={ref}/>),
+    Check: forwardRef((props, ref) => <Check {...props} ref={ref}/>),
+    Clear: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+    Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref}/>),
+    DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+    Edit: forwardRef((props, ref) => <Edit {...props} ref={ref}/>),
+    Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref}/>),
+    Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref}/>),
+    FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref}/>),
+    LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref}/>),
+    NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref}/>),
+    PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref}/>),
+    ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref}/>),
+    Search: forwardRef((props, ref) => <Search {...props} ref={ref}/>),
+    SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref}/>),
+    ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref}/>),
+    ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref}/>),
+    Save: forwardRef((props, ref) => <Save {...props} ref={ref}/>)
+};
 
 class ReactTableComponent extends React.Component {
 
@@ -13,143 +50,95 @@ class ReactTableComponent extends React.Component {
         this.state = {
             results: undefined,
             fields: undefined,
+            loading: true,
+            deleteModal: false
         };
-        this.mapFields = this.mapFields.bind(this);
-        this.mapValues = this.mapValues.bind(this);
+        this.toggleDelete = this.toggleDelete.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+        this.queryNewData = this.queryNewData.bind(this);
     }
 
     componentDidMount() {
+        this.queryNewData();
+    }
+
+    queryNewData(){
         fetchData()
             .then(res => {
-                const a = res.data.result.data;
-                const fields = res.data.result.fields;
+                const a = res.result.data;
+                const fields = res.result.fields;
                 const results = a.length !== 0 ? a : undefined;
-                // this.setState({results: results, fields: fields}, () => {
-                //     console.log(this.state)
-                // })
+                this.setState({results: results, fields: fields})
             });
     }
 
-    mapFields() {
-        const {fields} = this.state;
-        return (
-            <tr>
-                {fields.map((item, index) => (
-                    <th key={index}>{item}</th>
-                ))}
-            </tr>
-        );
+    async getIdForDelete(e){
+        console.log(e);
+        await this.setState({delete_id: e});
+        await this.toggleDelete();
     }
 
-    mapValues() {
-        const {results, fields} = this.state;
-
-        return (
-            <>
-                {results.map((item, index) => {
-                    return (
-                        <tr key={index}>
-                            {fields.map((field, index) => {
-                                if (field === "actions") {
-                                    return (
-                                        <td key={index + '_'}>
-                                            <a href="#" className="btn btn-info btn-circle btn-sm">
-                                                <i className="fas fa-edit"></i>
-                                            </a>
-                                            <a href="#" className="btn btn-danger btn-circle btn-sm">
-                                                <i className="fas fa-trash"></i>
-                                            </a>
-                                        </td>
-                                    );
-                                } else {
-                                    return (
-                                        <td key={index + '_'}>{item[field]}</td>
-                                    );
-                                }
-                            })}
-                        </tr>
-                    );
-                })}
-            </>
-        );
+    toggleDelete(){
+        this.setState({deleteModal: !this.state.deleteModal});
     }
 
+    onDelete(){
+        const {delete_id} = this.state;
+        let results = this.state.results;
+        this.toggleDelete();
+        fetchDeleteData(delete_id)
+            .then(res => {
+                let removed = _.remove(this.state.results, function(res) {
+                    return res.id !== delete_id;
+                });
+                this.setState({results: removed})
+            });
+    }
 
     render() {
-        const {results, fields} = this.state;
+        const {results, fields, loading} = this.state;
 
-        const data = [{
-            name: 'Tanner Linsley 1',
-            age: 26,
-            friend: {
-                name: 'Jason Maurer',
-                age: 23,
-            }
-        },{
-            name: 'Tanner Linsley 2',
-            age: 26,
-            friend: {
-                name: 'Jason Maurer',
-                age: 23,
-            }
-        },{
-            name: 'Tanner Linsley 3',
-            age: 26,
-            friend: {
-                name: 'Jason Maurer',
-                age: 23,
-            }
-        },{
-            name: 'Tanner Linsley 4',
-            age: 26,
-            friend: {
-                name: 'Jason Maurer',
-                age: 23,
-            }
-        }];
-
-        const columns = [{
-            Header: 'Name',
-            foldable: true,
-            accessor: 'name' // String-based value accessors!
-        }, {
-            Header: 'Age',
-            foldable: true,
-            accessor: 'age',
-            Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-        }, {
-            id: 'friendName', // Required because our accessor is not a string
-            foldable: true,
-            Header: 'Friend Name',
-            accessor: 'friend.name' // Custom value accessors!
-        }, {
-            Header: <span>Friend Age</span>, // Custom header components!
-            foldable: true,
-            accessor: 'friend.age'
-        }]
-
-        const FoldableTable = FoldableTableHOC(ReactTable);
-
-        return <FoldableTable
-            data={data}
-            defaultPageSize={5}
-            columns={columns}
-        />
-
-        if (results && fields) {
+        if (results && fields && loading) {
             return (
-                <div>
-                    <table>
-                        <tbody align="right">
-                        {this.mapFields()}
-                        {this.mapValues()}
-                        </tbody>
-                    </table>
-                </div>
+                <>
+                    {this.state.deleteModal && (
+                        <DeleteModal onClose={ () => this.toggleDelete} onDelete={() => this.onDelete}/>
+                    )}
+                    <MaterialTable
+                        actions={[
+                            {
+                                icon: tableIcons.Add,
+                                tooltip: 'Add User',
+                                isFreeAction: true,
+                                onClick: (event) => alert("You want to add a new row")
+                            },
+                            {
+                                icon: tableIcons.Edit,
+                                tooltip: 'Edit User',
+                                onClick: (event, rowData) => {
+                                    // Do save operation
+                                }
+                            },
+                            {
+                                icon: tableIcons.Delete,
+                                tooltip: 'Delete User',
+                                onClick: (event, rowData) => this.getIdForDelete(rowData.id)
+                            }
+                        ]}
+                        icons={tableIcons}
+                        columns={fields}
+                        data={results}
+                        title="Table"
+                        options={{
+                            actionsColumnIndex: -1
+                        }}
+                    />
+                </>
             );
         }
+
         return (
-            <h3>LOADING...</h3>
+            <Loading/>
         );
     }
 }

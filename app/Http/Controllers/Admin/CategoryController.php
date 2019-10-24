@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Http\Resources\Admin\StandartJsonResource;
 use App\Models\Category;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -22,14 +24,11 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-            return response([
-                "message" => "",
-                "status" => true,
-                "result" => [
-                    "data" => CategoryResource::collection(Category::all()),
-                    "fields" => Category::FIELDS,
-                ],
-            ], 200);
+            return response($this->customResponse([
+                "data" => CategoryResource::collection(Category::all()),
+                "fields" => Category::fields(),
+            ], true), 200);
+
         }
 
         return view('admin.pages.index');
@@ -98,6 +97,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if($category){
+            $category->delete();
+            return response($this->customResponse([
+                'data' => new CategoryResource($category)
+            ], true), 200);
+        }
+        return response($this->customResponse([], false, "Category doesn't exist!"), 200);
     }
 }

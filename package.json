@@ -25,6 +25,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "material-table": "^1.52.0",
     "react": "^16.10.2",
     "react-dom": "latest",
     "react-table": "^6.10.3"
