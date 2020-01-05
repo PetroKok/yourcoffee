@@ -5,30 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Http\Resources\Admin\StandartJsonResource;
 use App\Models\Category;
-use App\Traits\ResponseTrait;
+use App\Service\CategoryServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
-    use ResponseTrait;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-   public function __construct()
-   {
-   }
+
+    public $categoryService;
+
+    public function __construct(CategoryServiceInterface $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
 
     public function index(Request $request)
     {
-        if($request->ajax()){
-            return response($this->customResponse([
-                "data" => CategoryResource::collection(Category::all()),
-                "fields" => Category::fields(),
-            ], true), 200);
-
+        if ($request->ajax()) {
+            $data['data'] = new CategoryResource($this->categoryService->index(1));
+            $data['fields'] = Category::fields();
+            return response($data, 200);
         }
 
         return view('admin.pages.index');
@@ -47,7 +43,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -58,7 +54,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,7 +65,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +76,8 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -92,7 +88,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

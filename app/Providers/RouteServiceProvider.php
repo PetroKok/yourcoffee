@@ -26,7 +26,6 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->domain(env('APP_ROUTE'))
              ->namespace('App\Http\Controllers\App')
              ->group(base_path('routes/web.php'));
     }
@@ -35,7 +34,6 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
              ->middleware('api')
-             ->domain(env('APP_ROUTE'))
              ->namespace('App\Http\Controllers\Api')
              ->group(base_path('routes/api.php'));
     }
@@ -43,9 +41,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminRoutes()
     {
         Route::middleware(['web', 'admin'])
-            ->prefix('admin')
             ->as('admin::')
-            ->domain(/*'admin.'.*/env("APP_ROUTE"))
+            ->prefix('admin')
             ->namespace('App\Http\Controllers\Admin')
             ->group(base_path('routes/admin.php'));
     }

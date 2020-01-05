@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title',
+        'position',
+        'image',
+        'parent_category_id',
+    ];
+
 
     /** START RELATIONSHIP **/
 
@@ -14,7 +20,8 @@ class Category extends Model
 
     /** END RELATIONSHIP **/
 
-    public function scopeFields(){
+    public function scopeFields()
+    {
         $fields = [
             [
                 "title" => 'ID',
@@ -27,6 +34,10 @@ class Category extends Model
             [
                 "title" => trans('admin.table.created_at'),
                 "field" => 'created_at',
+            ],
+            [
+                "title" => 'Position',
+                "field" => 'position',
             ],
         ];
         return $fields;

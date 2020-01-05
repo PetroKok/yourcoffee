@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -13,36 +14,39 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-    	  $users = [
-    	  	[
-    	  		'name' => 'Admin John',
-        		'role' => 'admin',
-        		'email' => 'admin@qwe.qwe',
-    	  	],
-    	  	[
-    	  		'name' => 'Moder Anna',
-        		'role' => 'waiter',
-        		'email' => 'waiter@qwe.qwe',
-    	  	],
-    	  	[
-    	  		'name' => 'Сook Nick',
-        		'role' => 'cook',
-        		'email' => 'cook@qwe.qwe',
-    	  	],
-    	  	[
-    	  		'name' => 'Customer',
-        		'role' => 'customer',
-        		'email' => 'qwe@qwe.qwe',
-    	  	],
-    	  ];
+        factory(\App\Models\Category::class, 15)->create();
+
+        $users = [
+            [
+                'name' => 'Admin John',
+                'role' => 'admin',
+                'email' => 'admin@qwe.qwe',
+            ],
+            [
+                'name' => 'Moder Anna',
+                'role' => 'waiter',
+                'email' => 'waiter@qwe.qwe',
+            ],
+            [
+                'name' => 'Сook Nick',
+                'role' => 'cook',
+                'email' => 'cook@qwe.qwe',
+            ],
+            [
+                'name' => 'Customer',
+                'role' => 'customer',
+                'email' => 'qwe@qwe.qwe',
+            ],
+        ];
+        return;
         foreach ($users as $user) {
-        	User::create([
-        		'name' => $user['name'],
+            User::create([
+                'name' => $user['name'],
                 'role' => $user['role'],
-        		'email' => $user['email'],
-        		'email_verified_at' => Carbon::now(),
-        		'password' => Hash::make('qweqweqwe')
-        	]);
+                'email' => $user['email'],
+                'email_verified_at' => Carbon::now(),
+                'password' => Hash::make('qweqweqwe')
+            ]);
         }
     }
 }

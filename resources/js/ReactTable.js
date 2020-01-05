@@ -65,8 +65,8 @@ class ReactTableComponent extends React.Component {
     queryNewData(){
         fetchData()
             .then(res => {
-                const a = res.result.data;
-                const fields = res.result.fields;
+                const a = res.data.data;
+                const fields = res.data.fields;
                 const results = a.length !== 0 ? a : undefined;
                 this.setState({results: results, fields: fields})
             });
@@ -97,6 +97,8 @@ class ReactTableComponent extends React.Component {
 
     render() {
         const {results, fields, loading} = this.state;
+
+        console.log(results, fields, loading)
 
         if (results && fields && loading) {
             return (
