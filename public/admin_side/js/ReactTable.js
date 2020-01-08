@@ -99208,6 +99208,7 @@ function (_React$Component) {
       results: undefined,
       fields: undefined,
       loading: true,
+      title: '',
       deleteModal: false
     };
     _this.toggleDelete = _this.toggleDelete.bind(_assertThisInitialized(_this));
@@ -99227,13 +99228,15 @@ function (_React$Component) {
       var _this2 = this;
 
       Object(_actions_fetchData__WEBPACK_IMPORTED_MODULE_3__["fetchData"])().then(function (res) {
-        var a = res.data.data;
-        var fields = res.data.fields;
-        var results = a.length !== 0 ? a : undefined;
+        var a = res.data.data || '';
+        var fields = res.data.fields || '';
+        var title = res.data.meta.title || '';
+        var results = a;
 
         _this2.setState({
           results: results,
-          fields: fields
+          fields: fields,
+          title: title
         });
       });
     }
@@ -99247,17 +99250,16 @@ function (_React$Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(e);
-                _context.next = 3;
+                _context.next = 2;
                 return this.setState({
                   delete_id: e
                 });
 
-              case 3:
-                _context.next = 5;
+              case 2:
+                _context.next = 4;
                 return this.toggleDelete();
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -99297,6 +99299,12 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "create",
+    value: function create() {
+      var path = window.location;
+      window.location = "".concat(path.origin).concat(path.pathname, "/create");
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -99305,9 +99313,8 @@ function (_React$Component) {
           results = _this$state.results,
           fields = _this$state.fields,
           loading = _this$state.loading;
-      console.log(results, fields, loading);
 
-      if (results && fields && loading) {
+      if (results !== undefined && fields && loading) {
         return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, this.state.deleteModal && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_DeleteModal__WEBPACK_IMPORTED_MODULE_22__["DeleteModal"], {
           onClose: function onClose() {
             return _this4.toggleDelete;
@@ -99315,22 +99322,34 @@ function (_React$Component) {
           onDelete: function onDelete() {
             return _this4.onDelete;
           }
-        }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(material_table__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "d-sm-flex align-items-center justify-content-between mb-4"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", {
+          className: "h3 text-gray-800"
+        }, "\u041A\u0430\u0442\u0435\u0433\u043E\u0440\u0456\u0457"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+          href: "#",
+          onClick: this.create,
+          className: "d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+          className: "fas fa-download fa-sm text-white-50"
+        }), "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u0438")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(material_table__WEBPACK_IMPORTED_MODULE_4___default.a, {
           actions: [{
-            icon: tableIcons.Add,
-            tooltip: 'Add User',
-            isFreeAction: true,
-            onClick: function onClick(event) {
-              return alert("You want to add a new row");
+            icon: tableIcons.Edit,
+            tooltip: 'Edit',
+            onClick: function onClick(event, rowData) {
+              var path = window.location;
+              window.location = "".concat(path.origin).concat(path.pathname, "/").concat(rowData.id, "/edit");
             }
           }, {
             icon: tableIcons.Edit,
-            tooltip: 'Edit User',
-            onClick: function onClick(event, rowData) {// Do save operation
+            tooltip: 'Show',
+            onClick: function onClick(event, rowData) {
+              var path = window.location;
+              window.location = "".concat(path.origin).concat(path.pathname, "/").concat(rowData.id, "/show");
             }
           }, {
             icon: tableIcons.Delete,
-            tooltip: 'Delete User',
+            tooltip: 'Delete',
             onClick: function onClick(event, rowData) {
               return _this4.getIdForDelete(rowData.id);
             }
@@ -99338,7 +99357,7 @@ function (_React$Component) {
           icons: tableIcons,
           columns: fields,
           data: results,
-          title: "Table",
+          title: "".concat(this.state.title),
           options: {
             actionsColumnIndex: -1
           }
@@ -99368,7 +99387,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchData", function() { return fetchData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchDeleteData", function() { return fetchDeleteData; });
 function fetchData() {
-  return axios.get("").then(function (res) {
+  console.log(window.location.origin + window.location.pathname + "/collection");
+  return axios.post(window.location.origin + window.location.pathname + "/collection").then(function (res) {
     if (res.status === 200 && res.statusText === "OK" && res.data.status === true) {
       return res.data;
     }
@@ -99415,19 +99435,17 @@ var DeleteModal = function DeleteModal(_ref) {
       _ref$onDelete = _ref.onDelete,
       onDelete = _ref$onDelete === void 0 ? function () {} : _ref$onDelete;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "black_overlay",
+    className: "black-overlay",
     onClick: onClose()
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "popup"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "popup-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Are you sure?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "popup-dialog"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0412\u0438 \u0432\u043F\u0435\u0432\u043D\u0435\u043D\u0456?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-danger mr-2",
     onClick: onDelete()
-  }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary",
     onClick: onClose()
-  }, "Cancel"))));
+  }, "\u0421\u043A\u0430\u0441\u0443\u0432\u0430\u0442\u0438")));
 };
 
 /***/ }),

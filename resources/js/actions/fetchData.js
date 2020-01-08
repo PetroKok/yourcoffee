@@ -1,6 +1,12 @@
 export function fetchData() {
+    console.log( window.location.origin
+        + window.location.pathname
+        + "/collection");
     return axios
-        .get("")
+        .post(
+            window.location.origin
+            + window.location.pathname
+            + "/collection")
         .then(res => {
             if (res.status === 200 && res.statusText === "OK" && res.data.status === true) {
                 return res.data;

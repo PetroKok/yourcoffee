@@ -51,6 +51,7 @@ class ReactTableComponent extends React.Component {
             results: undefined,
             fields: undefined,
             loading: true,
+            title: '',
             deleteModal: false
         };
         this.toggleDelete = this.toggleDelete.bind(this);
@@ -62,75 +63,89 @@ class ReactTableComponent extends React.Component {
         this.queryNewData();
     }
 
-    queryNewData(){
+    queryNewData() {
         fetchData()
             .then(res => {
-                const a = res.data.data;
-                const fields = res.data.fields;
-                const results = a.length !== 0 ? a : undefined;
-                this.setState({results: results, fields: fields})
+                const a = res.data.data || '';
+                const fields = res.data.fields || '';
+                const title = res.data.meta.title || '';
+                const results = a;
+                this.setState({results: results, fields: fields, title: title})
             });
     }
 
-    async getIdForDelete(e){
-        console.log(e);
+    async getIdForDelete(e) {
         await this.setState({delete_id: e});
         await this.toggleDelete();
     }
 
-    toggleDelete(){
+    toggleDelete() {
         this.setState({deleteModal: !this.state.deleteModal});
     }
 
-    onDelete(){
+    onDelete() {
         const {delete_id} = this.state;
         let results = this.state.results;
         this.toggleDelete();
         fetchDeleteData(delete_id)
             .then(res => {
-                let removed = _.remove(this.state.results, function(res) {
+                let removed = _.remove(this.state.results, function (res) {
                     return res.id !== delete_id;
                 });
                 this.setState({results: removed})
             });
     }
 
+    create() {
+        const path = window.location;
+        window.location = `${path.origin}${path.pathname}/create`;
+    }
+
     render() {
         const {results, fields, loading} = this.state;
 
-        console.log(results, fields, loading)
-
-        if (results && fields && loading) {
+        if (results !== undefined && fields && loading) {
             return (
                 <>
                     {this.state.deleteModal && (
-                        <DeleteModal onClose={ () => this.toggleDelete} onDelete={() => this.onDelete}/>
+                        <DeleteModal onClose={() => this.toggleDelete} onDelete={() => this.onDelete}/>
                     )}
+                    <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 className="h3 text-gray-800">Категорії</h1>
+                        <a href="#" onClick={this.create}
+                           className="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <i className="fas fa-download fa-sm text-white-50"/>
+                            Добавити
+                        </a>
+                    </div>
                     <MaterialTable
                         actions={[
                             {
-                                icon: tableIcons.Add,
-                                tooltip: 'Add User',
-                                isFreeAction: true,
-                                onClick: (event) => alert("You want to add a new row")
+                                icon: tableIcons.Edit,
+                                tooltip: 'Edit',
+                                onClick: (event, rowData) => {
+                                    const path = window.location;
+                                    window.location = `${path.origin}${path.pathname}/${rowData.id}/edit`;
+                                }
                             },
                             {
                                 icon: tableIcons.Edit,
-                                tooltip: 'Edit User',
+                                tooltip: 'Show',
                                 onClick: (event, rowData) => {
-                                    // Do save operation
+                                    const path = window.location;
+                                    window.location = `${path.origin}${path.pathname}/${rowData.id}/show`;
                                 }
                             },
                             {
                                 icon: tableIcons.Delete,
-                                tooltip: 'Delete User',
+                                tooltip: 'Delete',
                                 onClick: (event, rowData) => this.getIdForDelete(rowData.id)
                             }
                         ]}
                         icons={tableIcons}
                         columns={fields}
                         data={results}
-                        title="Table"
+                        title={`${this.state.title}`}
                         options={{
                             actionsColumnIndex: -1
                         }}

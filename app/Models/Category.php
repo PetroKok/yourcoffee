@@ -22,30 +22,28 @@ class Category extends Model
 
     public function scopeFields()
     {
-        $fields = [
+        return [
             [
                 "title" => 'ID',
                 "field" => 'id',
             ],
             [
-                "title" => trans('admin.table.category.title'),
+                "title" => trans('admin.category.title'),
                 "field" => 'title',
             ],
             [
-                "title" => trans('admin.table.created_at'),
-                "field" => 'created_at',
-            ],
-            [
-                "title" => 'Position',
+                "title" => trans('admin.category.position'),
                 "field" => 'position',
             ],
         ];
-        return $fields;
     }
 
     /** START MUTATORS **/
 
-    // code
+    public function getImageAttribute($image)
+    {
+        return config('files.categories_path') . '/' . $image;
+    }
 
     /** END MUTATORS **/
 }

@@ -7,7 +7,11 @@ return [
         'forgot_password' => 'Забули пароль?',
         'welcome_back' => 'Ласкаво просимо!',
         'create_account' => 'Створити аккаунт!',
-        'register' => 'Регістрація'
+        'register' => 'Регістрація',
+        'save' => 'Зберегти',
+        'create' => 'Створити',
+        'back' => 'Створити',
+        'cancel' => 'Скасувати',
     ],
     'fields' => [
         'password' => 'Пароль',

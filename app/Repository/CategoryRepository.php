@@ -16,6 +16,11 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function index(int $per_page = 10): array
     {
-        return $this->model->all()->toArray();
+        return $this->model->orderBy('position', 'ASC')->get()->toArray();
+    }
+
+    public function store(array $attributes): array
+    {
+        return (array)$this->model->create($attributes);
     }
 }
