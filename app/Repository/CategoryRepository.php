@@ -23,4 +23,14 @@ class CategoryRepository implements CategoryRepositoryInterface
     {
         return (array)$this->model->create($attributes);
     }
+
+    public function fields(): array
+    {
+        return $this->model::fields();
+    }
+
+    public function indexPluck(array $except): array
+    {
+        return $this->model->all()->except($except)->pluck('title', 'id')->toArray();
+    }
 }

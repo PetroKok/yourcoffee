@@ -13,7 +13,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{route('admin::dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Board</span></a>
     </li>
 
     <!-- Divider -->
@@ -21,7 +21,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Інтерфейс
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -70,7 +70,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        Аддони
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->

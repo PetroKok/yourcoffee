@@ -25039,6 +25039,35 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/Visibility.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Visibility.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+}), 'Visibility');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/utils/createSvgIcon.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@material-ui/icons/utils/createSvgIcon.js ***!
@@ -98935,8 +98964,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_ViewColumn__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_ViewColumn__WEBPACK_IMPORTED_MODULE_19__);
 /* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/icons/Save */ "./node_modules/@material-ui/icons/Save.js");
 /* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/Loading */ "./resources/js/components/Loading.js");
-/* harmony import */ var _components_DeleteModal__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/DeleteModal */ "./resources/js/components/DeleteModal.js");
+/* harmony import */ var _material_ui_icons_Visibility__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @material-ui/icons/Visibility */ "./node_modules/@material-ui/icons/Visibility.js");
+/* harmony import */ var _material_ui_icons_Visibility__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Visibility__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/Loading */ "./resources/js/components/Loading.js");
+/* harmony import */ var _components_DeleteModal__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/DeleteModal */ "./resources/js/components/DeleteModal.js");
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
 
@@ -99100,6 +99131,7 @@ function _extends() {
 
 
 
+
 var tableIcons = {
   Add: Object(react__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(function (props, ref) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_icons_AddBox__WEBPACK_IMPORTED_MODULE_5___default.a, _extends({}, props, {
@@ -99181,8 +99213,8 @@ var tableIcons = {
       ref: ref
     }));
   }),
-  ViewColumn: Object(react__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(function (props, ref) {
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_icons_ViewColumn__WEBPACK_IMPORTED_MODULE_19___default.a, _extends({}, props, {
+  Visibility: Object(react__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(function (props, ref) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_material_ui_icons_Visibility__WEBPACK_IMPORTED_MODULE_21___default.a, _extends({}, props, {
       ref: ref
     }));
   }),
@@ -99315,7 +99347,7 @@ function (_React$Component) {
           loading = _this$state.loading;
 
       if (results !== undefined && fields && loading) {
-        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, this.state.deleteModal && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_DeleteModal__WEBPACK_IMPORTED_MODULE_22__["DeleteModal"], {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, this.state.deleteModal && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_DeleteModal__WEBPACK_IMPORTED_MODULE_23__["DeleteModal"], {
           onClose: function onClose() {
             return _this4.toggleDelete;
           },
@@ -99341,11 +99373,11 @@ function (_React$Component) {
               window.location = "".concat(path.origin).concat(path.pathname, "/").concat(rowData.id, "/edit");
             }
           }, {
-            icon: tableIcons.Edit,
+            icon: tableIcons.Visibility,
             tooltip: 'Show',
             onClick: function onClick(event, rowData) {
               var path = window.location;
-              window.location = "".concat(path.origin).concat(path.pathname, "/").concat(rowData.id, "/show");
+              window.location = "".concat(path.origin).concat(path.pathname, "/").concat(rowData.id);
             }
           }, {
             icon: tableIcons.Delete,
@@ -99364,7 +99396,7 @@ function (_React$Component) {
         }));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Loading__WEBPACK_IMPORTED_MODULE_21__["Loading"], null);
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_Loading__WEBPACK_IMPORTED_MODULE_22__["Loading"], null);
     }
   }]);
 

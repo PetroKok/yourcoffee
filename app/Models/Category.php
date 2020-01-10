@@ -16,7 +16,10 @@ class Category extends Model
 
     /** START RELATIONSHIP **/
 
-    // code
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'parent_category_id', 'id');
+    }
 
     /** END RELATIONSHIP **/
 

@@ -19,6 +19,7 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Save from '@material-ui/icons/Save';
+import Visibility from '@material-ui/icons/Visibility';
 import {Loading} from "./components/Loading";
 import {DeleteModal} from "./components/DeleteModal";
 
@@ -39,7 +40,7 @@ const tableIcons = {
     Search: forwardRef((props, ref) => <Search {...props} ref={ref}/>),
     SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref}/>),
     ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref}/>),
-    ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref}/>),
+    Visibility: forwardRef((props, ref) => <Visibility {...props} ref={ref}/>),
     Save: forwardRef((props, ref) => <Save {...props} ref={ref}/>)
 };
 
@@ -129,11 +130,11 @@ class ReactTableComponent extends React.Component {
                                 }
                             },
                             {
-                                icon: tableIcons.Edit,
+                                icon: tableIcons.Visibility,
                                 tooltip: 'Show',
                                 onClick: (event, rowData) => {
                                     const path = window.location;
-                                    window.location = `${path.origin}${path.pathname}/${rowData.id}/show`;
+                                    window.location = `${path.origin}${path.pathname}/${rowData.id}`;
                                 }
                             },
                             {

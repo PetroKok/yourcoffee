@@ -29,13 +29,13 @@ class CategoryController extends Controller
     {
         $data['meta']['title'] = trans('admin.menu.categories');
         $data['data'] = new CategoryResource($this->categoryService->index(1));
-        $data['fields'] = Category::fields();
+        $data['fields'] = $this->categoryService->fields();
         return response($data, 200);
     }
 
     public function create()
     {
-        $categories = Category::all()->pluck('title', 'id');
+        $categories = $this->categoryService->indexPluck();
         return view('admin.category.create', compact('categories'));
     }
 
@@ -51,14 +51,15 @@ class CategoryController extends Controller
         return redirect()->route('admin::categories.index');
     }
 
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        $category->load('category');
+        return view('admin::category.show', compact('category'));
     }
 
     public function edit(Category $category)
     {
-        $categories = Category::all()->pluck('title', 'id');
+        $categories = $this->categoryService->indexPluck([$category->id]);
         return view('admin.category.create', compact('category', 'categories'));
     }
 
@@ -66,9 +67,8 @@ class CategoryController extends Controller
     {
         $data = $request->all();
 
-        if($request->has('image')){
+        if ($request->has('image')) {
             $this->categoryService->deleteImage($category->image);
-
             $data['image'] = $this->categoryService->moveImage($data['image'], config('files.categories_path'));
         }
 

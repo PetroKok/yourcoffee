@@ -9,6 +9,10 @@ interface CategoryServiceInterface
 {
     public function index(int $per_page = 10): array;
 
+    public function indexPluck(array $except = []): array;
+
+    public function fields(): array;
+
     public function store(array $attributes): array;
 
     public function update(Category $cat, array $attributes): array;

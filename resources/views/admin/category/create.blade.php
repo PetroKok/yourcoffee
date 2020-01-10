@@ -9,7 +9,7 @@
         {!! Form::open(['route' => ['admin::categories.store'], 'method' => 'POST', 'files' => true]) !!}
     @endif
     <div class="container row align-items-center justify-content-between mb-4">
-        <h1 class="h3 text-gray-800">{{trans('admin.menu.categories')}} @if(isset($category)){{trans('admin.actions.update')}}@else{{trans('admin.actions.create')}}@endif</h1>
+        <h1 class="h5 text-gray-800">{{trans('admin.menu.categories')}} > @if(isset($category)){{trans('admin.actions.update')}}@else{{trans('admin.actions.create')}}@endif</h1>
         <button type="submit" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-download fa-sm text-white-50"></i>
             {{trans('admin.actions.save')}}

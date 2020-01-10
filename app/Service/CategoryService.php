@@ -51,4 +51,14 @@ class CategoryService implements CategoryServiceInterface
     {
         return (array)$cat->update($attributes);
     }
+
+    public function fields(): array
+    {
+        return $this->category->fields();
+    }
+
+    public function indexPluck(array $except = []): array
+    {
+        return $this->category->indexPluck($except);
+    }
 }
