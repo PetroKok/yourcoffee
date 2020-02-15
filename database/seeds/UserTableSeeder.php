@@ -14,31 +14,29 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Category::class, 15)->create();
-
         $users = [
             [
                 'name' => 'Admin John',
                 'role' => 'admin',
-                'email' => 'admin@qwe.qwe',
+                'email' => 'admin@gmail.com',
             ],
             [
                 'name' => 'Moder Anna',
                 'role' => 'waiter',
-                'email' => 'waiter@qwe.qwe',
+                'email' => 'waiter@gmail.com',
             ],
             [
                 'name' => 'Сook Nick',
                 'role' => 'cook',
-                'email' => 'cook@qwe.qwe',
+                'email' => 'cook@gmail.com',
             ],
             [
                 'name' => 'Customer',
                 'role' => 'customer',
-                'email' => 'qwe@qwe.qwe',
+                'email' => 'qwe@gmail.com',
             ],
         ];
-        return;
+
         foreach ($users as $user) {
             User::create([
                 'name' => $user['name'],

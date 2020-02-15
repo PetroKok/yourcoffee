@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = [];
+    protected $translatedAttributes = ['title', 'description', 'content'];
     protected $table = 'products';
 }

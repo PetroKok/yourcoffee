@@ -13,7 +13,6 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-// TODO: products with translations, multi-language, and with difference prices based on cities
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('category_id');
