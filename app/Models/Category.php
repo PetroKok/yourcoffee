@@ -2,17 +2,24 @@
 
 namespace App\Models;
 
+use App\Models\Interfaces\FieldsInterface;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Category extends Model implements TranslatableContract, FieldsInterface
 {
+    use Translatable;
+
     protected $fillable = [
-        'title',
         'position',
         'image',
-        'parent_category_id',
+        'parent_id',
     ];
 
+    public $translatedAttributes = [
+        'title'
+    ];
 
     /** START RELATIONSHIP **/
 
@@ -23,7 +30,8 @@ class Category extends Model
 
     /** END RELATIONSHIP **/
 
-    public function scopeFields()
+
+    public function scopeFields(): array
     {
         return [
             [

@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class UserTableSeeder extends Seeder
+class   UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -43,7 +43,7 @@ class UserTableSeeder extends Seeder
                 'role' => $user['role'],
                 'email' => $user['email'],
                 'email_verified_at' => Carbon::now(),
-                'password' => Hash::make('qweqweqwe')
+                'password' => Hash::make('password')
             ]);
         }
     }

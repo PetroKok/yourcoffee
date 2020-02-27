@@ -15,7 +15,7 @@ class CreateLocalesTable extends Migration
     {
         Schema::create('locales', function (Blueprint $table) {
             $table->string('locale')->primary()->unique();
-            $table->string('title');
+            $table->string('name');
             $table->boolean('is_primary');
         });
     }
