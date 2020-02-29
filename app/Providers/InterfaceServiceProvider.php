@@ -14,6 +14,7 @@ class InterfaceServiceProvider extends ServiceProvider
 
     public $bindings = [
         CategoryServiceInterface::class => CategoryService::class,
+        CategoryRepositoryInterface::class => CategoryRepository::class,
     ];
 
     /**
@@ -23,9 +24,6 @@ class InterfaceServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(CategoryRepositoryInterface::class, function () {
-            return new CategoryRepository(new Category());
-        });
     }
 
     /**

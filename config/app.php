@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\LanguageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         /*
          * Application Service Providers...
@@ -174,7 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\InterfaceServiceProvider::class
+        App\Providers\InterfaceServiceProvider::class,
     ],
 
     /*

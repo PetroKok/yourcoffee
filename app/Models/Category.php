@@ -11,14 +11,16 @@ class Category extends Model implements TranslatableContract, FieldsInterface
 {
     use Translatable;
 
+    protected $table = 'categories';
+
+    public $translatedAttributes = [
+        'title'
+    ];
+
     protected $fillable = [
         'position',
         'image',
         'parent_id',
-    ];
-
-    public $translatedAttributes = [
-        'title'
     ];
 
     /** START RELATIONSHIP **/
