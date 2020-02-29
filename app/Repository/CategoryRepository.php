@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
@@ -13,14 +15,14 @@ class CategoryRepository implements CategoryRepositoryInterface
         $this->model = $model;
     }
 
-    public function index(int $per_page = 10): array
+    public function index(): Collection
     {
-        return $this->model->orderBy('position', 'ASC')->get()->toArray();
+        return $this->model->orderBy('position', 'ASC')->with('translations')->get();
     }
 
-    public function store(array $attributes): array
+    public function store(array $attributes): Model
     {
-        return (array)$this->model->create($attributes);
+        return $this->model->create($attributes);
     }
 
     public function fields(): array
@@ -28,8 +30,8 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $this->model::fields();
     }
 
-    public function indexPluck(array $except): array
+    public function indexPluck(array $except): \Illuminate\Support\Collection
     {
-        return $this->model->all()->except($except)->pluck('title', 'id')->toArray();
+        return $this->model->all()->except($except)->pluck('title', 'id');
     }
 }

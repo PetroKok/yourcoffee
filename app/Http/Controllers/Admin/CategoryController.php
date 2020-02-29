@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function collection()
     {
         $data['meta']['title'] = trans('admin.menu.categories');
-        $data['data'] = new CategoryResource($this->categoryService->index(1));
+        $data['data'] = new CategoryResource($this->categoryService->index());
         $data['fields'] = $this->categoryService->fields();
         return response($data, 200);
     }

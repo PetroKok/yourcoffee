@@ -5,6 +5,8 @@ namespace App\Service;
 use App\Models\Category;
 use App\Repository\CategoryRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,12 +20,12 @@ class CategoryService implements CategoryServiceInterface
         $this->category = $categoryRepository;
     }
 
-    public function index(int $per_page = 10): array
+    public function index(): Collection
     {
-        return $this->category->index($per_page);
+        return $this->category->index();
     }
 
-    public function store(array $attributes): array
+    public function store(array $attributes): Model
     {
         return $this->category->store($attributes);
     }
@@ -47,9 +49,10 @@ class CategoryService implements CategoryServiceInterface
         }
     }
 
-    public function update(Category $cat, array $attributes): array
+    public function update(Model $cat, array $attributes): Model
     {
-        return (array)$cat->update($attributes);
+        $cat->update($attributes);
+        return $cat;
     }
 
     public function fields(): array
@@ -57,7 +60,7 @@ class CategoryService implements CategoryServiceInterface
         return $this->category->fields();
     }
 
-    public function indexPluck(array $except = []): array
+    public function indexPluck(array $except = []): \Illuminate\Support\Collection
     {
         return $this->category->indexPluck($except);
     }

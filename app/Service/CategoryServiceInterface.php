@@ -3,19 +3,21 @@
 namespace App\Service;
 
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 
 interface CategoryServiceInterface
 {
-    public function index(int $per_page = 10): array;
+    public function index(): Collection;
 
-    public function indexPluck(array $except = []): array;
+    public function indexPluck(array $except = []): \Illuminate\Support\Collection;
 
     public function fields(): array;
 
-    public function store(array $attributes): array;
+    public function store(array $attributes): Model;
 
-    public function update(Category $cat, array $attributes): array;
+    public function update(Model $cat, array $attributes): Model;
 
     public function moveImage(UploadedFile $file, string $path);
 

@@ -38,12 +38,12 @@
 
         <div class="tab-content">
             @foreach($locales as $locale)
-                <div id="{{$locale}}" class="container tab-pane {{!$loop->first ? "fade": "active"}}"><br>
+                <div id="{{$locale}}" class="tab-pane {{!$loop->first ? "fade": "active"}}"><br>
                     <div class="form-group row">
 
                         <div class="col-sm-6 mb-3 mb-sm-0">
                             {!! Form::label('title', trans('admin.category.title')); !!}
-                            {!! Form::text($locale.'[title]', isset($category) ? $category->title : '',[
+                            {!! Form::text($locale.'[title]', isset($category) ? $category->translate($locale)->title : '',[
                                 'placeholder' => trans('admin.category.title'),
                                 'class' => 'form-control form-control-user'
                             ]); !!}
@@ -51,6 +51,7 @@
                     </div>
                 </div>
             @endforeach
+
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     {!! Form::label('position', trans('admin.category.position')); !!}
@@ -63,8 +64,8 @@
 
             <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                    {!! Form::label('parent_category_id', trans('admin.category.parent_category_id')); !!}
-                    {!! Form::select('parent_category_id', $categories, isset($category) ? $category->parent_category_id : '',[
+                    {!! Form::label('parent_id', trans('admin.category.parent_category_id')); !!}
+                    {!! Form::select('parent_id', $categories, isset($category) ? $category->parent_id : '',[
                         'class' => 'form-control form-control-user',
                         'placeholder' => ''
                     ]); !!}

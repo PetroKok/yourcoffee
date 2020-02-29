@@ -23,10 +23,18 @@ class CategoryStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-//            'title' => 'required',
+        $locales = config('translatable.locales');
+
+        $rules = [
+            'parent_id' => 'nullable|exists:categories,id',
             'position' => 'required|integer',
-            'image' => 'required|file'
+            'image' => 'required|required|file'
         ];
+
+        foreach ($locales as $locale) {
+            $rules[$locale . '.title'] = 'required';
+        }
+
+        return $rules;
     }
 }

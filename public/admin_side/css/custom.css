@@ -40,8 +40,8 @@ tr:nth-child(even) {
 
 .upload-preview {
     width: 100%;
+    max-width: 1000px;
     padding: 5%;
-    max-height: 500px;
     margin: 0 auto;
 }
 

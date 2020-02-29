@@ -2,13 +2,16 @@
 
 namespace App\Repository;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+
 interface CategoryRepositoryInterface
 {
-    public function index(int $per_page = 10): array;
+    public function index(): Collection;
 
     public function fields(): array;
 
-    public function indexPluck(array $except): array;
+    public function store(array $attributes): Model;
 
-    public function store(array $attributes): array;
+    public function indexPluck(array $except): \Illuminate\Support\Collection;
 }
