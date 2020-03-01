@@ -26,6 +26,12 @@ return [
     'menu' => [
         'categories' => 'Категорії',
         'category' => 'Категорія',
+
+        'ingredients' => 'Інгредієнти',
+        'ingredient' => 'Інгредієнт',
+
+        'products' => 'Продукти',
+        'product' => 'Продукт',
     ],
     'table' => [
         'id' => 'ID',

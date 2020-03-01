@@ -27,11 +27,11 @@ class Ingredients extends Model implements TranslatableContract, FieldsInterface
             ],
             [
                 "title" => trans('admin.category.title'),
-                "field" => 'title',
+                "field" => 'name',
             ],
             [
                 "title" => trans('admin.category.position'),
-                "field" => 'position',
+                "field" => 'price',
             ],
         ];
     }

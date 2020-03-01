@@ -30,29 +30,9 @@ class CategoryService implements CategoryServiceInterface
         return $this->category->store($attributes);
     }
 
-    public function moveImage(UploadedFile $file, string $image_path)
+    public function update(array $attributes, Model $model): Model
     {
-        $image_name = Carbon::today()->format('Y-m-d') . '-' . $file->getClientOriginalName();
-        $file->move(public_path($image_path), $image_name);
-        return $image_name;
-    }
-
-    public function deleteImage(string $image_name)
-    {
-        $full_path = public_path($image_name);
-        if (\File::exists($full_path)) {
-            try {
-                \File::delete($full_path);
-            } catch (\Throwable $e) {
-                throw $e;
-            }
-        }
-    }
-
-    public function update(Model $cat, array $attributes): Model
-    {
-        $cat->update($attributes);
-        return $cat;
+        return $this->category->update($attributes, $model);
     }
 
     public function fields(): array
