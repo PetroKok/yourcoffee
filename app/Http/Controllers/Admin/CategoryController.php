@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryStoreRequest;
-use App\Http\Requests\CategoryUpdateRequest;
+use App\Http\Requests\Category\CategoryStoreRequest;
+use App\Http\Requests\Category\CategoryUpdateRequest;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Models\Category;
 use App\Service\CategoryServiceInterface;
+use App\Service\FileServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,10 +15,12 @@ class CategoryController extends Controller
 {
 
     public $categoryService;
+    public $fileService;
 
-    public function __construct(CategoryServiceInterface $categoryService)
+    public function __construct(CategoryServiceInterface $categoryService, FileServiceInterface $fileService)
     {
         $this->categoryService = $categoryService;
+        $this->fileService = $fileService;
     }
 
     public function index(Request $request)
@@ -44,7 +47,7 @@ class CategoryController extends Controller
     {
         $data = $request->all();
 
-        $data['image'] = $this->categoryService->moveImage($data['image'], config('files.categories_path'));
+        $data['image'] = $this->fileService->moveImage($data['image'], config('files.categories_path'));
 
         $this->categoryService->store($data);
 
@@ -68,11 +71,11 @@ class CategoryController extends Controller
         $data = $request->all();
 
         if ($request->has('image')) {
-            $this->categoryService->deleteImage($category->image);
-            $data['image'] = $this->categoryService->moveImage($data['image'], config('files.categories_path'));
+            $this->fileService->deleteImage($category->image);
+            $data['image'] = $this->fileService->moveImage($data['image'], config('files.categories_path'));
         }
 
-        $this->categoryService->update($category, $data);
+        $this->categoryService->update($data, $category);
 
         return redirect()->route('admin::categories.index');
     }

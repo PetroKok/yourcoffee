@@ -112,7 +112,7 @@ class ReactTableComponent extends React.Component {
                         <DeleteModal onClose={() => this.toggleDelete} onDelete={() => this.onDelete}/>
                     )}
                     <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 className="h3 text-gray-800">Категорії</h1>
+                        <h1 className="h3 text-gray-800">{this.state.title}</h1>
                         <a href="#" onClick={this.create}
                            className="d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i className="fas fa-download fa-sm text-white-50"/>

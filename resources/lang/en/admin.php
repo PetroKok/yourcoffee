@@ -49,9 +49,6 @@ return [
     ],
 
 
-
-
-
     /** ENTITIES **/
 
     'category' => [
@@ -59,5 +56,13 @@ return [
         'position' => 'Позиція',
         'image' => 'Картинка',
         'parent_category_id' => 'Батьківська категорія',
-    ]
+    ],
+
+    'ingredient' => [
+        'name' => 'Назва',
+        'description' => 'Опис інгредієнта',
+        'price' => 'Ціна',
+        'pic' => 'Піктограма',
+        'image' => 'Фото',
+    ],
 ];

@@ -41,9 +41,9 @@
                 <div id="{{$locale}}" class="tab-pane {{!$loop->first ? "fade": "active"}}"><br>
                     <div class="form-group row">
 
-                        <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="col mb-3 mb-sm-0">
                             {!! Form::label('title', trans('admin.category.title')); !!}
-                            {!! Form::text($locale.'[title]', isset($category) ? $category->translate($locale)->title : '',[
+                            {!! Form::text($locale.'[title]', isset($category) ? $category->translate($locale, true)->title : '',[
                                 'placeholder' => trans('admin.category.title'),
                                 'class' => 'form-control form-control-user'
                             ]); !!}
@@ -60,9 +60,7 @@
                         'class' => 'form-control form-control-user'
                     ]); !!}
                 </div>
-            </div>
 
-            <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                     {!! Form::label('parent_id', trans('admin.category.parent_category_id')); !!}
                     {!! Form::select('parent_id', $categories, isset($category) ? $category->parent_id : '',[
@@ -70,8 +68,10 @@
                         'placeholder' => ''
                     ]); !!}
                 </div>
+            </div>
 
-                <div class="col-sm-6 mb-3 mb-sm-0">
+            <div class="form-group row">
+                <div class="col mb-3 mb-sm-0">
                     {!! Form::label('image', trans('admin.category.image')); !!}
                     {!! Form::file('image', ['class' => 'form-control form-control-user']); !!}
                 </div>
@@ -79,24 +79,13 @@
                      class="upload-preview">
             </div>
         </div>
+
+        {!! Form::close() !!}
     </div>
-
-    {!! Form::close() !!}
-
     @push('scripts')
         <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $('#upload').attr('src', e.target.result);
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
             $("#image").change(function () {
-                readURL(this);
+                window.readURL(this, 'upload');
             });
         </script>
     @endpush

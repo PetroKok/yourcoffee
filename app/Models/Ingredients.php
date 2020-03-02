@@ -13,13 +13,11 @@ class Ingredients extends Model implements TranslatableContract, FieldsInterface
 
     protected $table = 'ingredients';
 
-    protected $fillable = ['image', 'price'];
+    protected $fillable = ['image', 'pic', 'price'];
     protected $translatedAttributes = ['name', 'description'];
 
     public function scopeFields(): array
     {
-
-        // TODO: fix it
         return [
             [
                 "title" => 'ID',
@@ -35,4 +33,18 @@ class Ingredients extends Model implements TranslatableContract, FieldsInterface
             ],
         ];
     }
+
+    /** START MUTATORS **/
+
+    public function getImageAttribute($image)
+    {
+        return config('files.ingredients_path') . '/' . $image;
+    }
+
+    public function getPicAttribute($pic)
+    {
+        return config('files.ingredients_path') . '/' . $pic;
+    }
+
+    /** END MUTATORS **/
 }

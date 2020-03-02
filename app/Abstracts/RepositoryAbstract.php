@@ -12,7 +12,7 @@ abstract class RepositoryAbstract
 
     public function index(): Collection
     {
-        return $this->model->orderBy('position', 'ASC')->with('translations')->get();
+        return $this->model->orderBy('id', 'ASC')->with('translations')->get();
     }
 
     public function store(array $attributes): Model
@@ -22,7 +22,7 @@ abstract class RepositoryAbstract
 
     public function update(array $attributes, Model $model): Model
     {
-        $model->create($attributes);
+        $model->update($attributes);
         return $model;
     }
 
