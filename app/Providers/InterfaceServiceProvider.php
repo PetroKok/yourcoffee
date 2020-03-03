@@ -33,6 +33,10 @@ class InterfaceServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(CategoryServiceInterface::class, function(){
+            return new CategoryService();
+        });
+
     }
 
     /**

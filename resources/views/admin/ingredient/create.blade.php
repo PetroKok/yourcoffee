@@ -64,8 +64,8 @@
             <div class="form-group row">
                 <div class="col mb-3 mb-sm-0">
                     {!! Form::label('price', trans('admin.ingredient.price')); !!}
-                    {!! Form::text($locale.'[price]', isset($ingredient) ? $ingredient->price : '100',[
-                        'placeholder' => trans('admin.ingredient.name'),
+                    {!! Form::text('price', isset($ingredient) ? $ingredient->price : '100',[
+                        'placeholder' => trans('admin.ingredient.price'),
                         'class' => 'form-control form-control-user'
                     ]); !!}
                 </div>

@@ -13,26 +13,22 @@ class CreateProductsL10nTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_translations', function (Blueprint $table) {
+        Schema::create('products_l10n', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->string('locale')->index();
-            $table->string('title');
+            $table->string('name');
             $table->text('description')->nullable();
-            $table->text('content')->nullable();
-
-
-            $table->unique(['product_id', 'locale']);
 
             $table->foreign('locale')
-                ->references('locale')
                 ->on('locales')
+                ->references('locale')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->foreign('product_id')
-                ->references('id')
                 ->on('products')
+                ->references('id')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -45,10 +41,10 @@ class CreateProductsL10nTable extends Migration
      */
     public function down()
     {
-        Schema::table('products_translations', function (Blueprint $table) {
+        Schema::table('products_l10n', function (Blueprint $table) {
             $table->dropForeign(['product_id']);
             $table->dropForeign(['locale']);
         });
-        Schema::dropIfExists('products_translations');
+        Schema::dropIfExists('products_l10n');
     }
 }
