@@ -1,18 +1,17 @@
 <?php
 
-
 namespace App\Service;
 
-
 use App\Repository\IngredientRepositoryInterface;
+use App\Repository\ProductRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class IngredientService implements IngredientServiceInterface
+class ProductService implements ProductServiceInterface
 {
     public $repository;
 
-    public function __construct(IngredientRepositoryInterface $repository)
+    public function __construct(ProductRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -37,7 +36,7 @@ class IngredientService implements IngredientServiceInterface
         return $this->repository->store($attributes);
     }
 
-    public function indexPluck(array $except = []): \Illuminate\Support\Collection
+    public function indexPluck(array $except): \Illuminate\Support\Collection
     {
         return $this->repository->indexPluck($except);
     }

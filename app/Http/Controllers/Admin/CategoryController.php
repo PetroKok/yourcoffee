@@ -82,6 +82,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+        $this->fileService->deleteImage($category->image);
         $category->delete();
         return new CategoryResource($category);
     }

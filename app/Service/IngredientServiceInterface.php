@@ -17,7 +17,7 @@ interface IngredientServiceInterface
 
     public function store(array $attributes): Model;
 
-    public function indexPluck(array $except): \Illuminate\Support\Collection;
+    public function indexPluck(array $except = []): \Illuminate\Support\Collection;
 
     public function delete(Model $model);
 }

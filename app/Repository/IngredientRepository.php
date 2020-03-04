@@ -20,7 +20,7 @@ class IngredientRepository extends RepositoryAbstract implements IngredientRepos
         return $this->model->with('translations')->get();
     }
 
-    public function indexPluck(array $except): \Illuminate\Support\Collection
+    public function indexPluck(array $except = []): \Illuminate\Support\Collection
     {
         return $this->model->all()->except($except)->pluck('name', 'id');
     }

@@ -7,12 +7,16 @@ use App\Repository\CategoryRepository;
 use App\Repository\CategoryRepositoryInterface;
 use App\Repository\IngredientRepository;
 use App\Repository\IngredientRepositoryInterface;
+use App\Repository\ProductRepository;
+use App\Repository\ProductRepositoryInterface;
 use App\Service\CategoryService;
 use App\Service\CategoryServiceInterface;
 use App\Service\FileService;
 use App\Service\FileServiceInterface;
 use App\Service\IngredientService;
 use App\Service\IngredientServiceInterface;
+use App\Service\ProductService;
+use App\Service\ProductServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class InterfaceServiceProvider extends ServiceProvider
@@ -24,6 +28,8 @@ class InterfaceServiceProvider extends ServiceProvider
         FileServiceInterface::class => FileService::class,
         IngredientRepositoryInterface::class => IngredientRepository::class,
         IngredientServiceInterface::class => IngredientService::class,
+        ProductServiceInterface::class => ProductService::class,
+        ProductRepositoryInterface::class => ProductRepository::class,
     ];
 
     /**
@@ -33,10 +39,7 @@ class InterfaceServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(CategoryServiceInterface::class, function(){
-            return new CategoryService();
-        });
-
+        //
     }
 
     /**

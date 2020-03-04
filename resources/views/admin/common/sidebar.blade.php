@@ -52,6 +52,12 @@
             <span>{{trans('admin.menu.ingredients')}}</span></a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin::products.index')}}">
+            <i class="fas fa-fw fa-drumstick-bite"></i>
+            <span>{{trans('admin.menu.products')}}</span></a>
+    </li>
+
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

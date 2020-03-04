@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Ingredient\IngredientCreateRequest;
+use App\Http\Requests\Ingredient\IngredientUpdateRequest;
 use App\Http\Resources\Admin\IngredientResource;
 use App\Models\Ingredients;
 use App\Service\FileServiceInterface;
@@ -62,7 +63,7 @@ class IngredientController extends Controller
         return view('admin.ingredient.create', compact('ingredient'));
     }
 
-    public function update(Request $request, Ingredients $ingredient)
+    public function update(IngredientUpdateRequest $request, Ingredients $ingredient)
     {
         $data = $request->all();
 
@@ -86,6 +87,8 @@ class IngredientController extends Controller
     public function destroy(Ingredients $ingredient)
     {
         $ingredient->delete();
+        $this->fileService->deleteImage($ingredient->image);
+        $this->fileService->deleteImage($ingredient->pic);
         return response($ingredient, 200);
     }
 }
