@@ -36,42 +36,46 @@
             @endforeach
         </ul>
 
-        <div class="tab-content">
-            @foreach($locales as $locale)
-                <div id="{{$locale}}" class="tab-pane {{!$loop->first ? "fade": "active"}}"><br>
-                    <div class="form-group row">
+        <div class="row">
+            <div class="tab-content col-md-6">
+                @foreach($locales as $locale)
+                    <div id="{{$locale}}" class="tab-pane {{!$loop->first ? "fade": "active"}}"><br>
+                        <div class="form-group row">
 
-                        <div class="col mb-3 mb-sm-0">
-                            {!! Form::label('title', trans('admin.category.title')); !!}
-                            {!! Form::text($locale.'[title]', isset($category) ? $category->translate($locale, true)->title : '',[
-                                'placeholder' => trans('admin.category.title'),
-                                'class' => 'form-control form-control-user'
-                            ]); !!}
+                            <div class="col mb-3 mb-sm-0">
+                                {!! Form::label('title', trans('admin.category.title')); !!}
+                                {!! Form::text($locale.'[title]', isset($category) ? $category->translate($locale, true)->title : '',[
+                                    'placeholder' => trans('admin.category.title'),
+                                    'class' => 'form-control form-control-user'
+                                ]); !!}
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
 
-            <div class="form-group row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    {!! Form::label('position', trans('admin.category.position')); !!}
-                    {!! Form::number('position', isset($category) ? $category->position : '',[
-                        'placeholder' => trans('admin.category.position'),
-                        'class' => 'form-control form-control-user'
-                    ]); !!}
+                <div class="form-group row">
+                    <div class="col-12 mb-3 mb-sm-0">
+                        {!! Form::label('position', trans('admin.category.position')); !!}
+                        {!! Form::number('position', isset($category) ? $category->position : '',[
+                            'placeholder' => trans('admin.category.position'),
+                            'class' => 'form-control form-control-user'
+                        ]); !!}
+                    </div>
+
+                    <div class="col-12 mb-3 mb-sm-0">
+                        {!! Form::label('parent_id', trans('admin.category.parent_category_id')); !!}
+                        {!! Form::select('parent_id', $categories, isset($category) ? $category->parent_id : '',[
+                            'class' => 'form-control form-control-user',
+                            'placeholder' => ''
+                        ]); !!}
+                    </div>
                 </div>
 
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    {!! Form::label('parent_id', trans('admin.category.parent_category_id')); !!}
-                    {!! Form::select('parent_id', $categories, isset($category) ? $category->parent_id : '',[
-                        'class' => 'form-control form-control-user',
-                        'placeholder' => ''
-                    ]); !!}
-                </div>
             </div>
 
-            <div class="form-group row">
-                <div class="col mb-3 mb-sm-0">
+            <div class="form-group col-md-6">
+                <br>
+                <div class="mb-3 mb-sm-0">
                     {!! Form::label('image', trans('admin.category.image')); !!}
                     {!! Form::file('image', ['class' => 'form-control form-control-user']); !!}
                 </div>
