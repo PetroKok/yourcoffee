@@ -47,6 +47,13 @@ return [
         'name' => 'Ім\'я',
         'login' => 'Увійти',
     ],
+    'sidebar' => [
+        'for_products' => 'Для товару',
+        'on_site' => 'На сайт',
+        'settings' => 'Налаштування',
+        'users' => 'Користувачі сайту',
+        'admins' => 'Працівники',
+    ],
 
 
     /** ENTITIES **/
@@ -72,5 +79,11 @@ return [
         'price' => 'Ціна',
         'category' => 'Категорія',
         'ingredient' => 'Інгредієнт'
+    ],
+
+    'label' => [
+        'name' => 'Назва',
+        'position' => 'Позиція',
+        'color' => 'Колір'
     ],
 ];

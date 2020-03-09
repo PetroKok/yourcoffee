@@ -16,14 +16,18 @@ class FileService implements FileServiceInterface
         return $image_name;
     }
 
-    public function deleteImage(string $image_name)
+    public function deleteImages(array $images)
     {
-        $full_path = public_path($image_name);
-        if (\File::exists($full_path)) {
-            try {
-                \File::delete($full_path);
-            } catch (\Throwable $e) {
-                throw $e;
+        foreach ($images as $image) {
+            if ($image) {
+                $full_path = public_path($image);
+                if (\File::exists($full_path)) {
+                    try {
+                        \File::delete($full_path);
+                    } catch (\Throwable $e) {
+                        throw $e;
+                    }
+                }
             }
         }
     }

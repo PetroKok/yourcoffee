@@ -24,7 +24,7 @@ class LanguageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        config(['translatable.locales' => Locale::all()->pluck('locale')->toArray() ?? []]);
-        View::share('locales', config('translatable.locales'));
+//        config(['translatable.locales' => Locale::all()->pluck('locale')->toArray() ?? []]);
+//        View::share('locales', config('translatable.locales'));
     }
 }

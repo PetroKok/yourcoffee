@@ -53,12 +53,6 @@ class CategoryController extends Controller
         return redirect()->route('admin::categories.index');
     }
 
-    public function show(Category $category)
-    {
-        $category->load('category');
-        return view('admin::category.show', compact('category'));
-    }
-
     public function edit(Category $category)
     {
         $categories = $this->categoryService->indexPluck([$category->id]);

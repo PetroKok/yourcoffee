@@ -65,11 +65,6 @@ class ProductController extends Controller
         return redirect()->route('admin::products.index');
     }
 
-    public function show(Ingredients $ingredient)
-    {
-        return view('admin.product.show', compact('products'));
-    }
-
     public function edit(Product $product)
     {
         $categories = $this->categoryService->indexPluck();

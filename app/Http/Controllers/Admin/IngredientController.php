@@ -52,11 +52,6 @@ class IngredientController extends Controller
         return redirect()->route('admin::ingredients.index');
     }
 
-    public function show(Ingredients $ingredient)
-    {
-        return view('admin.ingredient.show', compact('ingredient'));
-    }
-
     public function edit(Ingredients $ingredient)
     {
 
@@ -67,17 +62,19 @@ class IngredientController extends Controller
     {
         $data = $request->all();
 
+        $links = [];
 
-        //костиль, я знаю, часу нема щоб робити нормальний файловий менеджер. =))
         if ($request->has('image')) {
-            $this->fileService->deleteImage($ingredient->image);
+            $links[] = $ingredient->image;
             $data['image'] = $this->fileService->moveImage($data['image'], config('files.ingredients_path'));
         }
 
         if ($request->has('pic')) {
-            $this->fileService->deleteImage($ingredient->pic);
+            $links[] = $ingredient->pic;
             $data['pic'] = $this->fileService->moveImage($data['pic'], config('files.ingredients_path'));
         }
+
+        $this->fileService->deleteImages($data);
 
         $this->service->update($data, $ingredient);
 
@@ -86,9 +83,8 @@ class IngredientController extends Controller
 
     public function destroy(Ingredients $ingredient)
     {
+        $this->fileService->deleteImages([$ingredient->image, $ingredient->pic]);
         $ingredient->delete();
-        $this->fileService->deleteImage($ingredient->image);
-        $this->fileService->deleteImage($ingredient->pic);
         return response($ingredient, 200);
     }
 }

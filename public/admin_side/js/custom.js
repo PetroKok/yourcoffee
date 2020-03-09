@@ -19306,7 +19306,7 @@ window.readURL = function (input, id) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\DOCKER\projects\test_laradock\app\resources\js\custom.js */"./resources/js/custom.js");
+module.exports = __webpack_require__(/*! /home/vagrant/app/resources/js/custom.js */"./resources/js/custom.js");
 
 
 /***/ })

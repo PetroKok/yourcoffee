@@ -9,5 +9,5 @@ interface FileServiceInterface
 {
     public function moveImage(UploadedFile $file, string $image_path);
 
-    public function deleteImage(string $image_name);
+    public function deleteImages(array $images);
 }

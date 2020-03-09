@@ -130,14 +130,6 @@ class ReactTableComponent extends React.Component {
                                 }
                             },
                             {
-                                icon: tableIcons.Visibility,
-                                tooltip: 'Show',
-                                onClick: (event, rowData) => {
-                                    const path = window.location;
-                                    window.location = `${path.origin}${path.pathname}/${rowData.id}`;
-                                }
-                            },
-                            {
                                 icon: tableIcons.Delete,
                                 tooltip: 'Delete',
                                 onClick: (event, rowData) => this.getIdForDelete(rowData.id)

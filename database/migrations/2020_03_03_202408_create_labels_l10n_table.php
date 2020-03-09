@@ -17,11 +17,11 @@ class CreateLabelsL10nTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('locale');
-            $table->unsignedBigInteger('labels_id');
+            $table->unsignedBigInteger('label_id');
 
             $table->string('name');
 
-            $table->foreign('labels_id')
+            $table->foreign('label_id')
                 ->on('labels')
                 ->references('id')
                 ->onDelete('cascade')
@@ -44,7 +44,7 @@ class CreateLabelsL10nTable extends Migration
     {
         Schema::table('labels_l10n', function (Blueprint $table) {
             $table->dropIndex(['locale']);
-            $table->dropIndex(['labels_id']);
+            $table->dropIndex(['label_id']);
         });
         Schema::dropIfExists('labels_l10n');
     }
