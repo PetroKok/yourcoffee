@@ -64,10 +64,11 @@
                                     <hr>
                                     <div class="text-center">
                                         <a class="small"
-                                           href="forgot-password.html">{{trans('app.actions.forgot_password')}}</a>
+                                           href="forgot-password.html">{{trans('app.actions.forgot_password')}}(BETA)</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="{{route('admin::register')}}">{{trans('app.actions.create_account')}}</a>
+{{--                                        <a class="small" href="{{route('admin::register')}}">{{trans('app.actions.create_account')}}</a>--}}
+                                        <a class="small" href="#">{{trans('app.actions.create_account')}} (BETA)</a>
                                     </div>
                                 </div>
                             </div>

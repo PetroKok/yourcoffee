@@ -22,7 +22,7 @@ class CreateLabelsL10nTable extends Migration
             $table->string('name');
 
             $table->foreign('label_id')
-                ->on('labels')
+                ->on('label')
                 ->references('id')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

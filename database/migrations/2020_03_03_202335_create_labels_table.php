@@ -13,7 +13,7 @@ class CreateLabelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('labels', function (Blueprint $table) {
+        Schema::create('label', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('color');
             $table->string('position')->default(0);
@@ -28,6 +28,6 @@ class CreateLabelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('labels');
+        Schema::dropIfExists('label');
     }
 }

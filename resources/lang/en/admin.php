@@ -32,6 +32,9 @@ return [
 
         'products' => 'Продукти',
         'product' => 'Продукт',
+
+        'labels' => 'Мітки',
+        'label' => 'Мітка',
     ],
     'table' => [
         'id' => 'ID',

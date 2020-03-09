@@ -733,11 +733,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -765,12 +765,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -1102,7 +1102,7 @@ function getAlpha(string) {
 // generators
 function hexString(rgba, a) {
    var a = (a !== undefined && rgba.length === 3) ? a : rgba[3];
-   return "#" + hexDouble(rgba[0]) 
+   return "#" + hexDouble(rgba[0])
               + hexDouble(rgba[1])
               + hexDouble(rgba[2])
               + (
@@ -6403,7 +6403,7 @@ var core_layouts = {
 						bottom: 0
 					};
 
-					// Don't use min size here because of label rotation. When the labels are rotated, their rotation highly depends
+					// Don't use min size here because of label rotation. When the label are rotated, their rotation highly depends
 					// on the margin. Sometimes they need to increase in size slightly
 					box.update(box.fullWidth ? chartWidth : maxChartAreaWidth, chartHeight / 2, scaleMargin);
 				} else {
@@ -6444,7 +6444,7 @@ var core_layouts = {
 		outerBoxSizes = {top: topPadding, left: leftPadding, bottom: bottomPadding, right: rightPadding};
 		addSizeByPosition(outerBoxes, outerBoxSizes);
 
-		// We may be adding some padding to account for rotated x axis labels
+		// We may be adding some padding to account for rotated x axis label
 		var leftPaddingAddition = Math.max(maxPadding.left - outerBoxSizes.left, 0);
 		outerBoxSizes.left += leftPaddingAddition;
 		outerBoxSizes.right += Math.max(maxPadding.right - outerBoxSizes.right, 0);
@@ -8360,7 +8360,7 @@ function initConfig(config) {
 	config = config || {};
 
 	// Do NOT use mergeConfig for the data object because this method merges arrays
-	// and so would change references to labels and datasets, preventing data updates.
+	// and so would change references to label and datasets, preventing data updates.
 	var data = config.data = config.data || {};
 	data.datasets = data.datasets || [];
 	data.labels = data.labels || [];
@@ -9640,7 +9640,7 @@ var core_helpers = function() {
 		}
 		return index <= 0 ? collection[0] : collection[index - 1];
 	};
-	// Implementation of the nice number algorithm used in determining where axis labels will go
+	// Implementation of the nice number algorithm used in determining where axis label will go
 	helpers$1.niceNum = function(range, round) {
 		var exponent = Math.floor(helpers$1.log10(range));
 		var fraction = range / Math.pow(10, exponent);
@@ -10067,7 +10067,7 @@ var core_ticks = {
 	 */
 	formatters: {
 		/**
-		 * Formatter for value labels
+		 * Formatter for value label
 		 * @method Chart.Ticks.formatters.values
 		 * @param value the value to display
 		 * @return {string|string[]} the label to display
@@ -10182,7 +10182,7 @@ core_defaults._set('scale', {
 		autoSkip: true,
 		autoSkipPadding: 0,
 		labelOffset: 0,
-		// We pass through arrays to be rendered as multiline labels, we convert Others to strings here.
+		// We pass through arrays to be rendered as multiline label, we convert Others to strings here.
 		callback: core_ticks.formatters.values,
 		minor: {},
 		major: {}
@@ -10328,7 +10328,7 @@ var core_scale = core_element.extend({
 
 		me.beforeTickToLabelConversion();
 
-		// New implementations should return the formatted tick labels but for BACKWARD
+		// New implementations should return the formatted tick label but for BACKWARD
 		// COMPAT, we still support no return (`this.ticks` internally changed by calling
 		// this method and supposed to contain only string values).
 		labels = me.convertTicksToLabels(ticks) || me.ticks;
@@ -10339,7 +10339,7 @@ var core_scale = core_element.extend({
 
 		// IMPORTANT: from this point, we consider that `this.ticks` will NEVER change!
 
-		// BACKWARD COMPAT: synchronize `_ticks` with labels (so potentially `this.ticks`)
+		// BACKWARD COMPAT: synchronize `_ticks` with label (so potentially `this.ticks`)
 		for (i = 0, ilen = labels.length; i < ilen; ++i) {
 			label = labels[i];
 			tick = ticks[i];
@@ -10546,7 +10546,7 @@ var core_scale = core_element.extend({
 			}
 		}
 
-		// Don't bother fitting the ticks if we are not showing the labels
+		// Don't bother fitting the ticks if we are not showing the label
 		if (tickOpts.display && display) {
 			var largestTextWidth = helpers$1.longestText(me.ctx, tickFont.string, labels, me.longestTextCache);
 			var tallestLabelHeightInLines = helpers$1.numberOfLabelLines(labels);
@@ -10746,7 +10746,7 @@ var core_scale = core_element.extend({
 	},
 
 	/**
-	 * Returns a subset of ticks to be plotted to avoid overlapping labels.
+	 * Returns a subset of ticks to be plotted to avoid overlapping label.
 	 * @private
 	 */
 	_autoSkip: function(ticks) {
@@ -11011,7 +11011,7 @@ var core_scale = core_element.extend({
 			});
 		});
 
-		// Draw all of the tick labels, tick marks, and grid lines at the correct places
+		// Draw all of the tick label, tick marks, and grid lines at the correct places
 		helpers$1.each(itemsToDraw, function(itemToDraw) {
 			var glWidth = itemToDraw.glWidth;
 			var glColor = itemToDraw.glColor;
@@ -11130,8 +11130,8 @@ var defaultConfig = {
 
 var scale_category = core_scale.extend({
 	/**
-	* Internal function to get the correct labels. If data.xLabels or data.yLabels are defined, use those
-	* else fall back to data.labels
+	* Internal function to get the correct label. If data.xLabels or data.yLabels are defined, use those
+	* else fall back to data.label
 	* @private
 	*/
 	getLabels: function() {
@@ -11165,7 +11165,7 @@ var scale_category = core_scale.extend({
 	buildTicks: function() {
 		var me = this;
 		var labels = me.getLabels();
-		// If we are viewing some subset of labels, slice the original array
+		// If we are viewing some subset of label, slice the original array
 		me.ticks = (me.minIndex === 0 && me.maxIndex === labels.length - 1) ? labels : labels.slice(me.minIndex, me.maxIndex + 1);
 	},
 
@@ -12058,13 +12058,13 @@ var defaultConfig$3 = {
 	},
 
 	pointLabels: {
-		// Boolean - if true, show point labels
+		// Boolean - if true, show point label
 		display: true,
 
 		// Number - Point label font size in pixels
 		fontSize: 10,
 
-		// Function - Used to convert point labels
+		// Function - Used to convert point label
 		callback: function(label) {
 			return label;
 		}
@@ -12119,7 +12119,7 @@ function determineLimits(angle, pos, size, min, max) {
 }
 
 /**
- * Helper function to fit a radial linear scale with point labels
+ * Helper function to fit a radial linear scale with point label
  */
 function fitWithPointLabels(scale) {
 
@@ -12139,12 +12139,12 @@ function fitWithPointLabels(scale) {
 	// from the shape radius to move the point inwards by that x.
 	//
 	// We average the left and right distances to get the maximum shape radius that can fit in the box
-	// along with labels.
+	// along with label.
 	//
 	// Once we have that, we can find the centre point for the chart, by taking the x text protrusion
 	// on each side, removing that from the size, halving it and adding the left x protrusion width.
 	//
-	// This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+	// This will mean we have a shape fitted to the canvas, as large as it can be with the label
 	// and position it in the most space efficient manner
 	//
 	// https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
@@ -12382,7 +12382,7 @@ var scale_radialLinear = scale_linearbase.extend({
 
 		scale_linearbase.prototype.convertTicksToLabels.call(me);
 
-		// Point labels
+		// Point label
 		me.pointLabels = me.chart.data.labels.map(me.options.pointLabels.callback, me);
 	},
 
@@ -12988,8 +12988,8 @@ var defaultConfig$4 = {
 		/**
 		 * Ticks generation input values:
 		 * - 'auto': generates "optimal" ticks based on scale size and time options.
-		 * - 'data': generates ticks from data (including labels from data {t|x|y} objects).
-		 * - 'labels': generates ticks from user given `data.labels` values ONLY.
+		 * - 'data': generates ticks from data (including label from data {t|x|y} objects).
+		 * - 'label': generates ticks from user given `data.label` values ONLY.
 		 * @see https://github.com/chartjs/Chart.js/pull/4507
 		 * @since 2.7.0
 		 */
@@ -13051,7 +13051,7 @@ var scale_time = core_scale.extend({
 		var i, j, ilen, jlen, data, timestamp;
 		var dataLabels = chart.data.labels || [];
 
-		// Convert labels to timestamps
+		// Convert label to timestamps
 		for (i = 0, ilen = dataLabels.length; i < ilen; ++i) {
 			labels.push(parse(me, dataLabels[i]));
 		}
@@ -13082,7 +13082,7 @@ var scale_time = core_scale.extend({
 		}
 
 		if (labels.length) {
-			// Sort labels **after** data have been converted
+			// Sort label **after** data have been converted
 			labels = arrayUnique(labels).sort(sorter);
 			min = Math.min(min, labels[0]);
 			max = Math.max(max, labels[labels.length - 1]);
@@ -13720,7 +13720,7 @@ core_defaults._set('global', {
 		labels: {
 			boxWidth: 40,
 			padding: 10,
-			// Generates labels shown in the legend
+			// Generates label shown in the legend
 			// Valid properties to return:
 			// text : text to display
 			// fillStyle : fill of coloured box

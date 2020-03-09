@@ -36,6 +36,7 @@
                 <h6 class="collapse-header">{{trans('admin.sidebar.for_products')}}</h6>
                 <a class="collapse-item" href="{{route('admin::products.index')}}">{{trans('admin.menu.products')}}</a>
                 <a class="collapse-item" href="{{route('admin::categories.index')}}">{{trans('admin.menu.categories')}}</a>
+                <a class="collapse-item" href="{{route('admin::label.index')}}">{{trans('admin.menu.labels')}}</a>
             </div>
         </div>
     </li>

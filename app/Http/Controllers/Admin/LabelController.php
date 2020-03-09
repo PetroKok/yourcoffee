@@ -3,83 +3,67 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Label\LabelCreateRequest;
+use App\Http\Requests\Label\LabelUpdateRequest;
+use App\Http\Resources\Admin\CategoryResource;
+use App\Http\Resources\Admin\LabelResource;
+use App\Models\Label;
+use App\Service\LabelServiceInterface;
 use Illuminate\Http\Request;
 
 class LabelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public $label;
+
+    public function __construct(LabelServiceInterface $label)
+    {
+        $this->label = $label;
+    }
+
     public function index()
     {
-        //
+        return view('admin.pages.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function collection()
+    {
+        $data['meta']['title'] = trans('admin.menu.labels');
+        $data['data'] = new CategoryResource($this->label->index());
+        $data['fields'] = $this->label->fields();
+        return response($data, 200);
+    }
+
     public function create()
     {
-        //
+        return view('admin.label.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(LabelCreateRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $this->label->store($data);
+
+        return redirect()->route('admin::label.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Label $label)
     {
-        //
+        return view('admin.label.create', compact('label'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(LabelUpdateRequest $request, Label $label)
     {
-        //
+        $data = $request->all();
+
+        $this->label->update($data, $label);
+
+        return redirect()->route('admin::label.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Label $label)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $label->delete();
+        return new LabelResource($label);
     }
 }

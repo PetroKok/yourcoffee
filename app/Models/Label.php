@@ -26,7 +26,7 @@ class Label extends Model implements TranslatableContract, FieldsInterface
             ],
             [
                 "title" => trans('admin.label.name'),
-                "field" => 'title',
+                "field" => 'name',
             ],
             [
                 "title" => trans('admin.label.position'),
