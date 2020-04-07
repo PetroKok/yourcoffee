@@ -11,3 +11,4 @@ window.readURL = (input, id) => {
         reader.readAsDataURL(input.files[0]);
     }
 };
+

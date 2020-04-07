@@ -20,25 +20,47 @@
                 height: 100vh;
                 margin: 0;
             }
-
         </style>
-        <link rel="stylesheet" type="text/css" href="{{secure_asset('css/frontend.css')}}">
+
+        <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css')}}">
     </head>
     <body>
-        <div class="container">
 
-            <button class="btn btn-outline btn-yellow">
-                Зжерти
-            </button>
+    @include('app.bars.menu_bar')
 
-            <a href="#" class="btn btn-outline btn-yellow">
-                Купити
-            </a>
 
-            <span class="btn btn-outline btn-yellow">
-                Замовити
-            </span>
-
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{asset('images/site-images/carousel.jpeg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('images/site-images/carousel.jpeg')}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('images/site-images/carousel.jpeg')}}" class="d-block w-100" alt="...">
+            </div>
         </div>
+    </div>
+
+{{--        <div class="container">--}}
+
+{{--            <button class="btn btn-outline btn-yellow">--}}
+{{--                Зжерти--}}
+{{--            </button>--}}
+
+{{--            <a href="#" class="btn btn-outline btn-yellow">--}}
+{{--                Купити--}}
+{{--            </a>--}}
+
+{{--            <span class="btn btn-outline btn-yellow">--}}
+{{--                Замовити--}}
+{{--            </span>--}}
+
+{{--        </div>--}}
     </body>
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
+    <script src="{{asset('front_side/js/front.js')}}"></script>
 </html>
