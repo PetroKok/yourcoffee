@@ -19282,7 +19282,8 @@ module.exports = function(module) {
 /***/ (function(module, exports, __webpack_require__) {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"); // window.$ = require('lodash');
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.readURL = function (input, id) {
