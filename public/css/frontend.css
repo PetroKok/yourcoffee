@@ -42,7 +42,20 @@
 	border: #ffd607 2px solid;
 }
 
+.btn-orange{
+	color: #F17013;
+	border: #F17013 2px solid;
+}
 
+.btn-orange:hover{
+	color: black;
+	background: #F17013;
+	border: #F17013 2px solid;
+}
+
+.price{
+    font-weight: bold;
+}
 
 
 
@@ -57,9 +70,27 @@
     color: white!important;
 }
 
+.card {
+    border: none!important;
+    background-color: rgba(0, 0, 0, 0)!important;
+}
 
+.navbar{
+    border-bottom: 1px solid #F17013!important;
+}
 
+.brand-color{
+    color: #F17013!important;
+}
 
+.brand-background-color{
+    background-color: #F17013!important;
+}
+
+.card-body{
+    padding: 5px;
+    text-align: center;
+}
 
 
 
