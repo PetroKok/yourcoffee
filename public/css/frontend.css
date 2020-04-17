@@ -3,7 +3,6 @@
 /*}*/
 
 .btn{
-	margin: 20px;
 	background: white;
 	color: black;
 	font-size: 20px;
@@ -94,8 +93,12 @@
 
 
 
-
-
+/**  SIZE 600  **/
+@media screen and (max-width: 600px) {
+    .btn{
+        padding: 3px 25px!important;
+    }
+}
 
 
 

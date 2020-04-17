@@ -1,6 +1,5 @@
-
 document.getElementById("openbtn").addEventListener("click", function () {
-    if(document.getElementById("mySidebar").style.width === "250px"){
+    if (document.getElementById("mySidebar").style.width === "250px") {
         document.getElementById("mySidebar").style.width = "0";
         // document.getElementById("main").style.marginLeft = "0";
     } else {

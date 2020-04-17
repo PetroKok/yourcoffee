@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front_side/css/burger.css')}}">
+    @stack('styles')
 </head>
 <body>
 
@@ -55,4 +56,5 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('bootstrap/js/bootstrap.js')}}"></script>
 <script src="{{asset('front_side/js/front.js')}}"></script>
+@stack('javascript')
 </html>

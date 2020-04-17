@@ -11,4 +11,9 @@ class HomeController extends Controller
     {
         return view('app::pages.home');
     }
+
+    public function cart(Request $request)
+    {
+        return view('app::pages.cart');
+    }
 }
