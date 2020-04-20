@@ -86,13 +86,13 @@
                 </div>
             </div>
 
-            {{--            <div class="form-group row">--}}
-            {{--                <div class="col-sm-6 mb-3 mb-sm-0">--}}
-            {{--                    {!! Form::label('image', trans('admin.product.image')); !!}--}}
-            {{--                    {!! Form::file('image', ['class' => 'form-control form-control-user']); !!}--}}
-            {{--                    <img src="{{isset($product) ? $product->image : ''}}" id="image-component" alt=""--}}
-            {{--                         class="upload-preview">--}}
-            {{--                </div>--}}
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                {!! Form::label('image', trans('admin.product.image')); !!}
+                                {!! Form::file('image', ['class' => 'form-control form-control-user']); !!}
+                                <img src="{{isset($product) ? $product->image : ''}}" id="image-component" alt=""
+                                     class="upload-preview">
+                            </div>
 
             {{--                <div class="col-sm-6 mb-3 mb-sm-0">--}}
             {{--                    {!! Form::label('pic', trans('admin.product.pic')); !!}--}}

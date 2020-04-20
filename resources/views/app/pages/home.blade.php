@@ -7,25 +7,23 @@
 @section('content')
     <div class="container">
 
-        @foreach(['Бургери','Cнеки','Cнеки','Cнеки','Cнеки'] as $key)
+        @foreach($categories as $category)
 
-            <h2 class="mt-5 mb-3 text-center text-white">{{$key}}</h2>
+            <h2 class="mt-5 mb-3 text-center text-white">{{$category->title}}</h2>
 
             <div class="d-flex flex-wrap justify-content-around">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        @foreach([1,2,3,4,5] as $key)
+                        @foreach($category->products as $product)
                             <div class="swiper-slide">
                                 <div class="card ml-md-5 mr-md-5" style="/*width: 18rem;*/">
-                                    <span class="card-body text-white">BURGER'S NAME</span>
-                                    <span class="card-body brand-color price">80 грн</span>
+                                    <span class="card-body text-white">{{$product->name}}</span>
+                                    <span class="card-body brand-color price">{{$product->price}} грн</span>
                                     <img class="card-img-top"
-                                         src="{{asset('images/site-images/burger.png')}}"
+                                         src="{{$product->image}}"
                                          alt="Card image cap">
                                     <div class="card-body">
-                                        <p class="card-text d-flex text-white">Some quick example text to build on the
-                                            card
-                                            title and make up the bulk of the card's content.</p>
+                                        <p class="card-text d-flex text-white">{{$product->description}}</p>
                                     </div>
                                     <div class="card-body">
                                         <button class="btn btn-outline btn-orange mt-1 ">

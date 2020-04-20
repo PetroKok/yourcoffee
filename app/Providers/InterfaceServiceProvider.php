@@ -3,24 +3,24 @@
 namespace App\Providers;
 
 use App\Models\Category;
-use App\Repository\CategoryRepository;
-use App\Repository\CategoryRepositoryInterface;
-use App\Repository\IngredientRepository;
-use App\Repository\IngredientRepositoryInterface;
-use App\Repository\LabelRepository;
-use App\Repository\LabelRepositoryInterface;
-use App\Repository\ProductRepository;
-use App\Repository\ProductRepositoryInterface;
-use App\Service\CategoryService;
-use App\Service\CategoryServiceInterface;
-use App\Service\FileService;
-use App\Service\FileServiceInterface;
-use App\Service\IngredientService;
-use App\Service\IngredientServiceInterface;
-use App\Service\LabelService;
-use App\Service\LabelServiceInterface;
-use App\Service\ProductService;
-use App\Service\ProductServiceInterface;
+use App\Repository\Implementation\CategoryRepository;
+use App\Repository\Implementation\IngredientRepository;
+use App\Repository\Implementation\LabelRepository;
+use App\Repository\Implementation\ProductRepository;
+use App\Repository\Interfaces\CategoryRepositoryInterface;
+use App\Repository\Interfaces\IngredientRepositoryInterface;
+use App\Repository\Interfaces\LabelRepositoryInterface;
+use App\Repository\Interfaces\ProductRepositoryInterface;
+use App\Service\Implementation\CategoryService;
+use App\Service\Implementation\FileService;
+use App\Service\Implementation\IngredientService;
+use App\Service\Implementation\LabelService;
+use App\Service\Implementation\ProductService;
+use App\Service\Interfaces\CategoryServiceInterface;
+use App\Service\Interfaces\FileServiceInterface;
+use App\Service\Interfaces\IngredientServiceInterface;
+use App\Service\Interfaces\LabelServiceInterface;
+use App\Service\Interfaces\ProductServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class InterfaceServiceProvider extends ServiceProvider

@@ -30,6 +30,11 @@ class Category extends Model implements TranslatableContract, FieldsInterface
         return $this->belongsTo(Category::class, 'parent_category_id', 'id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     /** END RELATIONSHIP **/
 
 

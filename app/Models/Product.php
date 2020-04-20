@@ -12,7 +12,7 @@ class Product extends Model implements TranslatableContract, FieldsInterface
     use Translatable;
 
     protected $table = 'products';
-    protected $fillable = ['price', 'category_id'];
+    protected $fillable = ['price', 'category_id', 'image'];
     protected $translatedAttributes = ['name', 'description'];
 
     public function category()
@@ -40,5 +40,10 @@ class Product extends Model implements TranslatableContract, FieldsInterface
                 "field" => 'category.title',
             ],
         ];
+    }
+
+    public function getImageAttribute($image)
+    {
+        return config('files.products_path') . '/' . $image;
     }
 }

@@ -9,11 +9,10 @@ use App\Http\Requests\Product\ProductUpdateRequest;
 use App\Http\Resources\Admin\ProductResource;
 use App\Models\Ingredients;
 use App\Models\Product;
-use App\Service\CategoryService;
-use App\Service\CategoryServiceInterface;
-use App\Service\FileServiceInterface;
-use App\Service\IngredientServiceInterface;
-use App\Service\ProductServiceInterface;
+use App\Service\Interfaces\CategoryServiceInterface;
+use App\Service\Interfaces\FileServiceInterface;
+use App\Service\Interfaces\IngredientServiceInterface;
+use App\Service\Interfaces\ProductServiceInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -60,6 +59,10 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
+        if ($request->has('image')) {
+            $data['image'] = $this->fileService->moveImage($data['image'], config('files.products_path'));
+        }
+
         $this->service->store($data);
 
         return redirect()->route('admin::products.index');
@@ -75,6 +78,11 @@ class ProductController extends Controller
     public function update(ProductUpdateRequest $request, Product $product)
     {
         $data = $request->all();
+
+        if ($request->has('image')) {
+            $this->fileService->deleteImage($product->image);
+            $data['image'] = $this->fileService->moveImage($data['image'], config('files.products_path'));
+        }
 
         $this->service->update($data, $product);
 

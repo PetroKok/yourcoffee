@@ -6,8 +6,8 @@ use App\Http\Requests\Category\CategoryStoreRequest;
 use App\Http\Requests\Category\CategoryUpdateRequest;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Models\Category;
-use App\Service\CategoryServiceInterface;
-use App\Service\FileServiceInterface;
+use App\Service\Interfaces\CategoryServiceInterface;
+use App\Service\Interfaces\FileServiceInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -46,7 +46,9 @@ class CategoryController extends Controller
     {
         $data = $request->all();
 
-        $data['image'] = $this->fileService->moveImage($data['image'], config('files.categories_path'));
+        if ($request->has('image')) {
+            $data['image'] = $this->fileService->moveImage($data['image'], config('files.categories_path'));
+        }
 
         $this->categoryService->store($data);
 
