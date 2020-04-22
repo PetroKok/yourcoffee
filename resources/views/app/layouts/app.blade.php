@@ -35,22 +35,6 @@
 
 @yield('content')
 
-
-{{--        <div class="container">--}}
-
-{{--            <button class="btn btn-outline btn-yellow">--}}
-{{--                Зжерти--}}
-{{--            </button>--}}
-
-{{--            <a href="#" class="btn btn-outline btn-yellow">--}}
-{{--                Купити--}}
-{{--            </a>--}}
-
-{{--            <span class="btn btn-outline btn-yellow">--}}
-{{--                Замовити--}}
-{{--            </span>--}}
-
-{{--        </div>--}}
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{asset('js/app.js')}}"></script>

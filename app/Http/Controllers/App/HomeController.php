@@ -11,7 +11,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd(Auth::guard('customer')->check());
         $categories = Category::with(['translations', 'products' => function($q){
             $q->with('translations');
         }])->get();
