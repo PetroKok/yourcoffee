@@ -2,24 +2,34 @@
 
 namespace App\Http\Controllers\App;
 
+use App\DTO\CartDto;
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Category;
+use App\Service\Interfaces\CartServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public $cartService;
+
+    public function __construct(CartServiceInterface $cart)
+    {
+        $this->cartService = $cart;
+    }
+
     public function index()
     {
-        $categories = Category::with(['translations', 'products' => function($q){
+        $categories = Category::with(['translations', 'products' => function ($q) {
             $q->with('translations');
         }])->get();
 
-        return view('app::pages.home', compact('categories'));
-    }
+        $cartItem = new CartDto();
+        $cartItem->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
-    public function cart(Request $request)
-    {
-        return view('app::pages.cart');
+        $carts_count = $this->cartService->count($cartItem);
+
+        return view('app::pages.home', compact('categories', 'carts_count'));
     }
 }

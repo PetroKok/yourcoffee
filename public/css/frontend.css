@@ -1,116 +1,132 @@
 /*.container{*/
 /*	padding: 20px;*/
 /*}*/
-
-.btn{
-	background: white;
-	color: black;
-	font-size: 20px;
-	padding: 5px 40px;
-	border: white 2px solid;
-	text-decoration: none;
-	cursor:pointer;
-	transition: .2s;
-	-webkit-transition: .2s;
+a:focus,
+span:focus,
+button:focus {
+    outline: none;
 }
 
-.btn:hover{
-	color: white;
-	background: gray;
-	border: gray 2px solid;
+.navbar-dark .navbar-toggler {
+    border-color: rgba(15, 102, 116, 0) !important;
 }
 
-.btn-outline{
-	background: none;
-	color: white;
+.cart-body{
+    position: relative;
 }
 
-.btn-outline:hover{
-	background: none;
-	border: gray 2px solid;
+.cart-count {
+    position: absolute;
+    left: -10px;
+    top: -5px;
+    background-color: #f17013;
+    padding: 0px 6px;
+    font-size: 9pt;
+    border-radius: 50%;
 }
 
-.btn-yellow{
-	color: #ffd607;
-	border: #ffd607 2px solid;
+.btn {
+    background: white;
+    color: black;
+    font-size: 20px;
+    padding: 5px 40px;
+    border: white 2px solid;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
+    -webkit-transition: .2s;
 }
 
-.btn-yellow:hover{
-	color: black;
-	background: #ffd607;
-	border: #ffd607 2px solid;
+.btn:hover {
+    color: white;
+    background: gray;
+    border: gray 2px solid;
 }
 
-.btn-orange{
-	color: #F17013;
-	border: #F17013 2px solid;
+.btn-outline {
+    background: none;
+    color: white;
 }
 
-.btn-orange:hover{
-	color: black;
-	background: #F17013;
-	border: #F17013 2px solid;
+.btn-outline:hover {
+    background: none;
+    border: gray 2px solid;
 }
 
-.price{
+.btn-yellow {
+    color: #ffd607;
+    border: #ffd607 2px solid;
+}
+
+.btn-yellow:hover {
+    color: black;
+    background: #ffd607;
+    border: #ffd607 2px solid;
+}
+
+.btn-orange {
+    color: #F17013;
+    border: #F17013 2px solid;
+}
+
+.btn-orange:hover {
+    color: black;
+    background: #F17013;
+    border: #F17013 2px solid;
+}
+
+.price {
     font-weight: bold;
 }
 
 
-
-
-
-
-
 /** OVERRIDES **/
 
-.bg-dark{
-    background-color: #000000!important;
-    color: white!important;
+.bg-dark {
+    background-color: #000000 !important;
+    color: white !important;
 }
 
 .card {
-    border: none!important;
-    background-color: rgba(0, 0, 0, 0)!important;
+    border: none !important;
+    background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.navbar{
-    border-bottom: 1px solid #F17013!important;
+.navbar {
+    border-bottom: 1px solid #F17013 !important;
 }
 
-.brand-color{
-    color: #F17013!important;
+.brand-color {
+    color: #F17013 !important;
 }
 
-.brand-background-color{
-    background-color: #F17013!important;
+.brand-background-color {
+    background-color: #F17013 !important;
 }
 
-.card-body{
+.card-body {
     padding: 5px;
     text-align: center;
 }
 
 
-
 /**  SIZE 600  **/
 @media screen and (max-width: 600px) {
-    .btn{
-        padding: 3px 25px!important;
+    .btn {
+        padding: 3px 25px !important;
     }
 }
 
 
-
-
-
-
-
-
 /*SIDE BAR*/
 @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
 }
 
 .sidebar {
@@ -164,4 +180,5 @@
     transition: margin-left .5s;
     padding: 16px;
 }
+
 /*SIDE BAR*/

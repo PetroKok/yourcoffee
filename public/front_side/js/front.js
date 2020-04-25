@@ -93,15 +93,38 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-document.getElementById("openbtn").addEventListener("click", function () {
-  if (document.getElementById("mySidebar").style.width === "250px") {
-    document.getElementById("mySidebar").style.width = "0"; // document.getElementById("main").style.marginLeft = "0";
+function toggle_sidebar() {
+  if (document.getElementById("mySidebar").style.width === "100%") {
+    document.getElementById("mySidebar").style.width = "0";
   } else {
-    document.getElementById("mySidebar").style.width = "250px"; // document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidebar").style.width = "100%";
   }
+}
+
+document.getElementById("openbtn").addEventListener("click", function () {
+  toggle_sidebar();
 });
+
+if (document.getElementById("login_sidebar") !== null) {
+  document.getElementById("login_sidebar").addEventListener("click", function () {
+    toggle_sidebar();
+  });
+}
+
 document.getElementById("closebtn").addEventListener("click", function () {
-  document.getElementById("mySidebar").style.width = "0"; // document.getElementById("main").style.marginLeft = "0";
+  toggle_sidebar();
+});
+$(document).on('click', '.add_to_cart', function (e) {
+  var product_id = this.getAttribute('data-product-id');
+  console.log(this);
+  var cartItem = {
+    id: product_id
+  };
+  var button = this;
+  $.post("/cart", cartItem, function (data, status) {
+    document.getElementById('carts-count').innerHTML = data.carts_count;
+    button.innerHTML = 'Щее!';
+  });
 });
 
 /***/ }),

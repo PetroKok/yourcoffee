@@ -26,7 +26,7 @@
                                         <p class="card-text d-flex text-white">{{$product->description}}</p>
                                     </div>
                                     <div class="card-body">
-                                        <button class="btn btn-outline btn-orange mt-1 ">
+                                        <button data-product-id="{{$product->id}}" class="btn btn-outline btn-orange mt-1 add_to_cart">
                                             До кошика
                                         </button>
                                     </div>
@@ -44,17 +44,6 @@
         @endforeach
 
     </div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-
-        </div>
-    </div>
 
 @endsection
 
@@ -63,12 +52,21 @@
     <script src="{{asset('front_side/js/swiper.js')}}"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 2,
             spaceBetween: 50,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            breakpoints: {
+                450: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                480: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                }
+            }
         });
     </script>
 @endpush
