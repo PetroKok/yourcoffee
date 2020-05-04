@@ -2,7 +2,7 @@
 
 namespace App\Service\Implementation;
 
-use App\Repository\ProductRepositoryInterface;
+use App\Repository\Interfaces\ProductRepositoryInterface;
 use App\Service\Interfaces\ProductServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;

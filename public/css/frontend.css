@@ -1,10 +1,13 @@
-/*.container{*/
-/*	padding: 20px;*/
-/*}*/
 a:focus,
 span:focus,
 button:focus {
     outline: none;
+}
+
+.menu-icon{
+    margin-left: 15px;
+    height: 33px;
+    width: 33px;
 }
 
 .navbar-dark .navbar-toggler {

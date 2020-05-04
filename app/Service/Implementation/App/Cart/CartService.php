@@ -23,7 +23,7 @@ class CartService implements CartServiceInterface
         if ($cartDto->getUserId()) {
             return $this->db->index($cartDto);
         }
-        return [];
+        return $this->cache->index($cartDto);
     }
 
     public function count(CartDto $cartDto)
@@ -31,7 +31,7 @@ class CartService implements CartServiceInterface
         if ($cartDto->getUserId()) {
             return $this->db->count($cartDto);
         }
-        return 0;
+        return $this->cache->count($cartDto);
     }
 
     public function store(CartDto $cartDto)
@@ -39,7 +39,7 @@ class CartService implements CartServiceInterface
         if ($cartDto->getUserId()) {
             return $this->db->store($cartDto);
         }
-        return [];
+        return $this->cache->store($cartDto);
     }
 
     public function delete(CartDto $cartDto)
@@ -47,6 +47,6 @@ class CartService implements CartServiceInterface
         if ($cartDto->getUserId()) {
             return $this->db->delete($cartDto);
         }
-        return [];
+        return $this->cache->delete($cartDto);
     }
 }

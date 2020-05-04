@@ -4,7 +4,7 @@
 namespace App\Service\Implementation;
 
 
-use App\Repository\IngredientRepositoryInterface;
+use App\Repository\Interfaces\IngredientRepositoryInterface;
 use App\Service\Interfaces\IngredientServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;

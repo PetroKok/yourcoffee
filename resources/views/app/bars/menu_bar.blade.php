@@ -36,18 +36,23 @@
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" data-toggle="modal"
                 data-target="#login-modal">
                 <li class="nav-item text-white">
-                    - LOG
+                    <img src="{{asset('images/site-images/static/profile.png')}}" class="menu-icon" alt="">
                 </li>
             </ul>
         @else
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
                 <li class="nav-item text-white">
-                    <a href="#">- CAB</a>
+                    <img src="{{asset('images/site-images/static/profile.png')}}" class="menu-icon" alt="">
                 </li>
             </ul>
-            <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                - OUT
-            </a>
+            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
+                <li class="nav-item text-white">
+                    <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <img src="{{asset('images/site-images/static/logout.png')}}" class="menu-icon" alt="">
+                    </a>
+                </li>
+            </ul>
+
             <form id="logout-form" action="{{ route('admin::logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
@@ -57,7 +62,7 @@
     </div>
 </nav>
 
-<div id="mySidebar" class="sidebar" style="z-index: 2000">
+<div id="mySidebar" class="sidebar" style="z-index: 2000; text-align: center;">
     <a href="javascript:void(0)" data-toggle="modal" data-target="#backWall" class="closebtn" id="closebtn">×</a>
     <a href="{{route('home')}}">Меню</a>
     <a href="#">Конструктор</a>
