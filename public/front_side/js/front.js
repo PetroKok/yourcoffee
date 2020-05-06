@@ -96,7 +96,9 @@
 function toggle_sidebar() {
   if (document.getElementById("mySidebar").style.width === "100%") {
     document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("mySidebar").style.opacity = "0";
   } else {
+    document.getElementById("mySidebar").style.opacity = "1";
     document.getElementById("mySidebar").style.width = "100%";
   }
 }

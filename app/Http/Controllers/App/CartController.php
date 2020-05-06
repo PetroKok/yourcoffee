@@ -34,7 +34,9 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->store($cart);
-        return response()->json(['data' => $response, 'carts_count' => count($response)]);
+        $count = $this->cart->count($cart);
+
+        return response()->json(['data' => $response, 'carts_count' => $count]);
     }
 
     public function delete(Request $request)

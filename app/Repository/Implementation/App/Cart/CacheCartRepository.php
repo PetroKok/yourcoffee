@@ -22,31 +22,38 @@ class CacheCartRepository implements ICacheCart
 
     public function count(CartDto $cartDto)
     {
-        return 100;
+        $ses = request()->session()->get(config('session.keys.cart'));
+
+        if ($ses) {
+            return array_sum(array_column($ses, 'qty'));
+        }
+        return 0;
     }
 
     public function store(CartDto $cartDto)
     {
         $ses = request()->session();
 
-        $carts = $ses->get('cart');
+        $carts = $ses->get(config('session.keys.cart'));
 
         $product = Product::find($cartDto->getProductId());
 
-        $carts[$product->id] = [
-            'product_id' => $product->id,
-            'price' => $product->price,
-            'qty' => $cartDto->getQty(),
-            'created_at' => Carbon::now()->format('y-m-d H:m:i'),
-        ];
+        if ($cartDto->getQty() === 0) {
+            unset($carts[$product->id]);
+        } else {
+            $carts[$product->id] = [
+                'product_id' => $product->id,
+                'price' => $product->price,
+                'qty' => $cartDto->getQty(),
+                'created_at' => Carbon::now()->format('y-m-d H:m:i'),
+            ];
+        }
 
-        $ses->put('cart', $carts);
+        $ses->put(config('session.keys.cart'), $carts);
 
         $ses->save();
 
         return $this->index($cartDto);
-
-        return $carts;
     }
 
     public function delete(CartDto $cartDto)
@@ -67,6 +74,6 @@ class CacheCartRepository implements ICacheCart
                 $carts[$key]['product'] = $products[$pos];
             }
         }
-        dd($carts);
+        return $carts;
     }
 }

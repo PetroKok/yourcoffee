@@ -27,7 +27,8 @@ class DBCartRepository implements IDBCart
 
     public function count(CartDto $cartDto)
     {
-        return $this->model->where('customer_id', $cartDto->getUserId())->count();
+        $cart = $this->model->where('customer_id', $cartDto->getUserId())->get()->toArray();
+        return array_sum(array_column($cart, 'qty'));
     }
 
     public function store(CartDto $cartDto)
@@ -35,13 +36,20 @@ class DBCartRepository implements IDBCart
         $product = $this->product->find($cartDto->getProductId());
 
         if ($product) {
-
             $model = $this->model->updateOrCreate(
                 ['customer_id' => $cartDto->getUserId(), 'product_id' => $cartDto->getProductId()],
                 ['price' => $product->price]
             )->first();
 
-            $model->setQty($cartDto->getQty());
+            if($cartDto->getQty() === 0){
+                $model->delete();
+            }else{
+                if($cartDto->isReplace()){
+                    $model->setQty($cartDto->getQty());
+                }else{
+                    $model->qty = $cartDto->getQty();
+                }
+            }
         }
         return $this->index($cartDto);
     }

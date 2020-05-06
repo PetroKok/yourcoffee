@@ -9,7 +9,7 @@ class CartCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:products,id'
+            'id' => 'required|exists:products,id',
         ];
     }
 }

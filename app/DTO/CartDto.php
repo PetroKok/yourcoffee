@@ -8,6 +8,7 @@ class CartDto
 {
     public $product_id;
     public $qty;
+    public $replace = false;
     public $user_id;
 
     /**
@@ -56,5 +57,21 @@ class CartDto
     public function setUserId($user_id): void
     {
         $this->user_id = $user_id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isReplace(): bool
+    {
+        return $this->replace;
+    }
+
+    /**
+     * @param bool $replace
+     */
+    public function setReplace(bool $replace): void
+    {
+        $this->replace = $replace;
     }
 }

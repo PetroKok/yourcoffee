@@ -196,4 +196,8 @@ return [
 
     'same_site' => null,
 
+    'keys' => [
+        'cart' => 'cart',
+    ]
+
 ];

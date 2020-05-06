@@ -31,6 +31,7 @@ class CartService implements CartServiceInterface
         if ($cartDto->getUserId()) {
             return $this->db->count($cartDto);
         }
+
         return $this->cache->count($cartDto);
     }
 
