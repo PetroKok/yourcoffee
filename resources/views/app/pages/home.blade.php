@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="{{asset('front_side/css/swiper.css')}}">
 @endpush
 
+
 @section('content')
+    @include('app.components.carousel')
+    @include('app.components.cart-button')
+
     <div class="container">
 
         @foreach($categories as $category)

@@ -22,8 +22,10 @@ class CartController extends Controller
         $cart = new CartDto();
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
-        $response = $this->cart->index($cart);
-        return response()->json(['data' => $response, 'carts_count' => count($response)]);
+        $carts = $this->cart->index($cart);
+        $carts_count = $this->cart->count($cart);
+
+        return view('app::pages.cart', compact('carts', 'carts_count'));
     }
 
     public function store(CartCreateRequest $request)
@@ -46,6 +48,7 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->delete($cart);
-        return response()->json(['data' => $response, 'carts_count' => count($response)]);
+        $count = $this->cart->count($cart);
+        return response()->json(['data' => $response, 'carts_count' => $count]);
     }
 }

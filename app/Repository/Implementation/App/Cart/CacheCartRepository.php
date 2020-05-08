@@ -8,7 +8,6 @@ use App\DTO\CartDto;
 use App\Models\Product;
 use App\Repository\Interfaces\ICacheCart;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Session;
 
 class CacheCartRepository implements ICacheCart
 {
@@ -41,12 +40,18 @@ class CacheCartRepository implements ICacheCart
         if ($cartDto->getQty() === 0) {
             unset($carts[$product->id]);
         } else {
-            $carts[$product->id] = [
-                'product_id' => $product->id,
-                'price' => $product->price,
-                'qty' => $cartDto->getQty(),
-                'created_at' => Carbon::now()->format('y-m-d H:m:i'),
-            ];
+            if ($cartDto->isReplace()) {
+                $carts[$product->id] = [
+                    'product_id' => $product->id,
+                    'price' => $product->price,
+                    'qty' => $cartDto->getQty(),
+                    'created_at' => Carbon::now()->format('y-m-d H:m:i'),
+                ];
+            } else {
+                if (isset($carts[$product->id]) && $carts[$product->id]['qty'] !== null) {
+                    $carts[$product->id]['qty'] += $cartDto->getQty();
+                }
+            }
         }
 
         $ses->put(config('session.keys.cart'), $carts);

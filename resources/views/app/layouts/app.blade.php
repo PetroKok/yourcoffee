@@ -32,8 +32,6 @@
 
 @include('app.bars.menu_bar')
 
-@include('app.components.carousel')
-
 @yield('content')
 
 </body>
