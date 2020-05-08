@@ -14,9 +14,8 @@ class CacheCartRepository implements ICacheCart
 
     public function index(CartDto $cartDto)
     {
-        $carts = request()->session()->get('cart');
-        $carts = $this->mapCache($carts);
-        return $carts;
+        $carts = request()->session()->get(config('session.keys.cart'));
+        return $carts ? $this->mapCache($carts) : [];
     }
 
     public function count(CartDto $cartDto)
@@ -50,6 +49,16 @@ class CacheCartRepository implements ICacheCart
             } else {
                 if (isset($carts[$product->id]) && $carts[$product->id]['qty'] !== null) {
                     $carts[$product->id]['qty'] += $cartDto->getQty();
+                    if($carts[$product->id]['qty'] === 0){
+                        unset($carts[$product->id]);
+                    }
+                } else {
+                    $carts[$product->id] = [
+                        'product_id' => $product->id,
+                        'price' => $product->price,
+                        'qty' => $cartDto->getQty(),
+                        'created_at' => Carbon::now()->format('y-m-d H:m:i'),
+                    ];
                 }
             }
         }
@@ -76,6 +85,8 @@ class CacheCartRepository implements ICacheCart
         foreach ($carts as $key => $cart) {
             $pos = array_search($key, array_column($products, 'id'));
             if ($pos !== false) {
+                $carts[$key]['price'] = price_format($carts[$key]['price']);
+                $carts[$key]['amount'] = price_format((int)$carts[$key]['qty'] * (float)$carts[$key]['price']);
                 $carts[$key]['product'] = $products[$pos];
             }
         }

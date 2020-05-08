@@ -4,7 +4,7 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style=" fill:purple"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{route('home')}}">
             <img src="{{asset('images/site-images/logo.svg')}}" width="100" height="100" alt="">
         </a>
 

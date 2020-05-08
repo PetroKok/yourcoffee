@@ -10,6 +10,8 @@ class Cart extends Model
 
     protected $fillable = ['customer_id', 'product_id', 'price', 'qty'];
 
+    protected $appends = ['amount'];
+
     /** RELATIONS **/
     public function product()
     {
@@ -27,5 +29,10 @@ class Cart extends Model
     {
         $this->qty += $qty;
         $this->save();
+    }
+
+    public function getAmountAttribute()
+    {
+        return (int)$this->qty * (float)$this->price;
     }
 }
