@@ -60,7 +60,6 @@ class ProductController extends Controller
 
         if ($request->has('image')) {
             $data['image'] = $this->fileService->moveImage($data['image'], config('files.products_path'));
-            dd($data['image']);
         }
 
         $this->service->store($data);
