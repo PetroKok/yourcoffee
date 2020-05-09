@@ -36,18 +36,21 @@ class DBCartRepository implements IDBCart
         $product = $this->product->find($cartDto->getProductId());
 
         if ($product) {
-            $model = $this->model->updateOrCreate(
+            $model_new = $this->model->updateOrCreate(
                 ['customer_id' => $cartDto->getUserId(), 'product_id' => $cartDto->getProductId()],
                 ['price' => $product->price]
-            )->first();
+            )->where(['customer_id' => $cartDto->getUserId(), 'product_id' => $cartDto->getProductId()])->first();
 
-            if($cartDto->getQty() === 0){
-                $model->delete();
-            }else{
-                if($cartDto->isReplace()){
-                    $model->setQty($cartDto->getQty());
-                }else{
-                    $model->qty = $cartDto->getQty();
+            if ($cartDto->getQty() === 0) {
+                $model_new->delete();
+            } else {
+                if ($cartDto->isReplace()) {
+                    $model_new->qty = $cartDto->getQty();
+                } else {
+                    $model_new->setQty($cartDto->getQty());
+                    if ($model_new->qty <= 0) {
+                        $model_new->delete();
+                    }
                 }
             }
         }

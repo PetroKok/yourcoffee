@@ -18,13 +18,18 @@ button:focus {
     position: relative;
 }
 
-.cart-items-divider{
+.cart-items-divider {
     background-color: #ffffff40;
     height: 0;
     margin: 0;
 }
 
-.cart-inc-dec{
+.cart-qty {
+    font-size: 12pt !important;
+}
+
+.cart-inc-dec {
+    font-size: 12pt !important;
     border-radius: 50%;
     padding: 0 7px;
     font-weight: bolder;
@@ -73,14 +78,15 @@ button:focus {
 }
 
 .btn-yellow {
-    color: #ffd607;
-    border: #ffd607 2px solid;
+    color: #F17013;
+    background-color: rgba(241, 112, 19, 0);
+    border: #F17013 2px solid;
 }
 
 .btn-yellow:hover {
     color: black;
-    background: #ffd607;
-    border: #ffd607 2px solid;
+    background: #F17013;
+    border: #F17013 2px solid;
 }
 
 .btn-orange {
@@ -163,14 +169,29 @@ button:focus {
 
 /**  SIZE 600  **/
 @media screen and (max-width: 600px) {
+
+    .navbar {
+        height: 100px;
+    }
+    .navbar .navbar-brand img{
+        height: 74px;
+    }
     .btn {
         padding: 3px 25px !important;
+    }
+}
+
+/**  SIZE 600  **/
+@media screen and (max-width: 400px) {
+    .cart-product-text {
+        font-size: 10pt;
     }
 }
 
 
 /*SIDE BAR*/
 @media screen and (max-height: 450px) {
+
     .sidebar {
         padding-top: 15px;
     }
@@ -233,6 +254,19 @@ button:focus {
     transition: margin-left .5s;
     -webkit-transition: .2s;
     padding: 16px;
+}
+
+.modal-backcolor {
+    background-color: #111;
+    color: #818181;
+}
+
+.modal-header {
+    border-bottom: 1px solid #F17013;
+}
+
+.modal-footer {
+    border-top: 1px solid #F17013;
 }
 
 /*SIDE BAR*/

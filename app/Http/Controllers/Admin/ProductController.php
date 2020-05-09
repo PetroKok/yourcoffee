@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Ingredient\IngredientCreateRequest;
 use App\Http\Requests\Product\ProductCreateRequest;
 use App\Http\Requests\Product\ProductUpdateRequest;
 use App\Http\Resources\Admin\ProductResource;
-use App\Models\Ingredients;
 use App\Models\Product;
 use App\Service\Interfaces\CategoryServiceInterface;
 use App\Service\Interfaces\FileServiceInterface;
 use App\Service\Interfaces\IngredientServiceInterface;
 use App\Service\Interfaces\ProductServiceInterface;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -61,6 +60,7 @@ class ProductController extends Controller
 
         if ($request->has('image')) {
             $data['image'] = $this->fileService->moveImage($data['image'], config('files.products_path'));
+            dd($data['image']);
         }
 
         $this->service->store($data);
@@ -82,6 +82,8 @@ class ProductController extends Controller
         if ($request->has('image')) {
             $this->fileService->deleteImage($product->image);
             $data['image'] = $this->fileService->moveImage($data['image'], config('files.products_path'));
+            $path = public_path(config('files.products_path').'/'.$data['image']);
+            Image::make($path)->resize(600,600)->save();
         }
 
         $this->service->update($data, $product);

@@ -177,7 +177,12 @@ $(document).on('click', '.cart-inc-dec', function (e) {
     $.post("/cart/" + route, cartItem, function (data, status) {
       document.getElementById('carts-count').innerHTML = data.carts_count;
 
-      if (count === 0) {
+      if (data.carts_count <= 0) {
+        document.getElementById('empty-cart').classList.remove('d-none');
+        document.getElementById('full-cart').classList.add('d-none');
+      }
+
+      if (count <= 0) {
         var line = document.getElementById('cart-line-' + product_id);
         line.remove();
       }
