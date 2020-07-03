@@ -17,5 +17,13 @@ return [
         'password' => 'Пароль',
         'name' => 'Ім\'я',
         'login' => 'Увійти',
+        'phone' => 'Телефон',
+    ],
+    'cart' => [
+        'address' => 'Адрес',
+        'apartment' => 'Квартира',
+        'entrance' => 'Під\'їзд',
+        'floor' => 'Поверх',
+        'door_code' => 'Код дверей',
     ],
 ];

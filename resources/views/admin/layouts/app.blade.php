@@ -42,7 +42,7 @@
         <!-- Begin Page Content -->
         @yield('content')
         <!-- /.container-fluid -->
-
+            <div class="mt-5 pb-5"></div>
         </div>
         <!-- End of Main Content -->
 
@@ -84,6 +84,7 @@
 {{--<script src="{{asset('js/all.js')}}"></script>--}}
 <script src="{{asset('/admin_side/js/sb-admin-2.min.js')}}"></script>
 <script src="{{asset('/admin_side/js/custom.js')}}"></script>
+{{--<script src="{{asset('/enable-push.js')}}"></script>--}}
 <!--  CUSTOM JS -->
 @stack('scripts')
 </html>

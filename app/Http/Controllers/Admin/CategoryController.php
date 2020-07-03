@@ -41,7 +41,6 @@ class CategoryController extends Controller
         return view('admin.category.create', compact('categories'));
     }
 
-
     public function store(CategoryStoreRequest $request)
     {
         $data = $request->all();

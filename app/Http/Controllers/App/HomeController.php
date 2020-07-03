@@ -26,8 +26,8 @@ class HomeController extends Controller
         $cartItem = new CartDto();
         $cartItem->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
-        $carts_count = $this->cartService->count($cartItem);
+        [$carts_count, $full_amount] = $this->cartService->count($cartItem);
 
-        return view('app::pages.home', compact('categories', 'carts_count'));
+        return view('app::pages.home', compact('categories', 'carts_count', 'full_amount'));
     }
 }

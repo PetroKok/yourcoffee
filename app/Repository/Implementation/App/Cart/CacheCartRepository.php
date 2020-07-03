@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Repository\Implementation\App\Cart;
-
 
 use App\DTO\CartDto;
 use App\Models\Product;
@@ -21,9 +19,18 @@ class CacheCartRepository implements ICacheCart
     public function count(CartDto $cartDto)
     {
         $ses = request()->session()->get(config('session.keys.cart'));
-
         if ($ses) {
-            return array_sum(array_column($ses, 'qty'));
+            $qty = array_column($ses, 'qty');
+            $prices = array_column($ses, 'price');
+
+            $full_amount = 0;
+            foreach ($qty as $key => $q) {
+                $full_amount += $qty[$key] * $prices[$key];
+            }
+
+            if ($ses) {
+                return [array_sum(array_column($ses, 'qty')), $full_amount];
+            }
         }
         return 0;
     }
@@ -49,7 +56,7 @@ class CacheCartRepository implements ICacheCart
             } else {
                 if (isset($carts[$product->id]) && $carts[$product->id]['qty'] !== null) {
                     $carts[$product->id]['qty'] += $cartDto->getQty();
-                    if($carts[$product->id]['qty'] === 0){
+                    if ($carts[$product->id]['qty'] === 0) {
                         unset($carts[$product->id]);
                     }
                 } else {
@@ -67,7 +74,11 @@ class CacheCartRepository implements ICacheCart
 
         $ses->save();
 
-        return $this->index($cartDto);
+        if (isset($carts[$product->id])) {
+            return $this->mapCache([$carts[$product->id]])[0];
+        }
+
+        return [];
     }
 
     public function delete(CartDto $cartDto)
@@ -83,7 +94,7 @@ class CacheCartRepository implements ICacheCart
         $products = $products->toArray();
 
         foreach ($carts as $key => $cart) {
-            $pos = array_search($key, array_column($products, 'id'));
+            $pos = array_search($cart['product_id'], array_column($products, 'id'));
             if ($pos !== false) {
                 $carts[$key]['price'] = price_format($carts[$key]['price']);
                 $carts[$key]['amount'] = price_format((int)$carts[$key]['qty'] * (float)$carts[$key]['price']);

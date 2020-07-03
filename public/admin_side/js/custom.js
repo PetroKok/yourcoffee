@@ -19274,10 +19274,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/js/custom.js":
-/*!********************************!*\
-  !*** ./resources/js/custom.js ***!
-  \********************************/
+/***/ "./resources/js/admin/custom.js":
+/*!**************************************!*\
+  !*** ./resources/js/admin/custom.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19301,13 +19301,13 @@ window.readURL = function (input, id) {
 /***/ }),
 
 /***/ 1:
-/*!**************************************!*\
-  !*** multi ./resources/js/custom.js ***!
-  \**************************************/
+/*!********************************************!*\
+  !*** multi ./resources/js/admin/custom.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/www/burger/app/resources/js/custom.js */"./resources/js/custom.js");
+module.exports = __webpack_require__(/*! /home/www/burger/app/resources/js/admin/custom.js */"./resources/js/admin/custom.js");
 
 
 /***/ })

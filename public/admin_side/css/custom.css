@@ -117,3 +117,7 @@ tr:nth-child(even) {
     }
 }
 
+.pointer-cursor{
+    cursor: pointer !important;
+}
+

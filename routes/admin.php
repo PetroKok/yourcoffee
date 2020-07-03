@@ -17,3 +17,9 @@ Route::post("/products/collection", 'ProductController@collection');
 
 Route::resource("/label", 'LabelController')->except(['show']);
 Route::post("/label/collection", 'LabelController@collection');
+
+Route::resource("/cities", 'CityController')->except(['show']);
+Route::post("/cities/collection", 'CityController@collection');
+
+Route::resource("/kitchens", 'KitchenController')->except(['show']);
+Route::post("/kitchens/collection", 'KitchenController@collection');

@@ -17,6 +17,7 @@
         "astrotomic/laravel-translatable": "11.4",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
+        "laravel-notification-channels/webpush": "^5.0",
         "laravel/framework": "v6.9.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\App\Cart;
+namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CartResource extends JsonResource
+class KitchenResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

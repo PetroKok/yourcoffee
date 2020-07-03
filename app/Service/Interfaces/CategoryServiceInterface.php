@@ -2,10 +2,8 @@
 
 namespace App\Service\Interfaces;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\UploadedFile;
 
 interface CategoryServiceInterface
 {

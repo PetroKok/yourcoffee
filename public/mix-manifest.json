@@ -1,6 +1,7 @@
 {
     "/admin_side/js/ReactTable.js": "/admin_side/js/ReactTable.js",
     "/admin_side/js/custom.js": "/admin_side/js/custom.js",
+    "/front_side/js/cart.js": "/front_side/js/cart.js",
     "/front_side/js/front.js": "/front_side/js/front.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css"

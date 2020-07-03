@@ -8,7 +8,7 @@ use App\Http\Requests\Label\LabelUpdateRequest;
 use App\Http\Resources\Admin\CategoryResource;
 use App\Http\Resources\Admin\LabelResource;
 use App\Models\Label;
-use App\Service\LabelServiceInterface;
+use App\Service\Interfaces\LabelServiceInterface;
 use Illuminate\Http\Request;
 
 class LabelController extends Controller

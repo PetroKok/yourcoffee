@@ -28,35 +28,21 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-drumstick-bite fa-cog"></i>
             <span>{{trans('admin.sidebar.for_products')}}</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">{{trans('admin.sidebar.for_products')}}</h6>
                 <a class="collapse-item" href="{{route('admin::products.index')}}">{{trans('admin.menu.products')}}</a>
-                <a class="collapse-item" href="{{route('admin::categories.index')}}">{{trans('admin.menu.categories')}}</a>
+                <a class="collapse-item"
+                   href="{{route('admin::categories.index')}}">{{trans('admin.menu.categories')}}</a>
                 <a class="collapse-item" href="{{route('admin::label.index')}}">{{trans('admin.menu.labels')}}</a>
+                <a class="collapse-item"
+                   href="{{route('admin::ingredients.index')}}">{{trans('admin.menu.ingredients')}}</a>
+                <a class="collapse-item" href="{{route('admin::kitchens.index')}}">{{trans('admin.menu.kitchens')}}</a>
             </div>
         </div>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin::categories.index')}}">
-            <i class="fas fa-fw fa-drumstick-bite"></i>
-            <span>{{trans('admin.menu.categories')}}</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin::ingredients.index')}}">
-            <i class="fas fa-fw fa-drumstick-bite"></i>
-            <span>{{trans('admin.menu.ingredients')}}</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin::products.index')}}">
-            <i class="fas fa-fw fa-drumstick-bite"></i>
-            <span>{{trans('admin.menu.products')}}</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
@@ -83,8 +69,17 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Аддони
+        Додатки
     </div>
+
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin::cities.index')}}">
+            <i class="fas fa-city fa-chart-area"></i>
+            <span>{{trans('admin.menu.cities')}}</span></a>
+    </li>
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">

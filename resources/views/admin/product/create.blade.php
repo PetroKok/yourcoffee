@@ -70,14 +70,14 @@
                     ]); !!}
                 </div>
                 <div class="col-md-4 mb-3 mb-sm-0">
-                    {!! Form::label('price', trans('admin.product.category')); !!}
+                    {!! Form::label('category_id', trans('admin.product.category')); !!}
                     {!! Form::select('category_id', $categories, isset($product) ? $product->category_id : '',[
-                        'placeholder' => trans('admin.product.category'),
+                        'placeholder' =>  trans('admin.product.category'),
                         'class' => 'form-control form-control-user'
                     ]); !!}
                 </div>
                 <div class="col-md-4 mb-3 mb-sm-0">
-                    {!! Form::label('price', trans('admin.product.ingredient')); !!}
+                    {!! Form::label('ingredient_ids', trans('admin.product.ingredient')); !!}
                     {!! Form::select('ingredient_ids', $ingredients, isset($product) ? $product->ingredients : '',[
                          'class' => 'form-control form-control-user selectpicker',
                          'multiple'=>'multiple',

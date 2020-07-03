@@ -42,7 +42,7 @@
                     <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
                             {!! Form::label('name', trans('admin.label.name')); !!}
-                            {!! Form::text($locale.'[name]', isset($label) ? $label->translate($locale, true)->name : 'POMIDOR',[
+                            {!! Form::text($locale.'[name]', isset($label) ? $label->translate($locale, true)->name : '',[
                                 'placeholder' => trans('admin.label.name'),
                                 'class' => 'form-control form-control-user'
                             ]); !!}

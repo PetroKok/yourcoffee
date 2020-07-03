@@ -20,15 +20,25 @@ class DBCartRepository implements IDBCart
 
     public function index(CartDto $cartDto)
     {
-        return $this->model->where('customer_id', $cartDto->getUserId())->with(['product' => function ($q) {
-            return $q->with('translation');
-        }])->get();
+        return $this->model->where('customer_id', $cartDto->getUserId())->with('product.translation')->get();
     }
 
     public function count(CartDto $cartDto)
     {
         $cart = $this->model->where('customer_id', $cartDto->getUserId())->get()->toArray();
-        return array_sum(array_column($cart, 'qty'));
+
+        if ($cart) {
+            $qty = array_column($cart, 'qty');
+            $prices = array_column($cart, 'price');
+
+            $full_amount = 0;
+            foreach ($qty as $key => $q) {
+                $full_amount += $qty[$key] * $prices[$key];
+            }
+
+            return [array_sum(array_column($cart, 'qty')), $full_amount];
+        }
+        return 0;
     }
 
     public function store(CartDto $cartDto)
@@ -54,7 +64,10 @@ class DBCartRepository implements IDBCart
                 }
             }
         }
-        return $this->index($cartDto);
+
+        $model_new->load('product.translation');
+
+        return $model_new;
     }
 
     public function delete(CartDto $cartDto)

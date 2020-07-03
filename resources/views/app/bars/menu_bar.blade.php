@@ -26,10 +26,12 @@
         </div>
 
         <ul class="navbar-nav float-right">
-            <li class="nav-item text-white cart-body">
-                <img src="{{asset('images/site-images/static/cart.svg')}}" alt="">
-                <span class="cart-count" id="carts-count">{{$carts_count}}</span>
-            </li>
+            <a href="{{route('cart.index')}}">
+                <li class="nav-item text-white cart-body">
+                    <img src="{{asset('images/site-images/static/cart.svg')}}" alt="">
+                    <span class="cart-count" id="carts-count">{{$carts_count}}</span>
+                </li>
+            </a>
         </ul>
 
         @guest('customer')
@@ -47,7 +49,8 @@
             </ul>
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
                 <li class="nav-item text-white">
-                    <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block"
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <img src="{{asset('images/site-images/static/logout.png')}}" class="menu-icon" alt="">
                     </a>
                 </li>

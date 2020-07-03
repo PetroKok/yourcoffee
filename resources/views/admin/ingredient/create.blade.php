@@ -42,7 +42,7 @@
                     <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
                             {!! Form::label('name', trans('admin.ingredient.name')); !!}
-                            {!! Form::text($locale.'[name]', isset($ingredient) ? $ingredient->translate($locale, true)->name : 'POMIDOR',[
+                            {!! Form::text($locale.'[name]', isset($ingredient) ? $ingredient->translate($locale, true)->name : '',[
                                 'placeholder' => trans('admin.ingredient.name'),
                                 'class' => 'form-control form-control-user'
                             ]); !!}
@@ -52,7 +52,7 @@
                     <div class="form-group row">
                         <div class="col mb-3 mb-sm-0">
                             {!! Form::label('description', trans('admin.ingredient.description')); !!}
-                            {!! Form::textarea($locale.'[description]', isset($ingredient) ? $ingredient->translate($locale, true)->description : 'POMIDOR',[
+                            {!! Form::textarea($locale.'[description]', isset($ingredient) ? $ingredient->translate($locale, true)->description : '',[
                                 'placeholder' => trans('admin.ingredient.description'),
                                 'class' => 'form-control form-control-user'
                             ]); !!}

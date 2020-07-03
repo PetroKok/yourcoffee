@@ -3,6 +3,9 @@
 namespace App\Service\Implementation\App\Cart;
 
 use App\DTO\CartDto;
+use App\Http\Resources\App\Cart\CartCacheResource;
+use App\Http\Resources\App\Cart\CartDBResource;
+use App\Http\Resources\App\Cart\ProductResource;
 use App\Repository\Interfaces\ICacheCart;
 use App\Repository\Interfaces\IDBCart;
 use App\Service\Interfaces\CartServiceInterface;
@@ -21,9 +24,9 @@ class CartService implements CartServiceInterface
     public function index(CartDto $cartDto)
     {
         if ($cartDto->getUserId()) {
-            return $this->db->index($cartDto);
+            return CartDBResource::collection($this->db->index($cartDto));
         }
-        return $this->cache->index($cartDto);
+        return CartCacheResource::collection(collect($this->cache->index($cartDto)));
     }
 
     public function count(CartDto $cartDto)
@@ -38,9 +41,9 @@ class CartService implements CartServiceInterface
     public function store(CartDto $cartDto)
     {
         if ($cartDto->getUserId()) {
-            return $this->db->store($cartDto);
+            return new CartDBResource($this->db->store($cartDto));
         }
-        return $this->cache->store($cartDto);
+        return new CartCacheResource($this->cache->store($cartDto));
     }
 
     public function delete(CartDto $cartDto)

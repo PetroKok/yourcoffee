@@ -27,6 +27,12 @@ return [
         'categories' => 'Категорії',
         'category' => 'Категорія',
 
+        'cities' => 'Міста',
+        'city' => 'Місто',
+
+        'kitchens' => 'Кухні',
+        'kitchen' => 'Кухня',
+
         'ingredients' => 'Інгредієнти',
         'ingredient' => 'Інгредієнт',
 
@@ -88,5 +94,18 @@ return [
         'name' => 'Назва',
         'position' => 'Позиція',
         'color' => 'Колір'
+    ],
+
+    'city' => [
+        'name' => 'Назва',
+    ],
+
+    'kitchen' => [
+        'title' => 'Назва',
+        'description' => 'Опис',
+        'address' => 'Адрес',
+        'phone' => 'Телефон',
+        'email' => 'Емейл',
+        'city' => 'Місто',
     ],
 ];

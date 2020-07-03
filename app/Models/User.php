@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use NotificationChannels\WebPush\HasPushSubscriptions;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasPushSubscriptions;
 
     const TYPES = [
         "admin" => "admin",
@@ -44,7 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return self::TYPES['admin'] === $this->role;
     }
 }

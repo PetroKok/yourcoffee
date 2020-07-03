@@ -1,7 +1,9 @@
 a:focus,
 span:focus,
-button:focus {
-    outline: none;
+button:focus,
+input:focus,
+select:focus {
+    outline: none!important;
 }
 
 .menu-icon {
@@ -167,24 +169,122 @@ button:focus {
     -webkit-transition: .2s;
 }
 
+.delete-cart-item {
+    position: absolute;
+}
+
+.cart-select {
+    border-color: #F17013;
+
+    background-color: black;
+    color: white;
+
+    position: relative;
+    display: flex;
+    line-height: 3;
+    overflow: hidden;
+    border-radius: .25em;
+}
+
+.cart-select:hover {
+    background-color: black;
+    color: white;
+}
+
+.pointer-cursor {
+    cursor: pointer !important;
+}
+
+input[type=radio] + label {
+    color: #ccc;
+    background-color: #ccc;
+    height: 20px;
+    width: 80%;
+    max-width: 300px;
+}
+
+.cart-element {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.cart-element > input {
+    width: 100%;
+    background-color: black;
+    border: none;
+    border-bottom: 1px #f17013 solid;
+}
+
+.input-element{
+    width: 100%;
+    background-color: black;
+    border: none;
+    border-bottom: 1px #f17013 solid;
+}
+
+.input-modal{
+    width: 100%;
+    color: white;
+    background-color: #111;
+    border: none;
+    border-bottom: 1px #f17013 solid;
+}
+
+.input-modal:focus{
+    background-color: #111;
+    outline: none!important;
+}
+
+.width-50{
+    width: 50%!important;
+}
+
+.radio-call-me{
+    width: 20px!important;
+    height: 20px!important;
+    background-color: #cccccc;
+}
+
+.span-call-me{
+    text-decoration: underline #F17013;
+}
+
+input[type=radio]:checked + label {
+    background-color: #f17013;
+}
+
+input[type=checkbox]:checked + label {
+    background-color: #f17013;
+}
+
+.is_delivery_radio {
+    display: none;
+}
+
 /**  SIZE 600  **/
 @media screen and (max-width: 600px) {
 
     .navbar {
         height: 100px;
     }
-    .navbar .navbar-brand img{
+
+    .navbar .navbar-brand img {
         height: 74px;
     }
+
     .btn {
         padding: 3px 25px !important;
     }
 }
 
-/**  SIZE 600  **/
+/**  SIZE 400  **/
 @media screen and (max-width: 400px) {
     .cart-product-text {
         font-size: 10pt;
+    }
+
+    .cart-title {
+        font-size: 15pt;
     }
 }
 
@@ -262,11 +362,11 @@ button:focus {
 }
 
 .modal-header {
-    border-bottom: 1px solid #F17013;
+    border-bottom: 1px solid gray;
 }
 
 .modal-footer {
-    border-top: 1px solid #F17013;
+    border-top: 1px solid gray;
 }
 
 /*SIDE BAR*/
