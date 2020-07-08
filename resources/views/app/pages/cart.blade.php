@@ -1,6 +1,10 @@
 @extends('app.layouts.app')
 
 
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+@endpush
+
 @section('content')
     <div class="container {{count($carts) === 0 ?'':'d-none'}}" id="empty-cart">
         <h2 class="mt-5 mb-3 text-center text-white">Ваша корзина пуста</h2>
@@ -75,14 +79,20 @@
 
         <div class="row mt-2 mb-4" style="border-top: 1px solid #ffffff40;"></div>
 
-        @include('app.components.cart.city-form')
+        {{ Form::open(['url' => '/cart/order', 'method' => 'POST']) }}
+
+        @include('app.components.cart.city-form', [
+            'data' => $cities->toArray(true),
+            'name' => 'cities',
+            'id' => 'cities',
+            'placeholder' => 'Виберіть місто',
+        ])
 
         <div class="d-flex justify-content-center cart-product-text">
             <label class="text-white pointer-cursor" style="margin-right: 18%" for="delivery">Доставка</label>
             <label class="text-white pointer-cursor" for="self-pickup">Самовивіз</label>
         </div>
 
-        {{ Form::open(['url' => '/cart/order', 'method' => 'POST']) }}
 
         <div class="d-flex justify-content-center">
             <input type="radio" class="is_delivery_radio" id="delivery" name="order" checked value="delivery"/>
@@ -109,16 +119,20 @@
                 'class' => 'text-white mb-3'
             ]); !!}
 
-            {!! Form::select('pay_type', [ 1=> 'Картою', 2 => 'Накладним платежем'], [], [
-               'placeholder' => 'Виберіть спосіб оплати',
-               'id' => 'cities',
-               'class' => 'form-control form-control-user cart-select mb-3',
-           ]); !!}
+
+            @include('app.components.cart.city-form', [
+                'data' => [1=> 'Картою', 2 => 'Накладним платежем'],
+                'name' => 'pay_type',
+                'id' => 'pay_type',
+                'placeholder' => 'Виберіть спосіб оплати',
+                'class' => 'js-select-payment-type',
+            ])
 
             <div class="d-flex mb-3">
                 <input type="checkbox" class="is_delivery_radio" id="notcallme" name="call" value="true"/>
                 <label class="text-white radio-call-me" for="notcallme" id="delivery-label"></label>
-                <span class="text-white cart-product-text"><span class="span-call-me pl-3">Не передзвонювати мені</span> (в такому випадку оплата буде здійснюватись онлайн)</span>
+                <span class="text-white cart-product-text"><span class="pl-3">Не передзвонювати мені</span>
+                    <i>(в такому випадку оплата буде здійснюватись онлайн)</i></span>
             </div>
             <div class="d-flex cart-element">
                 {!! Form::text('apartment', null, [
@@ -148,7 +162,9 @@
 
 
         <div class="d-flex justify-content-center mt-4 mt-md-4">
-            <button type="submit" class="btn btn-yellow" id="make-order">Оформити замовлення</button>
+            <button type="submit" class="btn btn-yellow" id="make-order">Оформити замовлення (<span
+                    id="total-amount">{{$full_amount}}</span>грн)
+            </button>
         </div>
 
         {{ Form::close() }}
@@ -158,5 +174,12 @@
 @endsection
 
 @push('javascript')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="{{asset('front_side/js/cart.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2({tags: true});
+            $('.js-select-payment-type').select2();
+        });
+    </script>
 @endpush

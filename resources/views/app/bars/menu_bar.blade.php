@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon" style=" fill:purple"></span>
         </button>
         <a class="navbar-brand" href="{{route('home')}}">
-            <img src="{{asset('images/site-images/logo.svg')}}" width="100" height="100" alt="">
+            <img src="{{asset('images/site-images/logo.png')}}" alt="">
         </a>
 
         <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
@@ -28,7 +28,7 @@
         <ul class="navbar-nav float-right">
             <a href="{{route('cart.index')}}">
                 <li class="nav-item text-white cart-body">
-                    <img src="{{asset('images/site-images/static/cart.svg')}}" alt="">
+                    <img class="cart-icon" src="{{asset('images/site-images/static/cart.svg')}}" alt="">
                     <span class="cart-count" id="carts-count">{{$carts_count}}</span>
                 </li>
             </a>

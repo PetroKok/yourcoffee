@@ -146,23 +146,29 @@ $(document).on('change', '#delivery', function (item) {
   changeDeliveryAmount(city_id);
 });
 $(document).on('change', '#self-pickup', function (item) {
-  document.getElementById('delivery-amount').innerHTML = 0;
+  var delivery_amount = document.getElementById('delivery-amount').innerHTML;
+  var total_amount = document.getElementById('total-amount').innerHTML;
+  document.getElementById('total-amount').innerHTML = total_amount - delivery_amount;
+  changeDeliveryAmount();
 });
 
-function changeDeliveryAmount(city_id) {
-  if (city_id) {
-    $.get("/city/delivery_amount/" + city_id, function (data) {
-      document.getElementById('delivery-amount').innerHTML = data.data.price_delivery;
-      document.getElementById('kitchen-address').innerHTML = data.data.city + ', ' + data.data.address;
-    });
-  }
+function changeDeliveryAmount() {
+  var city_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  $.get("/city/delivery_amount/" + city_id, function (data) {
+    var _data$data$specify;
+
+    document.getElementById('delivery-amount').innerHTML = data.data.price_delivery;
+    var text = data.data.city !== null && data.data.address !== null ? data.data.city + ', ' + data.data.address : (_data$data$specify = data.data.specify) !== null && _data$data$specify !== void 0 ? _data$data$specify : '';
+    document.getElementById('kitchen-address').innerHTML = text;
+    document.getElementById('total-amount').innerHTML = data.total_amount;
+  });
 }
 
 $(document).on('click', '#delivery-label', function (e) {
-  $('#tab-delivery').fadeIn();
+  $('#tab-delivery').show(500);
 });
 $(document).on('click', '#self-pickup-label', function (e) {
-  $('#tab-delivery').fadeOut();
+  $('#tab-delivery').hide(500);
 });
 $(document).on('change', '#notcallme', function (e) {
   console.log(e, this);

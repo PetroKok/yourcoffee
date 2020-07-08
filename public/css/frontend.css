@@ -3,7 +3,7 @@ span:focus,
 button:focus,
 input:focus,
 select:focus {
-    outline: none!important;
+    outline: none !important;
 }
 
 .menu-icon {
@@ -215,14 +215,14 @@ input[type=radio] + label {
     border-bottom: 1px #f17013 solid;
 }
 
-.input-element{
+.input-element {
     width: 100%;
     background-color: black;
     border: none;
     border-bottom: 1px #f17013 solid;
 }
 
-.input-modal{
+.input-modal {
     width: 100%;
     color: white;
     background-color: #111;
@@ -230,22 +230,24 @@ input[type=radio] + label {
     border-bottom: 1px #f17013 solid;
 }
 
-.input-modal:focus{
+.input-modal:focus {
     background-color: #111;
-    outline: none!important;
+    outline: none !important;
 }
 
-.width-50{
-    width: 50%!important;
+.width-50 {
+    width: 50% !important;
 }
 
-.radio-call-me{
+.radio-call-me {
+    min-width: 20px!important;
+    min-height: 20px!important;
     width: 20px!important;
     height: 20px!important;
     background-color: #cccccc;
 }
 
-.span-call-me{
+.span-call-me {
     text-decoration: underline #F17013;
 }
 
@@ -261,15 +263,58 @@ input[type=checkbox]:checked + label {
     display: none;
 }
 
+.navbar .navbar-brand img {
+    height: 65px;
+}
+
+.carousel-image {
+    height: 40vh !important;
+    object-fit: cover;
+}
+
+
+/** SELECT2 **/
+.select2-container--default .select2-selection--single{
+    background-color: #000!important;
+    border: 1px solid #F17013!important;
+    border-radius: 3px!important;
+}
+
+.select2-container--open .select2-dropdown--below{
+    background-color: black!important;
+    color: white!important;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #F17013!important;
+    color: black!important;
+}
+
+.select2-container--open .select2-dropdown--above{
+    background-color: black!important;
+    color: white!important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white!important;
+}
 /**  SIZE 600  **/
 @media screen and (max-width: 600px) {
 
     .navbar {
-        height: 100px;
+        height: 90px;
+    }
+
+    .cart-icon {
+        height: 25px;
+    }
+
+    .navbar-toggler-icon {
+        height: 25px;
     }
 
     .navbar .navbar-brand img {
-        height: 74px;
+        height: 38px;
     }
 
     .btn {

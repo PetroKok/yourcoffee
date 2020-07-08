@@ -12,4 +12,4 @@ Route::post('/cart/decrease', 'CartController@decrease');
 
 Route::post('/cart/order', 'OrderController@makeOrder');
 
-Route::get('/city/delivery_amount/{city}', 'CityController@show');
+Route::get('/city/delivery_amount/{city?}', 'CityController@show');

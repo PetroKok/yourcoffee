@@ -6,7 +6,9 @@
 
 
 @section('content')
+
     @include('app.components.carousel')
+
     @include('app.components.cart-button')
 
     <div class="container">

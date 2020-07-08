@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header modal-backcolor">
                 <h5 class="modal-title text-white" id="exampleModalLabel">Ввійти</h5>
-                <a type="button" class="closebtn-login" id="closebtn-login" data-dismiss="modal" aria-label="Close">
+                <a type="button" class="closebtn" id="closebtn" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </a>
             </div>

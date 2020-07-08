@@ -11,6 +11,10 @@ class CartDto
     public $replace = false;
     public $user_id;
 
+    public function __construct()
+    {
+    }
+
     /**
      * @return mixed
      */

@@ -16,6 +16,9 @@ class Kitchen extends Model implements FieldsInterface
         'city_id'
     ];
 
+    const CLOSED = 0;
+    const OPENED = 1;
+
     public function city()
     {
         return $this->belongsTo(City::class);
