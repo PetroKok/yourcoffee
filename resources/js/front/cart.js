@@ -44,21 +44,23 @@ $(document).on('click', '.cart-inc-dec', function (e) {
     }
 });
 
-$(document).on('change', '#cities', function (selected) {
+$(document).on('change', '#city_id', function (selected) {
     changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
 
-$(document).on('change', '#delivery', function (item) {
-    const city = document.getElementById('cities');
+$(document).on('change click', '#delivery', function (item) {
+    const city = document.getElementById('city_id');
     const city_id = city.options[city.selectedIndex].value;
     changeDeliveryAmount(city_id);
+    $('#tab-delivery').show(500);
 });
 
-$(document).on('change', '#self-pickup', function (item) {
+$(document).on('change click', '#self-pickup', function (item) {
     const delivery_amount = document.getElementById('delivery-amount').innerHTML;
     var total_amount = document.getElementById('total-amount').innerHTML;
     document.getElementById('total-amount').innerHTML = total_amount - delivery_amount;
     changeDeliveryAmount();
+    $('#tab-delivery').hide(500);
 });
 
 function changeDeliveryAmount(city_id = '') {

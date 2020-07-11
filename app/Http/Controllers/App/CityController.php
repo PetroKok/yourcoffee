@@ -22,8 +22,14 @@ class CityController extends Controller
         $this->cart = $cart;
     }
 
-    public function show(Request $request, ?City $city)
+    public function show(Request $request, $city)
     {
+        $city = City::find($city);
+
+        if (!$city) {
+            $city = new City();
+        }
+
         $data = $this->service->index($city);
 
         $cartItem = new CartDto();

@@ -83,14 +83,14 @@
 
         @include('app.components.cart.city-form', [
             'data' => $cities->toArray(true),
-            'name' => 'cities',
-            'id' => 'cities',
+            'name' => 'city_id',
+            'id' => 'city_id',
             'placeholder' => 'Виберіть місто',
         ])
 
         <div class="d-flex justify-content-center cart-product-text">
-            <label class="text-white pointer-cursor" style="margin-right: 18%" for="delivery">Доставка</label>
-            <label class="text-white pointer-cursor" for="self-pickup">Самовивіз</label>
+            <label class="text-white pointer-cursor delivery" style="margin-right: 18%" for="delivery">Доставка</label>
+            <label class="text-white pointer-cursor self-pickup" for="self-pickup">Самовивіз</label>
         </div>
 
 
