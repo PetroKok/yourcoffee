@@ -128,12 +128,13 @@
                 'class' => 'js-select-payment-type',
             ])
 
-            <div class="d-flex mb-3">
-                <input type="checkbox" class="is_delivery_radio" id="notcallme" name="call" value="true"/>
-                <label class="text-white radio-call-me" for="notcallme" id="delivery-label"></label>
-                <span class="text-white cart-product-text"><span class="pl-3">Не передзвонювати мені</span>
-                    <i>(в такому випадку оплата буде здійснюватись онлайн)</i></span>
-            </div>
+{{--            <div class="d-flex mb-3">--}}
+{{--                <input type="checkbox" class="is_delivery_radio" id="notcallme" name="call" value="true"/>--}}
+{{--                <label class="text-white radio-call-me" for="notcallme" id="delivery-label"></label>--}}
+{{--                <span class="text-white cart-product-text"><span class="pl-3">Не передзвонювати мені</span>--}}
+{{--                    <i>(в такому випадку оплата буде здійснюватись онлайн)</i></span>--}}
+{{--            </div>--}}
+
             <div class="d-flex cart-element">
                 {!! Form::text('apartment', null, [
                    'placeholder' => trans('app.cart.apartment'),
@@ -179,7 +180,7 @@
     <script>
         $(document).ready(function () {
             $('.js-example-basic-single').select2({tags: true});
-            $('.js-select-payment-type').select2();
+            $('.js-select-payment-type').select2({ minimumResultsForSearch: -1});
         });
     </script>
 @endpush

@@ -27,12 +27,29 @@ class Order extends Model
 
 
     const ORDER_TYPE = [
-        'delivery' => 'delivery',  // доставка
-        'self-pickup' => 'self-pickup', // самовивіз
+        'DELIVERY' => 'DELIVERY',  // доставка
+        'SELF-PICKUP' => 'SELF-PICKUP', // самовивіз
     ];
 
     const PAY_TYPE = [
-        'cash' => 'cash',  // оплата готівкою
-        'card' => 'card', // оплата картою
+        'CASH' => 'CASH',  // оплата готівкою
+        'CARD' => 'CARD', // оплата картою
+    ];
+
+    const STATUS = [
+        'CREATED' => 'CREATED', // створене замовлення
+
+        'PREPARING' => 'PREPARING',  // взято в роботу, готується
+
+        'DELIVERING' => 'DELIVERING', // приготували, якщо доставка - доставляється.
+        'WAIT_FOR_PICK_UP' => 'WAIT_FOR_PICK_UP', // приготували, чекають поки кдієнт забере.
+
+        'DONE' => 'DONE', // успішна доставка, або клієнт сам забрав
+
+        'CANCELED' => 'CANCELED', // відміна замовлення
+
+        'SPECIFY' => 'SPECIFY', // потребує уточнення, клієнту зателефонуються у випадку непередбачуваних ситуацій.
+
+        'FRAUD' => 'FRAUD', // шахрайство
     ];
 }
