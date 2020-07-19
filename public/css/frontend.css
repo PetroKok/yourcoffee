@@ -44,7 +44,7 @@ select:focus {
     position: absolute;
     left: -10px;
     top: -5px;
-    background-color: #f17013;
+    background-color: #ffd112;
     padding: 0px 6px;
     font-weight: bold;
     font-size: 9pt;
@@ -80,26 +80,26 @@ select:focus {
 }
 
 .btn-yellow {
-    color: #F17013;
+    color: #ffd112;
     background-color: rgba(241, 112, 19, 0);
-    border: #F17013 2px solid;
+    border: #ffd112 2px solid;
 }
 
 .btn-yellow:hover {
     color: black;
-    background: #F17013;
-    border: #F17013 2px solid;
+    background: #ffd112;
+    border: #ffd112 2px solid;
 }
 
 .btn-orange {
-    color: #F17013;
-    border: #F17013 2px solid;
+    color: #ffd112;
+    border: #ffd112 2px solid;
 }
 
 .btn-orange:hover {
     color: black;
-    background: #F17013;
-    border: #F17013 2px solid;
+    background: #ffd112;
+    border: #ffd112 2px solid;
 }
 
 .price {
@@ -120,15 +120,15 @@ select:focus {
 }
 
 .navbar {
-    border-bottom: 1px solid #F17013 !important;
+    border-bottom: 1px solid #ffd112 !important;
 }
 
 .brand-color {
-    color: #F17013 !important;
+    color: #ffd112 !important;
 }
 
 .brand-background-color {
-    background-color: #F17013 !important;
+    background-color: #ffd112 !important;
 }
 
 .card-body {
@@ -142,7 +142,7 @@ select:focus {
     right: 30px;
     bottom: 30px;
     z-index: 2;
-    background-color: #f17013;
+    background-color: #ffd112;
     padding: 15px;
     border-radius: 50%;
     transition: 0.5s;
@@ -158,7 +158,7 @@ select:focus {
     border-radius: 50%;
     font-weight: bolder;
     background-color: white;
-    color: #f17013;
+    color: #ffd112;
     transition: 0.5s;
     -webkit-transition: .2s;
 }
@@ -174,7 +174,7 @@ select:focus {
 }
 
 .cart-select {
-    border-color: #F17013;
+    border-color: #ffd112;
 
     background-color: black;
     color: white;
@@ -212,14 +212,14 @@ input[type=radio] + label {
     width: 100%;
     background-color: black;
     border: none;
-    border-bottom: 1px #f17013 solid;
+    border-bottom: 1px #ffd112 solid;
 }
 
 .input-element {
     width: 100%;
     background-color: black;
     border: none;
-    border-bottom: 1px #f17013 solid;
+    border-bottom: 1px #ffd112 solid;
 }
 
 .input-modal {
@@ -227,7 +227,7 @@ input[type=radio] + label {
     color: white;
     background-color: #111;
     border: none;
-    border-bottom: 1px #f17013 solid;
+    border-bottom: 1px #ffd112 solid;
 }
 
 .input-modal:focus {
@@ -248,15 +248,15 @@ input[type=radio] + label {
 }
 
 .span-call-me {
-    text-decoration: underline #F17013;
+    text-decoration: underline #ffd112;
 }
 
 input[type=radio]:checked + label {
-    background-color: #f17013;
+    background-color: #ffd112;
 }
 
 input[type=checkbox]:checked + label {
-    background-color: #f17013;
+    background-color: #ffd112;
 }
 
 .is_delivery_radio {
@@ -276,7 +276,7 @@ input[type=checkbox]:checked + label {
 /** SELECT2 **/
 .select2-container--default .select2-selection--single{
     background-color: #000!important;
-    border: 1px solid #F17013!important;
+    border: 1px solid #ffd112!important;
     border-radius: 3px!important;
 }
 
@@ -286,7 +286,7 @@ input[type=checkbox]:checked + label {
 }
 
 .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-    background-color: #F17013!important;
+    background-color: #ffd112!important;
     color: black!important;
 }
 
