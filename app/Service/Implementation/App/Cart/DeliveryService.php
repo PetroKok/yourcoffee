@@ -12,7 +12,7 @@ class DeliveryService implements DeliveryServiceInterface
 {
     public function index(City $city)
     {
-        dd(DB::table('kitchen_city')
+        return DB::table('kitchen_city')
             ->selectRaw('kitchens.*, cities_l10n.name as city, kitchen_city.*')
             ->where('kitchen_city.city_id', $city->id)
             ->whereRaw('kitchen_city.price_delivery =
@@ -22,7 +22,7 @@ class DeliveryService implements DeliveryServiceInterface
             ->join('cities_l10n', 'cities_l10n.city_id', 'cities.id')
             ->where('cities_l10n.locale', '=', App::getLocale())
             ->where('kitchens.is_open', '<>', Kitchen::CLOSED)
-            ->first());
+            ->first();
         return DB::table('kitchen_city')
             ->selectRaw('kitchens.*, cities_l10n.name as city, kitchen_city.*')
             ->where('kitchen_city.city_id', $city->id)

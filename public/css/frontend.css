@@ -35,7 +35,7 @@ select:focus {
     border-radius: 50%;
     padding: 0 7px;
     font-weight: bolder;
-    background-color: #f37013;
+    background-color: #ffd112;
     color: black;
     cursor: pointer;
 }
@@ -261,6 +261,10 @@ input[type=checkbox]:checked + label {
 
 .is_delivery_radio {
     display: none;
+}
+
+.text-black{
+    color: black;
 }
 
 .navbar .navbar-brand img {

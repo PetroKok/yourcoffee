@@ -22,9 +22,7 @@
                                    name="phone" value="{{ old('phone') }}" required autocomplete="phone">
 
                             @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>

@@ -31,7 +31,7 @@ class KitchenUpdateRequest extends FormRequest
             'city_id' => 'required|exists:cities,id',
             'delivery' => 'nullable|array',
             'delivery.*.price_delivery' => 'required|numeric',
-            'delivery.*.time_delivery' => 'required|numeric',
+            'delivery.*.time_delivery' => 'nullable|numeric',
         ];
     }
 }

@@ -22,7 +22,7 @@ class CityController extends Controller
         $this->cart = $cart;
     }
 
-    public function show(Request $request, $city)
+    public function show(Request $request, $city = null)
     {
         $city = City::find($city);
 

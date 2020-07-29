@@ -27,7 +27,7 @@
 
         <ul class="navbar-nav float-right">
             <a href="{{route('cart.index')}}">
-                <li class="nav-item text-white cart-body">
+                <li class="nav-item text-black cart-body">
                     <img class="cart-icon" src="{{asset('images/site-images/static/cart.svg')}}" alt="">
                     <span class="cart-count" id="carts-count">{{$carts_count}}</span>
                 </li>
