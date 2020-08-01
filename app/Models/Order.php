@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method create(array $data)
+ */
+
 class Order extends Model
 {
     protected $fillable = [
+        'customer_id',
         'city_id',
         'door_code',
         'address',

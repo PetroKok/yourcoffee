@@ -96,9 +96,11 @@
 
 
         <div class="d-flex justify-content-center">
-            <input type="radio" class="is_delivery_radio" id="delivery" name="order" {{ old('order') == 'self-pickup' ? '' : 'checked' }} value="delivery"/>
+            <input type="radio" class="is_delivery_radio" id="delivery" name="order"
+                   {{ old('order') == 'self-pickup' ? '' : 'checked' }} value="delivery"/>
             <label class="text-white" for="delivery" id="delivery-label"></label>
-            <input type="radio" class="is_delivery_radio" id="self-pickup" name="order" {{ old('order') != 'self-pickup' ? '' : 'checked' }} value="self-pickup"/>
+            <input type="radio" class="is_delivery_radio" id="self-pickup" name="order"
+                   {{ old('order') != 'self-pickup' ? '' : 'checked' }} value="self-pickup"/>
             <label class="text-white" for="self-pickup" id="self-pickup-label"></label>
         </div>
 
@@ -108,7 +110,7 @@
                 'class' => 'text-white mb-3'
             ]); !!}
             @error('phone')
-                <span class="cart-element invalid-feedback" role="alert" style="display: block">
+            <span class="cart-element invalid-feedback" role="alert" style="display: block">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
@@ -120,7 +122,7 @@
             ]); !!}
         </div>
         @error('name')
-            <span class="cart-element invalid-feedback" role="alert" style="display: block">
+        <span class="cart-element invalid-feedback" role="alert" style="display: block">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
@@ -132,7 +134,7 @@
             ]); !!}
 
             @error('address')
-                <span class="cart-element invalid-feedback" role="alert" style="display: block">
+            <span class="cart-element invalid-feedback" role="alert" style="display: block">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror

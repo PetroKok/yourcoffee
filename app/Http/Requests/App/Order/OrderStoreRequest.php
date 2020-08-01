@@ -12,6 +12,9 @@ class OrderStoreRequest extends FormRequest
         $rules = [
             'phone' => 'required|numeric',
             'name' => 'required|string',
+
+            'city_id' => 'required|string',
+
             'address' => 'nullable|string',
 
             'pay_type' => 'nullable|string',
@@ -19,16 +22,18 @@ class OrderStoreRequest extends FormRequest
             'apartment' => 'nullable|string',
             'entrance' => 'nullable|string',
             'floor' => 'nullable|numeric',
-            'door_code' => 'nullable|numeric'
+            'door_code' => 'nullable|numeric',
+
+            'order' =>
+                'required|in:' . mb_strtolower(Order::ORDER_TYPE['DELIVERY']) .
+                ',' . mb_strtolower(Order::ORDER_TYPE['SELF-PICKUP'])
         ];
 
         if (is_numeric($this->city_id)) {
             $rules['city_id'] = 'required|exists:cities,id';
-        } else {
-            $rules['city_id'] = 'required|string';
         }
 
-        if (!in_array(mb_strtoupper($this->pay_type), Order::PAY_TYPE)) {
+        if (!in_array(mb_strtoupper($this->pay_type), Order::PAY_TYPE) && !empty($this->pay_type)) {
             $rules['pay_type'] = 'required|numeric';
         }
 

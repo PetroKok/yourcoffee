@@ -22,6 +22,8 @@ use App\Service\Implementation\Admin\CityService;
 use App\Service\Implementation\Admin\KitchenService;
 use App\Service\Implementation\App\Cart\CartService;
 use App\Service\Implementation\App\Cart\DeliveryService;
+use App\Service\Implementation\App\Order\OrderService;
+use App\Service\Implementation\App\User\UserService;
 use App\Service\Implementation\CategoryService;
 use App\Service\Implementation\FileService;
 use App\Service\Implementation\IngredientService;
@@ -35,7 +37,9 @@ use App\Service\Interfaces\FileServiceInterface;
 use App\Service\Interfaces\IngredientServiceInterface;
 use App\Service\Interfaces\KitchenServiceInterface;
 use App\Service\Interfaces\LabelServiceInterface;
+use App\Service\Interfaces\OrderServiceInterface;
 use App\Service\Interfaces\ProductServiceInterface;
+use App\Service\Interfaces\UserServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class InterfaceServiceProvider extends ServiceProvider
@@ -67,6 +71,10 @@ class InterfaceServiceProvider extends ServiceProvider
         KitchenRepositoryInterface::class => KitchenRepository::class,
 
         DeliveryServiceInterface::class => DeliveryService::class,
+
+        OrderServiceInterface::class => OrderService::class,
+
+        UserServiceInterface::class => UserService::class,
     ];
 
     /**
