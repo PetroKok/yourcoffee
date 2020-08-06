@@ -42,6 +42,7 @@ class OrderStoreRequest extends FormRequest
             switch ($order_type) {
                 case Order::ORDER_TYPE['DELIVERY']:
                     $rules['address'] = 'required|string';
+                    $rules['pay_type'] = 'required|numeric';
                     break;
             }
         } else {

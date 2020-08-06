@@ -6,6 +6,7 @@ use App\DTO\User\UserDTO;
 use App\Models\Customer;
 use App\Service\Interfaces\UserServiceInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserServiceInterface
 {
@@ -22,13 +23,14 @@ class UserService implements UserServiceInterface
             return Auth::guard('customer')->user();
         }
 
-        $user = $this->customer->firstOrCreate(
+        return $this->customer->firstOrCreate(
             ['phone' => $userDTO->getPhone()],
-            ['phone' => $userDTO->getPhone(), 'name' => $userDTO->getName(), 'registered' => $this->customer::UNREGISTERED]
+            [
+                'phone' => $userDTO->getPhone(),
+                'name' => $userDTO->getName(),
+                'registered' => $this->customer::UNREGISTERED,
+                'password' => Hash::make($userDTO->getPhone())
+            ]
         );
-
-        dd($user);
-
-        dd('user dto here', $userDTO);
     }
 }

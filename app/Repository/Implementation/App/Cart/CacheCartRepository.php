@@ -103,4 +103,9 @@ class CacheCartRepository implements ICacheCart
         }
         return $carts;
     }
+
+    public function rawCart(CartDto $cartDto)
+    {
+        return request()->session()->get(config('session.keys.cart'));
+    }
 }

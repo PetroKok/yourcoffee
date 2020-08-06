@@ -21,6 +21,14 @@ class CartService implements CartServiceInterface
         $this->cache = $cache;
     }
 
+    public function rawCart(CartDto $cartDto)
+    {
+        if ($cartDto->getUserId()) {
+            return $this->db->rawCart($cartDto);
+        }
+        return collect($this->cache->rawCart($cartDto));
+    }
+
     public function index(CartDto $cartDto)
     {
         if ($cartDto->getUserId()) {

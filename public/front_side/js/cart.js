@@ -133,6 +133,14 @@ $(document).on('click', '.cart-inc-dec', function (e) {
         document.getElementById('amount-' + product_id).innerHTML = data.data.amount;
       }
 
+      var delivery_amount = parseInt(document.getElementById('delivery-amount').innerHTML);
+
+      if (!Number.isInteger(delivery_amount)) {
+        delivery_amount = 0;
+      }
+
+      console.log(delivery_amount, data.full_amount);
+      document.getElementById('total-amount').innerHTML = data.full_amount + delivery_amount;
       document.getElementById('full-amount').innerHTML = data.full_amount;
     });
   }
@@ -140,15 +148,16 @@ $(document).on('click', '.cart-inc-dec', function (e) {
 $(document).on('change', '#city_id', function (selected) {
   changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
-$(document).on('change click', '#delivery', function (item) {
+$(document).on('change', '#delivery', function (item) {
   var city = document.getElementById('city_id');
   var city_id = city.options[city.selectedIndex].value;
   changeDeliveryAmount(city_id);
   $('#tab-delivery').show(500);
 });
-$(document).on('change click', '#self-pickup', function (item) {
+$(document).on('change', '#self-pickup', function (item) {
   var delivery_amount = document.getElementById('delivery-amount').innerHTML;
   var total_amount = document.getElementById('total-amount').innerHTML;
+  console.log(total_amount, delivery_amount);
   document.getElementById('total-amount').innerHTML = total_amount - delivery_amount;
   changeDeliveryAmount();
   $('#tab-delivery').hide(500);
@@ -159,10 +168,20 @@ function changeDeliveryAmount() {
   $.get("/city/delivery_amount/" + city_id, function (data) {
     var _data$data$specify;
 
-    document.getElementById('delivery-amount').innerHTML = data.data.price_delivery;
+    console.log(data);
     var text = data.data.city !== null && data.data.address !== null ? data.data.city + ', ' + data.data.address : (_data$data$specify = data.data.specify) !== null && _data$data$specify !== void 0 ? _data$data$specify : '';
-    document.getElementById('kitchen-address').innerHTML = text;
-    document.getElementById('total-amount').innerHTML = data.total_amount;
+
+    if (!document.getElementById('self-pickup').checked) {
+      document.getElementById('delivery-amount').innerHTML = data.data.price_delivery;
+      document.getElementById('total-amount').innerHTML = data.total_amount;
+      document.getElementById('kitchen-address').innerHTML = text;
+    } else {
+      document.getElementById('delivery-amount').innerHTML = 0;
+
+      if (text) {
+        document.getElementById('kitchen-address').innerHTML = text;
+      }
+    }
   });
 }
 

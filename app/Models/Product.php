@@ -44,6 +44,6 @@ class Product extends Model implements TranslatableContract, FieldsInterface
 
     public function getImageAttribute($image)
     {
-        return config('files.products_path') . '/' . $image;
+        return '/storage' . config('files.products_path') . '/' . $image;
     }
 }

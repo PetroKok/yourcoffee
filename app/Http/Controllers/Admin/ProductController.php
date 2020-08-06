@@ -79,10 +79,10 @@ class ProductController extends Controller
         $data = $request->all();
 
         if ($request->has('image')) {
-            $this->fileService->deleteImage($product->image);
+            if (!empty($product->image)) {
+                $this->fileService->deleteImage($product->image);
+            }
             $data['image'] = $this->fileService->moveImage($data['image'], config('files.products_path'));
-            $path = public_path(config('files.products_path').'/'.$data['image']);
-            Image::make($path)->resize(600,600)->save();
         }
 
         $this->service->update($data, $product);

@@ -75,7 +75,6 @@ class DBCartRepository implements IDBCart
         $product = $this->product->find($cartDto->getProductId());
 
         if ($product) {
-
             $model = $this->model->where(
                 ['customer_id' => $cartDto->getUserId(), 'product_id' => $cartDto->getProductId()],
             )->first();
@@ -83,5 +82,10 @@ class DBCartRepository implements IDBCart
             $model->delete();
         }
         return $this->index($cartDto);
+    }
+
+    public function rawCart(CartDto $cartDto)
+    {
+        return $this->model->where('customer_id', $cartDto->getUserId())->get();
     }
 }

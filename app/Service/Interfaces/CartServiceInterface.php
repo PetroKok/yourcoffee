@@ -6,6 +6,8 @@ use App\DTO\CartDto;
 
 interface CartServiceInterface
 {
+    public function rawCart(CartDto $cartDto);
+
     public function index(CartDto $cartDto);
 
     public function count(CartDto $cartDto);

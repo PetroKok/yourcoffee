@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd ../laradock && docker-compose exec workspace bash
+docker-compose exec php bash
