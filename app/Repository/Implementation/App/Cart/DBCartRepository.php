@@ -88,4 +88,9 @@ class DBCartRepository implements IDBCart
     {
         return $this->model->where('customer_id', $cartDto->getUserId())->get();
     }
+
+    public function clearCart(CartDto $cartDto)
+    {
+        return $this->model->where('customer_id', $cartDto->getUserId())->delete();
+    }
 }

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd ../laradock && docker-compose down
+docker-compose down

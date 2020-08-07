@@ -35,6 +35,8 @@ services:
     image: library/mysql:5.6.47
     command: --default-authentication-plugin=mysql_native_password
     restart: always
+    volumes:
+      - ./etc/mysql/data:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:

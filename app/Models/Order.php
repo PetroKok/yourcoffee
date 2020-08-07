@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @method create(array $data)
  */
-
 class Order extends Model
 {
     protected $fillable = [
@@ -57,4 +56,12 @@ class Order extends Model
 
         'FRAUD' => 'FRAUD', // шахрайство
     ];
+
+
+    /** RELATIONS **/
+
+    public function lines()
+    {
+        return $this->hasMany(OrderLine::class, 'order_id', 'id');
+    }
 }

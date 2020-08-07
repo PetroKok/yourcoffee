@@ -108,4 +108,10 @@ class CacheCartRepository implements ICacheCart
     {
         return request()->session()->get(config('session.keys.cart'));
     }
+
+    public function clearCart(CartDto $cartDto)
+    {
+        $ses = request()->session();
+        $ses->put(config('session.keys.cart'), []);
+    }
 }

@@ -12,4 +12,21 @@ class OrderLine extends Model
         'qty',
         'price'
     ];
+
+    protected $appends = ['amount'];
+
+
+    public function getAmountAttribute()
+    {
+        return (int)$this->qty * (float)$this->price;
+    }
+
+    
+    /** RELATIONS **/
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
 }

@@ -67,7 +67,9 @@ $(document).on('change', '#self-pickup', function (item) {
     var total_amount = document.getElementById('total-amount').innerHTML;
     console.log(total_amount, delivery_amount)
     document.getElementById('total-amount').innerHTML = total_amount - delivery_amount;
-    changeDeliveryAmount();
+    const city = document.getElementById('city_id');
+    const city_id = city.options[city.selectedIndex].value;
+    changeDeliveryAmount(city_id);
     $('#tab-delivery').hide(500);
 });
 

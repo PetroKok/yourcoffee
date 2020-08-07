@@ -19,7 +19,7 @@ class CreateOrderLinesTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('order_id');
 
-            $table->increments('qty');
+            $table->integer('qty');
             $table->string('price');
 
             $table->timestamps();

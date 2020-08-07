@@ -12,4 +12,8 @@ Route::post('/cart/decrease', 'CartController@decrease');
 
 Route::post('/cart/order', 'OrderController@makeOrder');
 
+Route::get('/cart/order/{order_id}', 'OrderController@getSuccess')
+    ->where(['order_id' => '[0-9]+'])
+    ->name('success_order');
+
 Route::get('/city/delivery_amount/{city?}', 'CityController@show');

@@ -15,4 +15,6 @@ interface CartServiceInterface
     public function store(CartDto $cartDto);
 
     public function delete(CartDto $cartDto);
+
+    public function clearCart(CartDto $cartDto);
 }

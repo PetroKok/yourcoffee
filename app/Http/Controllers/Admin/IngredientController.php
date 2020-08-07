@@ -7,8 +7,8 @@ use App\Http\Requests\Ingredient\IngredientCreateRequest;
 use App\Http\Requests\Ingredient\IngredientUpdateRequest;
 use App\Http\Resources\Admin\IngredientResource;
 use App\Models\Ingredients;
-use App\Service\FileServiceInterface;
-use App\Service\IngredientServiceInterface;
+use App\Service\Interfaces\FileServiceInterface;
+use App\Service\Interfaces\IngredientServiceInterface;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller

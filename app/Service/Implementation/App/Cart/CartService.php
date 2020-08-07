@@ -61,4 +61,12 @@ class CartService implements CartServiceInterface
         }
         return $this->cache->delete($cartDto);
     }
+
+    public function clearCart(CartDto $cartDto)
+    {
+        if ($cartDto->getUserId()) {
+            return $this->db->clearCart($cartDto);
+        }
+        return $this->cache->clearCart($cartDto);
+    }
 }

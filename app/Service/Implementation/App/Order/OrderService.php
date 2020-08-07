@@ -10,6 +10,7 @@ use App\Service\Interfaces\OrderServiceInterface;
 use App\Service\Interfaces\UserServiceInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderService implements OrderServiceInterface
 {
@@ -50,15 +51,30 @@ class OrderService implements OrderServiceInterface
 
         $carts = $this->cartService->rawCart($cart);
 
-        $res = $this->storeOrderLines($order, $carts);
+        $this->cartService->clearCart($cart);
 
-        dd($res);
-        return $res;
+        $order = $this->storeOrderLines($order, $carts);
+
+        $order->load('lines.product.translation');
+
+        return $order;
     }
 
-    private function storeOrderLines(Order $order, $carts)
+    private function storeOrderLines(Order $order, $items)
     {
-        dd($order, $carts);
-        return 0;
+        $carts = [];
+
+        foreach ($items as $item) {
+            $carts[] = [
+                'order_id' => $order->id,
+                'product_id' => $item['product_id'],
+                'qty' => $item['qty'],
+                'price' => $item['price'],
+            ];
+        }
+
+        DB::table('order_lines')->insert($carts);
+
+        return $order;
     }
 }
