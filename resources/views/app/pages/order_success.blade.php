@@ -6,7 +6,8 @@
 
         @foreach($order->lines as $cart)
             <div class="row text-white d-flex justify-content-between align-items-center pt-2 mt-2 position-relative"
-                 id="cart-line-{{$cart['product']['id']}}" style="border-top: 1px solid #ffffff40; border-bottom: 1px solid #ffffff40;">
+                 id="cart-line-{{$cart['product']['id']}}"
+                 style="border-top: 1px solid #ffffff40; border-bottom: 1px solid #ffffff40;">
                 <span class="delete-cart-item fas fas-times">
                     <i class="fas fa-times"></i>
                 </span>
@@ -36,6 +37,71 @@
 
             </div>
         @endforeach
+
+        <div class="d-flex mt-3 justify-content-between align-items-center text-white cart-product-text">
+            <span>Загальна сума:</span>
+            <span><span id="full-amount">{{$order->amount}}</span> грн</span>
+        </div>
+
+        @if($order->type !== \App\Models\Order::ORDER_TYPE['SELF-PICKUP'])
+            <div class="d-flex justify-content-between align-items-center text-white cart-product-text">
+                <span>Доставка:</span>
+                <span>
+                    @if(isset($city['price_delivery']))
+                        <span id="delivery-amount">{{$city['price_delivery']}}</span> грн
+                    @else
+                        <span id="delivery-amount">{{trans('app.cart.specify')}}</span>
+                    @endif
+            </span>
+            </div>
+        @endif
+
+        @if($order->type === \App\Models\Order::ORDER_TYPE['SELF-PICKUP'])
+            <div class="d-flex justify-content-between align-items-center text-white cart-product-text">
+                <span>Адреса кухні:</span>
+                <span id="kitchen-address">
+                    @if(isset($city['address']))
+                        {{$city['address']}}
+                    @else
+                        {{trans('app.cart.specify')}}
+                    @endif
+                </span>
+            </div>
+        @else
+            <div class="d-flex justify-content-between align-items-center text-white cart-product-text">
+                <span>Ваша адреса:</span>
+                <span id="kitchen-address">{{$order->address}}</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center text-white cart-product-text">
+                <span>Місто:</span>
+                <span
+                    id="kitchen-address">@if(isset($city['city'])) {{$city['city']}} @else {{$order->city}} @endif</span>
+            </div>
+        @endif
+
+        @if($order->type !== \App\Models\Order::ORDER_TYPE['SELF-PICKUP'])
+            @if(isset($city['price_delivery']))
+                <h3 class="mt-3 mt-sm-3 mt-md-4 mt-lg-4 mb-3 text-center text-white cart-title">
+                    Загальна сума до сплати: <span class="brand-color">{{(int) $order->amount + (int) $city['price_delivery']}} грн</span>
+                </h3>
+            @else
+                <h3 class="mt-3 mt-sm-3 mt-md-4 mt-lg-4 mb-3 text-center text-white cart-title">
+                    Загальна сума до сплати: <span
+                        class="brand-color">{{$order->amount}} грн + {{trans('app.cart.delivery')}}</span>
+                </h3>
+            @endif
+        @else
+            @if(isset($city['price_delivery']))
+                <h3 class="mt-3 mt-sm-3 mt-md-4 mt-lg-4 mb-3 text-center text-white cart-title">
+                    Загальна сума до сплати: <span class="brand-color">{{(int) $order->amount}} грн</span>
+                </h3>
+            @else
+                <h3 class="mt-3 mt-sm-3 mt-md-4 mt-lg-4 mb-3 text-center text-white cart-title">
+                    Загальна сума до сплати: <span
+                        class="brand-color">{{$order->amount}}</span>
+                </h3>
+            @endif
+        @endif
 
     </div>
 

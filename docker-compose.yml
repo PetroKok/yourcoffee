@@ -44,6 +44,7 @@ services:
       MYSQL_DATABASE: default
       MYSQL_USER: root
       MYSQL_PASSWORD: root
+      AUTO_INCREMENT: 1
 
   adminer:
     image: adminer

@@ -14,7 +14,7 @@ class AddFieldToKitchensTable extends Migration
     public function up()
     {
         Schema::table('kitchens', function (Blueprint $table) {
-            $table->boolean('is_open')->default(false);
+            $table->boolean('is_open')->default(true);
         });
     }
 

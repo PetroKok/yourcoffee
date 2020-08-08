@@ -23,16 +23,5 @@ class DeliveryService implements DeliveryServiceInterface
             ->where('cities_l10n.locale', '=', App::getLocale())
             ->where('kitchens.is_open', '<>', Kitchen::CLOSED)
             ->first();
-        return DB::table('kitchen_city')
-            ->selectRaw('kitchens.*, cities_l10n.name as city, kitchen_city.*')
-            ->where('kitchen_city.city_id', $city->id)
-            ->whereRaw('kitchen_city.price_delivery =
-                (SELECT MIN(price_delivery) from kitchen_city where city_id = ?)', [$city->id])
-            ->join('kitchens', 'kitchen_city.kitchen_id', 'kitchens.id')
-            ->join('cities', 'kitchens.city_id', 'cities.id')
-            ->join('cities_l10n', 'cities_l10n.city_id', 'cities.id')
-            ->where('cities_l10n.locale', '=', App::getLocale())
-            ->where('kitchens.is_open', '<>', Kitchen::CLOSED)
-            ->first();
     }
 }

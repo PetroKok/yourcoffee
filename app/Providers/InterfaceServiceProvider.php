@@ -22,6 +22,7 @@ use App\Service\Implementation\Admin\CityService;
 use App\Service\Implementation\Admin\KitchenService;
 use App\Service\Implementation\App\Cart\CartService;
 use App\Service\Implementation\App\Cart\DeliveryService;
+use App\Service\Implementation\App\City\CityGetService;
 use App\Service\Implementation\App\Order\OrderService;
 use App\Service\Implementation\App\User\UserService;
 use App\Service\Implementation\CategoryService;
@@ -31,6 +32,7 @@ use App\Service\Implementation\LabelService;
 use App\Service\Implementation\ProductService;
 use App\Service\Interfaces\CartServiceInterface;
 use App\Service\Interfaces\CategoryServiceInterface;
+use App\Service\Interfaces\CityGetServiceInterface;
 use App\Service\Interfaces\CityServiceInterface;
 use App\Service\Interfaces\DeliveryServiceInterface;
 use App\Service\Interfaces\FileServiceInterface;
@@ -75,6 +77,8 @@ class InterfaceServiceProvider extends ServiceProvider
         OrderServiceInterface::class => OrderService::class,
 
         UserServiceInterface::class => UserService::class,
+
+        CityGetServiceInterface::class => CityGetService::class,
     ];
 
     /**

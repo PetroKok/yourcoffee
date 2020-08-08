@@ -29,6 +29,7 @@ class Order extends Model
         'name'
     ];
 
+    protected $appends = ['amount'];
 
     const ORDER_TYPE = [
         'DELIVERY' => 'DELIVERY',  // доставка
@@ -58,10 +59,20 @@ class Order extends Model
     ];
 
 
+    public function getAmountAttribute()
+    {
+        $amount = 0;
+        foreach ($this->lines as $line) {
+            $amount += $line->qty * $line->price;
+        }
+        return $amount;
+    }
+
     /** RELATIONS **/
 
     public function lines()
     {
         return $this->hasMany(OrderLine::class, 'order_id', 'id');
     }
+
 }

@@ -41,6 +41,11 @@ class OrderService implements OrderServiceInterface
             }
         });
 
+        if ((int)$data['city_id'] === 0) {
+            $data['city'] = $data['city_id'];
+            $data['city_id'] = null;
+        }
+
         $data['status'] = $this->order::STATUS['CREATED'];
         $data['type'] = $this->order::ORDER_TYPE[mb_strtoupper($data['order'])];
 

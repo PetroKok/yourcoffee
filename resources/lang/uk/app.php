@@ -21,6 +21,7 @@ return [
     ],
     'cart' => [
         'address' => 'Адрес',
+        'delivery' => 'Доставка',
         'apartment' => 'Квартира',
         'entrance' => 'Під\'їзд',
         'floor' => 'Поверх',
