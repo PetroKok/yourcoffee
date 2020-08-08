@@ -24,8 +24,8 @@
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('front_side/css/burger.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css', config('app.https'))}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front_side/css/burger.css', config('app.https'))}}">
     @stack('styles')
 </head>
 <body>
@@ -35,10 +35,10 @@
 @yield('content')
 
 </body>
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/app.js', config('app.https'))}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{asset('bootstrap/js/bootstrap.bundle.js')}}"></script>
-<script src="{{asset('front_side/js/front.js')}}"></script>
+<script src="{{asset('bootstrap/js/bootstrap.bundle.js', config('app.https'))}}"></script>
+<script src="{{asset('front_side/js/front.js', config('app.https'))}}"></script>
 <script>
     $.ajaxSetup({
         headers: {

@@ -9,7 +9,7 @@
     <div class="container {{count($carts) === 0 ?'':'d-none'}}" id="empty-cart">
         <h2 class="mt-5 mb-3 text-center text-white">Ваша корзина пуста</h2>
         <div class="d-flex justify-content-center mt-5">
-            <img src="{{asset('images/site-images/static/cart_empty.png')}}" width="190" alt="">
+            <img src="{{asset('images/site-images/static/cart_empty.png', config('app.https'))}}" width="190" alt="">
         </div>
         <h3 class="mt-5 mb-3 text-center text-white">
             <a href="{{route('home')}}" class="btn btn-yellow">Перейти на головну сторінку</a>
@@ -195,7 +195,7 @@
 
 @push('javascript')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="{{asset('front_side/js/cart.js')}}"></script>
+    <script src="{{asset('front_side/js/cart.js', config('app.https'))}}"></script>
     <script>
         $(document).ready(function () {
             $('.js-example-basic-single').select2({tags: true});

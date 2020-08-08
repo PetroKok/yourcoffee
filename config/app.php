@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'https' => env('REDIRECT_HTTPS', true),
 
     /*
     |--------------------------------------------------------------------------

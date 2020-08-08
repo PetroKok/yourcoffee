@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @push('styles')
-    <link rel="stylesheet" href="{{asset('front_side/css/swiper.css')}}">
+    <link rel="stylesheet" href="{{asset('front_side/css/swiper.css', config('app.https'))}}">
 @endpush
 
 
@@ -55,7 +55,7 @@
 
 
 @push('javascript')
-    <script src="{{asset('front_side/js/swiper.js')}}"></script>
+    <script src="{{asset('front_side/js/swiper.js', config('app.https'))}}"></script>
     <script>
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 50,
