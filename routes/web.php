@@ -6,7 +6,8 @@ Route::auth();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('/cart', 'CartController');
+Route::resource('/cart', 'CartController')->except(['show']);
+
 Route::post('/cart/increase', 'CartController@increase');
 Route::post('/cart/decrease', 'CartController@decrease');
 

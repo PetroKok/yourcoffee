@@ -7,7 +7,7 @@
         @foreach($order->lines as $cart)
             <div class="row text-white d-flex justify-content-between align-items-center pt-2 mt-2 position-relative"
                  id="cart-line-{{$cart['product']['id']}}"
-                 style="border-top: 1px solid #ffffff40; border-bottom: 1px solid #ffffff40;">
+                 style="border-top: 1px solid #ffffff40;">
                 <span class="delete-cart-item fas fas-times">
                     <i class="fas fa-times"></i>
                 </span>
@@ -37,7 +37,7 @@
 
             </div>
         @endforeach
-
+        <div class="row" style="border-bottom: 1px solid #ffffff40;"></div>
         <div class="d-flex mt-3 justify-content-between align-items-center text-white cart-product-text">
             <span>Загальна сума:</span>
             <span><span id="full-amount">{{$order->amount}}</span> грн</span>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -44,26 +45,46 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255', 'unique:customers'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('customers')->where('registered', Customer::REGISTERED)
+            ],
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
+        $customer = Customer::where([
+            'phone' => $data['phone'],
+            'registered' => Customer::UNREGISTERED
+        ])->first();
+
+        if ($customer) {
+            $customer->update([
+                'name' => $data['name'],
+                'phone' => $data['phone'],
+                'password' => Hash::make($data['password']),
+                'registered' => Customer::REGISTERED
+            ]);
+            return $customer;
+        }
+
         return Customer::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
