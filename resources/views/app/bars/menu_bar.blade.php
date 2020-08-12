@@ -2,7 +2,7 @@
     <div class="container">
         <button class="navbar-toggler" type="button" id="openbtn" data-toggle="modal" data-target="#backWall"
                 aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style=" fill:purple"></span>
+            <span class="navbar-toggler-icon" style="fill:purple"></span>
         </button>
         <a class="navbar-brand" href="{{route('home')}}">
             <img src="{{asset('images/site-images/logo.png')}}" alt="">
@@ -86,8 +86,7 @@
     @endguest
 
 </div>
-<div class="modal fade" id="backWall" tabindex="-1" role="dialog" aria-labelledby="backWall"
-     aria-hidden="true">
+<div class="modal fade" id="backWall" tabindex="-1" role="dialog" aria-labelledby="backWall" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     </div>
 </div>

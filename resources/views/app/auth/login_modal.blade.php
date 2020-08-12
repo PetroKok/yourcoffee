@@ -80,6 +80,18 @@
     </div>
 </div>
 
+@if($errors->any())
+    <div class="alert alert-warning alert-dismissible fade show notification-error" role="alert" data-dismiss="alert"
+         aria-label="Close">
+        <strong>{{$errors->first()}}&nbsp;&nbsp;&nbsp;
+            <button type="button" class="close" style="top: -4px;right: -15px">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </strong>
+    </div>
+@endif
+
+
 <!-- Modal -->
 <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="registerModal"
      aria-hidden="true">

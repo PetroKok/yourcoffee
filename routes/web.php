@@ -18,3 +18,8 @@ Route::get('/cart/order/{order_id}', 'OrderController@getSuccess')
     ->name('success_order');
 
 Route::get('/city/delivery_amount/{city?}', 'CityController@show');
+
+
+Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile'], function () {
+    Route::get('/', 'ProfileController@show');
+});

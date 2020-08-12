@@ -104,6 +104,9 @@ function toggle_sidebar() {
 document.getElementById("openbtn").addEventListener("click", function () {
   toggle_sidebar();
 });
+document.getElementById("closebtn").addEventListener("click", function () {
+  toggle_sidebar();
+});
 
 if (document.getElementById("login_sidebar") !== null) {
   document.getElementById("login_sidebar").addEventListener("click", function () {
