@@ -114,7 +114,7 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg')}}"
+                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg', config('app.https'))}}"
                              alt="">
                         <div class="status-indicator bg-success"></div>
                     </div>
@@ -127,7 +127,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg')}}"
+                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg', config('app.https'))}}"
                              alt="">
                         <div class="status-indicator"></div>
                     </div>
@@ -141,7 +141,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg')}}"
+                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg', config('app.https'))}}"
                              alt="">
                         <div class="status-indicator bg-warning"></div>
                     </div>
@@ -155,7 +155,7 @@
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg')}}"
+                        <img class="rounded-circle" src="{{asset('/images/site-images/image.jpg', config('app.https'))}}"
                              alt="">
                         <div class="status-indicator bg-success"></div>
                     </div>

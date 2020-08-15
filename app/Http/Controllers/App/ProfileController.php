@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function show(Request  $request)
+    public function show(Request $request)
     {
-        dd($request);
+        $customer = \Auth::guard('customer')->user();
+        return view('app::pages.profile.profile_show', compact('customer'));
     }
 }

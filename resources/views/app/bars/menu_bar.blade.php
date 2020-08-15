@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon" style="fill:purple"></span>
         </button>
         <a class="navbar-brand" href="{{route('home')}}">
-            <img src="{{asset('images/site-images/logo.png')}}" alt="">
+            <img src="{{asset('images/site-images/logo.png', config('app.https'))}}" alt="">
         </a>
 
         <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
@@ -19,17 +19,14 @@
                 <li class="nav-item pl-5 text-white">
                     <a class="nav-link" href="#">Про нас</a>
                 </li>
-                <li class="nav-item pl-5 text-white">
-                    <a class="nav-link" href="#">Контакти</a>
-                </li>
             </ul>
         </div>
 
         <ul class="navbar-nav float-right">
             <a href="{{route('cart.index')}}">
                 <li class="nav-item text-black cart-body">
-                    <img class="cart-icon" src="{{asset('images/site-images/static/cart.svg')}}" alt="">
-                    <span class="cart-count" id="carts-count">{{$carts_count}}</span>
+                    <img class="cart-icon" src="{{asset('images/site-images/static/cart.svg', config('app.https'))}}" alt="">
+                    <span class="cart-count" id="carts-count">{{$carts_count !== 0 ? $carts_count : '' }}</span>
                 </li>
             </a>
         </ul>
@@ -38,27 +35,25 @@
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" data-toggle="modal"
                 data-target="#login-modal">
                 <li class="nav-item text-white">
-                    <img src="{{asset('images/site-images/static/profile.png')}}" class="menu-icon" alt="">
+                    <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">
                 </li>
             </ul>
         @else
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
-                <li class="nav-item text-white">
-                    <img src="{{asset('images/site-images/static/profile.png')}}" class="menu-icon" alt="">
-                </li>
+                <a href="{{route('profile.index')}}">
+                    <li class="nav-item text-white">
+                        <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">
+                    </li>
+                </a>
             </ul>
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
                 <li class="nav-item text-white">
                     <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        <img src="{{asset('images/site-images/static/logout.png')}}" class="menu-icon" alt="">
+                        <img src="{{asset('images/site-images/static/logout.png', config('app.https'))}}" class="menu-icon" alt="">
                     </a>
                 </li>
             </ul>
-
-            <form id="logout-form" action="{{ route('admin::logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
         @endguest
 
 
@@ -70,7 +65,6 @@
     <a href="{{route('home')}}">Меню</a>
     <a href="#">Конструктор</a>
     <a href="#">Про нас</a>
-    <a href="#">Контакти</a>
     @guest('customer')
         <span data-toggle="modal" data-target="#backWall">
             <a href="#" id="login_sidebar" data-toggle="modal" data-target="#login-modal">Ввійти</a>
@@ -80,12 +74,12 @@
         <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
             Вийти {{Auth::guard('customer')->user()->name}}
         </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
     @endguest
 
 </div>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 <div class="modal fade" id="backWall" tabindex="-1" role="dialog" aria-labelledby="backWall" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
     </div>

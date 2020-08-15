@@ -83,12 +83,12 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('admin_side/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('admin_side/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('admin_side/vendor/jquery/jquery.min.js', config('app.https'))}}"></script>
+    <script src="{{asset('admin_side/vendor/bootstrap/js/bootstrap.bundle.min.js', config('app.https'))}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('admin_side/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('admin_side/vendor/jquery-easing/jquery.easing.min.js', config('app.https'))}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('admin_side/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('admin_side/js/sb-admin-2.min.js', config('app.https'))}}"></script>
 @endsection

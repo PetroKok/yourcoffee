@@ -80,7 +80,7 @@
     </div>
 </div>
 
-@if($errors->any())
+@if($errors->has('phone') || $errors->has('password'))
     <div class="alert alert-warning alert-dismissible fade show notification-error" role="alert" data-dismiss="alert"
          aria-label="Close">
         <strong>{{$errors->first()}}&nbsp;&nbsp;&nbsp;

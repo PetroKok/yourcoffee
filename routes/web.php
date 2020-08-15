@@ -4,22 +4,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::auth();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'cart_info'], function () {
 
-Route::resource('/cart', 'CartController')->except(['show']);
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::post('/cart/increase', 'CartController@increase');
-Route::post('/cart/decrease', 'CartController@decrease');
+    Route::resource('/cart', 'CartController')->except(['show']);
 
-Route::post('/cart/order', 'OrderController@makeOrder');
+    Route::post('/cart/increase', 'CartController@increase');
+    Route::post('/cart/decrease', 'CartController@decrease');
 
-Route::get('/cart/order/{order_id}', 'OrderController@getSuccess')
-    ->where(['order_id' => '[0-9]+'])
-    ->name('success_order');
+    Route::post('/cart/order', 'OrderController@makeOrder');
 
-Route::get('/city/delivery_amount/{city?}', 'CityController@show');
+    Route::get('/cart/order/{order_id}', 'OrderController@getSuccess')
+        ->where(['order_id' => '[0-9]+'])
+        ->name('success_order');
+
+    Route::get('/city/delivery_amount/{city?}', 'CityController@show');
 
 
-Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile'], function () {
-    Route::get('/', 'ProfileController@show');
+    Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile'], function () {
+        Route::get('/', 'ProfileController@show')->name('profile.index');
+    });
 });

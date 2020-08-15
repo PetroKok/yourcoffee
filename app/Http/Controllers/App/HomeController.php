@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public $cartService;
-
-    public function __construct(CartServiceInterface $cart)
-    {
-        $this->cartService = $cart;
-    }
 
     public function index()
     {
@@ -26,8 +20,6 @@ class HomeController extends Controller
         $cartItem = new CartDto();
         $cartItem->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
-        [$carts_count, $full_amount] = $this->cartService->count($cartItem);
-
-        return view('app::pages.home', compact('categories', 'carts_count', 'full_amount'));
+        return view('app::pages.home', compact('categories'));
     }
 }

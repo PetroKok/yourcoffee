@@ -29,11 +29,10 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $carts = $this->cart->index($cart)->toArray(true);
-        [$carts_count, $full_amount] = $this->cart->count($cart);
 
         $cities = $this->city->indexPluck();
 
-        return view('app::pages.cart', compact('carts', 'cities', 'carts_count', 'full_amount'));
+        return view('app::pages.cart', compact('carts', 'cities'));
     }
 
     public function store(CartCreateRequest $request)
@@ -44,9 +43,8 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->store($cart);
-        [$carts_count, $full_amount] = $this->cart->count($cart);
 
-        return response()->json(['data' => $response, 'carts_count' => $carts_count, 'full_amount' => $full_amount]);
+        return response()->json(['data' => $response]);
     }
 
     public function increase(CartCreateRequest $request)
@@ -57,9 +55,8 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->store($cart);
-        [$carts_count, $full_amount] = $this->cart->count($cart);
 
-        return response()->json(['data' => $response, 'carts_count' => $carts_count, 'full_amount' => $full_amount]);
+        return response()->json(['data' => $response]);
     }
 
     public function decrease(CartCreateRequest $request)
@@ -70,9 +67,8 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->store($cart);
-        [$carts_count, $full_amount] = $this->cart->count($cart);
 
-        return response()->json(['data' => $response, 'carts_count' => $carts_count, 'full_amount' => $full_amount]);
+        return response()->json(['data' => $response]);
     }
 
     public function delete(Request $request)
@@ -82,7 +78,7 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->delete($cart);
-        $count = $this->cart->count($cart);
-        return response()->json(['data' => $response, 'carts_count' => $count]);
+
+        return response()->json(['data' => $response]);
     }
 }
