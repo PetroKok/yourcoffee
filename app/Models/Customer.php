@@ -26,4 +26,12 @@ class Customer extends Authenticatable
     {
         return $this->registered ? true : false;
     }
+
+
+    /** Relations **/
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'customer_id', 'id');
+    }
 }

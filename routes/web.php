@@ -23,6 +23,7 @@ Route::group(['middleware' => 'cart_info'], function () {
 
 
     Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile'], function () {
-        Route::get('/', 'ProfileController@show')->name('profile.index');
+        Route::get('/', 'ProfileController@index')->name('profile.index');
+        Route::get('/history', 'ProfileController@history')->name('profile.history');
     });
 });

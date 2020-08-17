@@ -20,6 +20,7 @@ class CartInfoMiddleware extends Middleware
 
         \View::share('carts_count', $carts_count);
         \View::share('full_amount', $full_amount);
+        \View::share('customer', \Auth::guard('customer')->user());
 
         return $next($request);
     }
