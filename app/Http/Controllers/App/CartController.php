@@ -43,8 +43,14 @@ class CartController extends Controller
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $response = $this->cart->store($cart);
+        $cart_info = getCart();
 
-        return response()->json(['data' => $response]);
+        $response->additional([
+            'carts_count' => $cart_info[0],
+            'full_amount' => $cart_info[1]
+        ]);
+
+        return $response;
     }
 
     public function increase(CartCreateRequest $request)
@@ -56,7 +62,14 @@ class CartController extends Controller
 
         $response = $this->cart->store($cart);
 
-        return response()->json(['data' => $response]);
+        $cart_info = getCart();
+
+        $response->additional([
+            'carts_count' => $cart_info[0],
+            'full_amount' => $cart_info[1]
+        ]);
+
+        return $response;
     }
 
     public function decrease(CartCreateRequest $request)
@@ -68,7 +81,14 @@ class CartController extends Controller
 
         $response = $this->cart->store($cart);
 
-        return response()->json(['data' => $response]);
+        $cart_info = getCart();
+
+        $response->additional([
+            'carts_count' => $cart_info[0],
+            'full_amount' => $cart_info[1]
+        ]);
+
+        return $response;
     }
 
     public function delete(Request $request)
@@ -79,6 +99,13 @@ class CartController extends Controller
 
         $response = $this->cart->delete($cart);
 
-        return response()->json(['data' => $response]);
+        $cart_info = getCart();
+
+        $response->additional([
+            'carts_count' => $cart_info[0],
+            'full_amount' => $cart_info[1]
+        ]);
+
+        return $response;
     }
 }

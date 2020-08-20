@@ -1,4 +1,4 @@
-<div class="col-4 m-1 pb-4 brand-background-color">
+<div class="col-12 col-md-4 pb-4 brand-background-color border-right-black">
     <div class="mt-3">
         <div class="profile-image">
             <img

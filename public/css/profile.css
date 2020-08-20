@@ -17,3 +17,15 @@
     vertical-align: middle;
     line-height: 40px;
 }
+
+@media screen and (min-width: 768px) {
+    .border-right-black {
+        border-right: 5px solid black;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .border-right-black {
+        border-bottom: 5px solid black;
+    }
+}

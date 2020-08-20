@@ -9,10 +9,10 @@
     <div class="container" id="empty-cart">
         <h2 class="mt-5 mb-3 text-center text-white">Профіль</h2>
 
-        <div class="d-flex">
+        <div class="row">
             @include('app.components.profile.profile-sidebar')
 
-            <div class="col-8 m-1 brand-background-color">
+            <div class="col-12 col-md-8 brand-background-color">
                 <h2 class="mt-3 text-center text-black">Адреси</h2>
                 <div class="mt-3">
                     <div class="add-address">+</div>
