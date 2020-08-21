@@ -18,14 +18,74 @@
     line-height: 40px;
 }
 
-@media screen and (min-width: 768px) {
-    .border-right-black {
-        border-right: 5px solid black;
-    }
+.profile-title{
+    font-size: 20pt;
 }
+
+.order-title{
+    font-size: 14pt;
+}
+
+.order-product-title{
+    font-size: 14pt;
+}
+
+.order-product-image{
+    width: 100px;
+}
+
+.order-date{
+    font-size: 14pt;
+}
+
+.order-amount{
+    font-size: 14pt;
+}
+
+.order-status{
+    font-size: 14pt;
+}
+
 
 @media screen and (max-width: 768px) {
     .border-right-black {
         border-bottom: 5px solid black;
+    }
+
+    .profile-title{
+        font-size: 15pt;
+    }
+
+    .order-title{
+        font-size: 10pt;
+    }
+
+    .order-product-title{
+        font-size: 10pt;
+    }
+
+    .order-date{
+        font-size: 10pt;
+    }
+
+    .order-amount{
+        font-size: 10pt;
+    }
+
+    .order-status {
+        font-size: 10pt;
+    }
+
+    .order-product-image{
+        width: 70px;
+    }
+
+
+}
+
+
+@media screen and (min-width: 768px) {
+    .border-right-black {
+        border-right: 5px solid black;
     }
 }
