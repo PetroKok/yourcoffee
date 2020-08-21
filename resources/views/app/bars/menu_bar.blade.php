@@ -70,9 +70,9 @@
             <a href="#" id="login_sidebar" data-toggle="modal" data-target="#login-modal">Ввійти</a>
         </span>
     @else
-        <a href="#">Мій кабінет</a>
+        <a href="{{route('profile.index')}}">Профіль, {{Auth::guard('customer')->user()->name}}</a>
         <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            Вийти {{Auth::guard('customer')->user()->name}}
+            Вийти
         </a>
     @endguest
 

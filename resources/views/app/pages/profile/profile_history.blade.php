@@ -13,7 +13,7 @@
             @include('app.components.profile.profile-sidebar')
 
             <div class="col-12 col-md-8 p-0 brand-background-color">
-                <h2 class="mt-4 mb-4 mt-md-3 mb-md-0 text-center text-black profile-title">Історія замовлення</h2>
+                <h2 class="mt-4 mb-4 mt-md-3 mb-md-3 text-center text-black profile-title">Історія замовлення</h2>
                 <div id="accordion">
                     @foreach($orders as $order)
                         <div class="card">
@@ -21,20 +21,21 @@
                                  data-target="#collapse{{$loop->index}}"
                                  aria-expanded="{{$loop->first ? 'true' : 'false'}}"
                                  aria-controls="collapse{{$loop->index}}">
-                                <h5 class="mb-0 d-flex justify-content-between">
-                                    <div class="d-flex order-title flex-column">
-                                        <span>Замовлення #{{$order->id}}</span>
-                                        <span>{{$order->created_at->format('d M H:s')}}</span>
+                                <h5 class="mb-0 row">
+                                    <div
+                                        class="col-lg-5 col-md-5 col-6 order-title d-flex justify-content-between flex-column flex-lg-row">
+                                        <span>Замовлення #{{$order->id}} </span>
+                                        <span>{{ $order->created_at->format('d M H:s')}}</span>
                                     </div>
-                                    <a class="order-date">
-                                    </a>
-                                    <a class="order-amount">
-                                        {{$order->amount}} грн
-                                    </a>
-                                    <a class="order-status"
-                                       style="color: {{trans('app.status.color.'.$order->status)}}">
-                                        {{trans('app.status.'.$order->status)}}
-                                    </a>
+                                    <div class="row col-lg-7 col-md-7 col-6 p-0">
+                                        <a class="col-lg-5 col-md-5 col-sm-4 col-12 order-amount text-lg-center text-md-center text-right p-0">
+                                            {{$order->amount}} грн
+                                        </a>
+                                        <a class="col-lg-7 col-md-7 col-sm-8 col-12 order-status text-right p-0"
+                                           style="color: {{trans('app.status.color.'.$order->status)}}">
+                                            <b>{{trans('app.status.'.$order->status)}}</b>
+                                        </a>
+                                    </div>
                                 </h5>
                             </div>
                             <div id="collapse{{$loop->index}}" class="collapse {{!$loop->first ?'': 'show'}}"

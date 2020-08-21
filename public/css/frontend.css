@@ -335,6 +335,10 @@ input[type=checkbox]:checked + label {
     .cart-title {
         font-size: 15pt;
     }
+
+    .cart-button-submit {
+        font-size: 12pt;
+    }
 }
 
 

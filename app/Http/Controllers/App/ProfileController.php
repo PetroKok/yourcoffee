@@ -16,7 +16,7 @@ class ProfileController extends Controller
 
     public function history(Request $request)
     {
-        $orders = Auth::user()->orders()->with('lines.product')->get();
+        $orders = Auth::user()->orders()->with('lines.product')->orderBy('orders.updated_at', 'desc')->get();
         $orders = OrderHistoryResource::collection($orders);
         return view('app::pages.profile.profile_history', compact('orders'));
     }

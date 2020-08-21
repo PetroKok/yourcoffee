@@ -182,7 +182,7 @@
 
 
         <div class="d-flex justify-content-center mt-4 mt-md-4">
-            <button type="submit" class="btn btn-yellow" id="make-order">Оформити замовлення (<span
+            <button type="submit" class="btn btn-yellow cart-button-submit" id="make-order">Оформити замовлення (<span
                     id="total-amount">{{$full_amount}}</span>грн)
             </button>
         </div>

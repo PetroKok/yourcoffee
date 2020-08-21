@@ -40,13 +40,13 @@ return [
         'FRAUD' => 'Шахрайство', // шахрайство
         'color' => [
             'CREATED' => '#',
-            'PREPARING' => '#',
-            'DELIVERING' => '#',
-            'WAIT_FOR_PICK_UP' => '#',
-            'DONE' => '#',
-            'CANCELED' => '#',
-            'SPECIFY' => '#',
-            'FRAUD' => '#',
+            'PREPARING' => '#ca5c00',
+            'DELIVERING' => '#1183f7',
+            'WAIT_FOR_PICK_UP' => '#1183f7',
+            'DONE' => '#13ab00',
+            'CANCELED' => '#7c7c7c',
+            'SPECIFY' => '#ca5c00',
+            'FRAUD' => '#ff0000',
         ],
     ],
 

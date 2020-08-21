@@ -39,7 +39,7 @@
         @endforeach
         <div class="row" style="border-bottom: 1px solid #ffffff40;"></div>
         <div class="d-flex mt-3 justify-content-between align-items-center text-white cart-product-text">
-            <span>Загальна сума:</span>
+            <span>Cума:</span>
             <span><span id="full-amount">{{$order->amount}}</span> грн</span>
         </div>
 

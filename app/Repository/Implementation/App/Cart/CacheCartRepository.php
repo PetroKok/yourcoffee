@@ -32,7 +32,7 @@ class CacheCartRepository implements ICacheCart
                 return [array_sum(array_column($ses, 'qty')), $full_amount];
             }
         }
-        return 0;
+        return [0, 0];
     }
 
     public function store(CartDto $cartDto)
