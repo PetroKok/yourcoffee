@@ -70,9 +70,14 @@
                         Створити аккаунт
                     </a>
 
+                    <a href="{{ route('auth.provider', 'google') }}" class="">
+                        <strong>Login With Google</strong>
+                    </a>
+
                     <button type="submit" class="btn btn-yellow">
                         Ввійти
                     </button>
+
                 </div>
 
             </form>
@@ -92,7 +97,7 @@
 @endif
 
 
-<!-- Modal -->
+<!-- Modal Register-->
 <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="registerModal"
      aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered" role="document">

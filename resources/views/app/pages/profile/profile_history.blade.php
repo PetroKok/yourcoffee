@@ -25,7 +25,7 @@
                                     <div
                                         class="col-lg-5 col-md-5 col-6 order-title d-flex justify-content-between flex-column flex-lg-row">
                                         <span>Замовлення #{{$order->id}} </span>
-                                        <span>{{ $order->created_at->format('d M H:s')}}</span>
+                                        <span>{{ $order->created_at->format('d M H:i')}}</span>
                                     </div>
                                     <div class="row col-lg-7 col-md-7 col-6 p-0">
                                         <a class="col-lg-5 col-md-5 col-sm-4 col-12 order-amount text-lg-center text-md-center text-right p-0">

@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::auth();
 
+
+Route::get('auth/{provider}', 'Auth\SocialLoginController@redirectTo')->name('auth.provider');
+Route::get('auth/{provider}/callback', 'Auth\SocialLoginController@handleCallback');
+
+
 Route::group(['middleware' => 'cart_info'], function () {
 
     Route::get('/', 'HomeController@index')->name('home');

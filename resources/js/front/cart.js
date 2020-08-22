@@ -95,6 +95,10 @@ function changeDeliveryAmount(city_id = '') {
     });
 }
 
+function submitForm(form){
+    console.log(form)
+}
+
 $(document).on('click', '#delivery-label', function (e) {
     $('#tab-delivery').show(500);
 })

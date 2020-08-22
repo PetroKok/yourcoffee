@@ -182,9 +182,10 @@
 
 
         <div class="d-flex justify-content-center mt-4 mt-md-4">
-            <button type="submit" class="btn btn-yellow cart-button-submit" id="make-order">Оформити замовлення (<span
+            <input type="submit" class="is_delivery_radio" id="submitForm"/>
+            <label class="btn btn-yellow cart-button-submit" for="submitForm">Оформити замовлення (<span
                     id="total-amount">{{$full_amount}}</span>грн)
-            </button>
+            </label>
         </div>
 
         {{ Form::close() }}

@@ -8,10 +8,14 @@ class Customer extends Authenticatable
 {
     protected $guard = 'customer';
 
-    protected $fillable = ['name', 'surname', 'phone', 'email', 'email_verified_at', 'password', 'registered'];
+    protected $fillable = ['name', 'surname', 'phone', 'email', 'password', 'registered', 'google_id', 'facebook_id'];
 
     protected $hidden = [
         'password', 'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     const REGISTERED = true;

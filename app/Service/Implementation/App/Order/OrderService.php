@@ -49,20 +49,27 @@ class OrderService implements OrderServiceInterface
         $data['status'] = $this->order::STATUS['CREATED'];
         $data['type'] = $this->order::ORDER_TYPE[mb_strtoupper($data['order'])];
 
-        $order = $this->order->create($data);
-
         $cart = new CartDto();
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
         $carts = $this->cartService->rawCart($cart);
 
-        $this->cartService->clearCart($cart);
+        if ($carts->count()) {
+            $order = DB::transaction(function () use ($data, $cart, $carts) {
+                $order = $this->order->create($data);
 
-        $order = $this->storeOrderLines($order, $carts);
+                $this->cartService->clearCart($cart);
 
-        $order->load('lines.product.translation');
+                $order = $this->storeOrderLines($order, $carts);
 
-        return $order;
+                $order->load('lines.product.translation');
+
+                return $order;
+            });
+
+            return $order;
+        }
+        abort(404);
     }
 
     private function storeOrderLines(Order $order, $items)
