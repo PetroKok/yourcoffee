@@ -197,7 +197,7 @@ select:focus {
 
 input[type=radio] + label {
     color: #ccc;
-    background-color: #ccc;
+    background-color: white;
     height: 20px;
     width: 80%;
     max-width: 300px;
@@ -239,12 +239,17 @@ input[type=radio] + label {
     width: 50% !important;
 }
 
+.radio-button-address {
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
 .radio-call-me {
-    min-width: 20px!important;
-    min-height: 20px!important;
-    width: 20px!important;
-    height: 20px!important;
-    background-color: #cccccc;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-color: #000000;
 }
 
 .span-call-me {
@@ -263,7 +268,7 @@ input[type=checkbox]:checked + label {
     display: none;
 }
 
-.text-black{
+.text-black {
     color: black;
 }
 
@@ -278,30 +283,31 @@ input[type=checkbox]:checked + label {
 
 
 /** SELECT2 **/
-.select2-container--default .select2-selection--single{
-    background-color: #000!important;
-    border: 1px solid #ffd112!important;
-    border-radius: 3px!important;
+.select2-container--default .select2-selection--single {
+    background-color: #000 !important;
+    border: 1px solid #ffd112 !important;
+    border-radius: 3px !important;
 }
 
-.select2-container--open .select2-dropdown--below{
-    background-color: black!important;
-    color: white!important;
+.select2-container--open .select2-dropdown--below {
+    background-color: black !important;
+    color: white !important;
 }
 
 .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-    background-color: #ffd112!important;
-    color: black!important;
+    background-color: #ffd112 !important;
+    color: black !important;
 }
 
-.select2-container--open .select2-dropdown--above{
-    background-color: black!important;
-    color: white!important;
+.select2-container--open .select2-dropdown--above {
+    background-color: black !important;
+    color: white !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: white!important;
+    color: white !important;
 }
+
 /**  SIZE 600  **/
 @media screen and (max-width: 600px) {
 
@@ -445,7 +451,7 @@ input[type=checkbox]:checked + label {
 }
 
 
-.notification-error{
+.notification-error {
     display: block;
     position: fixed;
     z-index: 1;

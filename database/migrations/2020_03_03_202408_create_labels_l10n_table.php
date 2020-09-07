@@ -43,8 +43,8 @@ class CreateLabelsL10nTable extends Migration
     public function down()
     {
         Schema::table('labels_l10n', function (Blueprint $table) {
-            $table->dropIndex(['locale']);
-            $table->dropIndex(['label_id']);
+            $table->dropForeign(['locale']);
+            $table->dropForeign(['label_id']);
         });
         Schema::dropIfExists('labels_l10n');
     }

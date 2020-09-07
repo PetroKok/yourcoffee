@@ -15,5 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/admin/custom.js', 'public/admin_side/js')
     .js('resources/js/front/front.js', 'public/front_side/js/front.js')
     .js('resources/js/front/cart.js', 'public/front_side/js/cart.js')
+    .js('resources/js/front/profile.js', 'public/front_side/js/profile.js')
     .react('resources/js/ReactTable.js', 'public/admin_side/js')
     .sass('resources/sass/app.scss', 'public/css');

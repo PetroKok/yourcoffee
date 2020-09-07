@@ -21,11 +21,6 @@ class Customer extends Authenticatable
     const REGISTERED = true;
     const UNREGISTERED = false;
 
-    public function carts()
-    {
-        return $this->hasMany(Cart::class);
-    }
-
     public function isRegistered()
     {
         return $this->registered ? true : false;
@@ -37,5 +32,15 @@ class Customer extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class, 'customer_id', 'id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
     }
 }

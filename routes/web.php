@@ -27,8 +27,9 @@ Route::group(['middleware' => 'cart_info'], function () {
     Route::get('/city/delivery_amount/{city?}', 'CityController@show');
 
 
-    Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile'], function () {
+    Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile', 'namespace' => 'Profile'], function () {
         Route::get('/', 'ProfileController@index')->name('profile.index');
         Route::get('/history', 'ProfileController@history')->name('profile.history');
+        Route::put('/address', 'ProfileController@address')->name('profile.address');
     });
 });

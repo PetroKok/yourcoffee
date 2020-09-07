@@ -44,8 +44,8 @@ class CreateIngredientL10nTable extends Migration
     public function down()
     {
         Schema::table('ingredient_l10n', function (Blueprint $table) {
-            $table->dropIndex(['locale']);
-            $table->dropIndex(['ingredients_id']);
+            $table->dropForeign(['locale']);
+            $table->dropForeign(['ingredients_id']);
         });
         Schema::dropIfExists('ingredient_l10n');
     }

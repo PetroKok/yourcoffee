@@ -43,8 +43,8 @@ class CreateCategoryL10nTable extends Migration
     public function down()
     {
         Schema::table('category_l10n', function (Blueprint $table) {
-            $table->dropIndex(['locale']);
-            $table->dropIndex(['category_id']);
+            $table->dropForeign(['locale']);
+            $table->dropForeign(['category_id']);
         });
         Schema::dropIfExists('category_l10n');
     }
