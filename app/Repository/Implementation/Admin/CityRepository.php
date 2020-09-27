@@ -21,6 +21,6 @@ class CityRepository extends RepositoryAbstract implements CityRepositoryInterfa
 
     public function indexPluck(array $except): \Illuminate\Support\Collection
     {
-        return $this->model->all()->except($except)->pluck('name', 'id');
+        return $this->model->with('translations')->get()->except($except)->pluck('name', 'id');
     }
 }

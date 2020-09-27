@@ -24,12 +24,6 @@ class CreateOrderLinesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('product_id')
-                ->on('products')
-                ->references('id')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
             $table->foreign('order_id')
                 ->on('orders')
                 ->references('id')
@@ -46,7 +40,6 @@ class CreateOrderLinesTable extends Migration
     public function down()
     {
         Schema::table('order_lines', function (Blueprint $table) {
-            $table->dropForeign(['product_id']);
             $table->dropForeign(['order_id']);
         });
         Schema::dropIfExists('order_lines');

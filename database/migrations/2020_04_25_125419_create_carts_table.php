@@ -26,12 +26,6 @@ class CreateCartsTable extends Migration
                 ->references('id')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-
-            $table->foreign('product_id')
-                ->on('products')
-                ->references('id')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 
@@ -44,7 +38,6 @@ class CreateCartsTable extends Migration
     {
         Schema::table('carts', function (Blueprint $table) {
             $table->dropForeign(['customer_id']);
-            $table->dropForeign(['product_id']);
         });
         Schema::dropIfExists('carts');
     }

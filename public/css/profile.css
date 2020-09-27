@@ -4,6 +4,7 @@
 
 
 .add-address {
+    border: none;
     font-size: 12pt !important;
     border-radius: 50%;
     padding: 0 7px;

@@ -4,11 +4,19 @@ namespace App\Repository\Implementation\App\Cart;
 
 use App\DTO\CartDto;
 use App\Models\Product;
+use App\Poster\Decorator\Product\IProductDecorator;
+use App\Poster\Menu\IRProduct;
 use App\Repository\Interfaces\ICacheCart;
 use Carbon\Carbon;
 
 class CacheCartRepository implements ICacheCart
 {
+    public IProductDecorator $product;
+
+    public function __construct(IProductDecorator $product)
+    {
+        $this->product = $product;
+    }
 
     public function index(CartDto $cartDto)
     {
@@ -41,28 +49,33 @@ class CacheCartRepository implements ICacheCart
 
         $carts = $ses->get(config('session.keys.cart'));
 
-        $product = Product::find($cartDto->getProductId());
+        $product = $this->product->find($cartDto->getProductId());
+
+        dd($product);
 
         if ($cartDto->getQty() === 0) {
-            unset($carts[$product->id]);
+            unset($carts[$cartDto->getProductId()]);
         } else {
             if ($cartDto->isReplace()) {
-                $carts[$product->id] = [
-                    'product_id' => $product->id,
-                    'price' => $product->price,
+
+                /** TODO: SET price based on the "spot" location **/
+
+                $carts[$cartDto->getProductId()] = [
+                    'product_id' => $cartDto->getProductId(),
+                    'price' => collect($product['price'])->get('1'),
                     'qty' => $cartDto->getQty(),
                     'created_at' => Carbon::now()->format('y-m-d H:m:i'),
                 ];
             } else {
-                if (isset($carts[$product->id]) && $carts[$product->id]['qty'] !== null) {
-                    $carts[$product->id]['qty'] += $cartDto->getQty();
-                    if ($carts[$product->id]['qty'] === 0) {
-                        unset($carts[$product->id]);
+                if (isset($carts[$cartDto->getProductId()]) && $carts[$cartDto->getProductId()]['qty'] !== null) {
+                    $carts[$cartDto->getProductId()]['qty'] += $cartDto->getQty();
+                    if ($carts[$cartDto->getProductId()]['qty'] === 0) {
+                        unset($carts[$cartDto->getProductId()]);
                     }
                 } else {
-                    $carts[$product->id] = [
-                        'product_id' => $product->id,
-                        'price' => $product->price,
+                    $carts[$cartDto->getProductId()] = [
+                        'product_id' => $cartDto->getProductId(),
+                        'price' => collect($product['price'])->get('1'),
                         'qty' => $cartDto->getQty(),
                         'created_at' => Carbon::now()->format('y-m-d H:m:i'),
                     ];
@@ -74,8 +87,8 @@ class CacheCartRepository implements ICacheCart
 
         $ses->save();
 
-        if (isset($carts[$product->id])) {
-            return $this->mapCache([$carts[$product->id]])[0];
+        if (isset($carts[$cartDto->getProductId()])) {
+            return $this->mapCache([$carts[$cartDto->getProductId()]])[0];
         }
 
         return [];
@@ -89,10 +102,10 @@ class CacheCartRepository implements ICacheCart
     public function mapCache(array $carts)
     {
         $product_ids = array_column($carts, 'product_id');
+        dd($product_ids);
         $products = Product::find($product_ids);
 
         $products = $products->toArray();
-
         foreach ($carts as $key => $cart) {
             $pos = array_search($cart['product_id'], array_column($products, 'id'));
             if ($pos !== false) {

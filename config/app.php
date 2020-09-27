@@ -166,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\PosterServiceProvider::class,
         App\Providers\LanguageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,

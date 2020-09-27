@@ -86,6 +86,7 @@
             'data' => $cities->toArray(true),
             'name' => 'city_id',
             'id' => 'city_id',
+            'class' => 'js-example-basic-single cart-select',
             'placeholder' => 'Виберіть місто',
         ])
 

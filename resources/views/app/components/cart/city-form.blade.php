@@ -1,16 +1,16 @@
 <div class="s-example-basic-single form-group cart-element mt-3 mb-3">
     @php
-        $invalid_class = ''
+        $invalid_class = ' '
     @endphp
     @error($name)
         @php
-            $invalid_class = 'invalid-feedback'
+            $invalid_class = 'invalid-feedback '
         @endphp
     @enderror
     {!! Form::select($name, $data, [], [
         'placeholder' => $placeholder,
         'id' => $id,
-        'class' => (isset($class) ? $class : 'js-example-basic-single')." form-control form-control-user cart-select invalid-feedback ". $invalid_class,
+        'class' => (isset($class) ? $class : 'js-example-basic-single')." form-control form-control-user invalid-feedback ". $invalid_class,
     ]); !!}
 </div>
 @error($name)

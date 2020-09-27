@@ -13,7 +13,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3.11",
+        "php": "^7.4",
         "astrotomic/laravel-translatable": "11.4",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
@@ -22,7 +22,9 @@
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^6.0",
-        "squizlabs/php_codesniffer": "^3.5"
+        "predis/predis": "^1.1",
+        "squizlabs/php_codesniffer": "^3.5",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -51,7 +53,7 @@
             "database/seeds",
             "database/factories"
         ],
-        "files" : [
+        "files": [
             "app/Helpers/helpers.php"
         ]
     },

@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c31e2609-6cbc-426b-98d8-ab088c8403de" name="Default Changelist" comment="Added Procfile">
+      <change afterPath="$PROJECT_DIR$/app/Memory/Redis/IRedisStorage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Memory/Redis/RedisStorage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Decorator/Product/IProductDecorator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Decorator/Product/ProductDecorator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Menu/IRCategory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Menu/IRProduct.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Menu/RCategory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Menu/RProduct.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Poster.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Spot/IRSpot.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Poster/Spot/RSpot.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/cache_keys.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/poster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/App/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/App/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/App/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/App/Profile/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/App/Cart/CartCreateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/App/Cart/CartCreateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/InterfaceServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/InterfaceServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Implementation/Admin/CityRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Implementation/Admin/CityRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Implementation/App/Cart/CacheCartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Implementation/App/Cart/CacheCartRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_25_125419_create_carts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_25_125419_create_carts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_06_190549_create_order_lines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_06_190549_create_order_lines_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/front_side/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/front_side/js/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/components/cart/city-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/components/cart/city-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/profile/profile_index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/profile/profile_index.blade.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,61 +46,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="remote_yourburger" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="remote_yourburger" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="remote_yourburger" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="heroku_c9e823f8e76222b: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="yourburger_db@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="yourburger_db@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="yourburger_db@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="yourburger_db: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="yourburger_db@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="yourburger_db: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="categories: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
-    <select />
+    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -169,40 +148,67 @@
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/astrotomic/laravel-translatable" />
+      <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-util-ecc" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature-algorithm-rsa" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature-algorithm-none" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature-algorithm-hmac" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature-algorithm-eddsa" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature-algorithm-ecdsa" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-signature" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-key-mgmt" />
+      <path value="$PROJECT_DIR$/vendor/web-token/jwt-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/spomky-labs/base64url" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/laravel-notification-channels/webpush" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/fgrosse/phpasn1" />
+      <path value="$PROJECT_DIR$/vendor/minishlink/web-push" />
+      <path value="$PROJECT_DIR$/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="ProjectId" id="1RLHDW5hl8lmzEhck3lh1CLA21l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="HOTFIX_customHotfixCommitMessage_text" value="Tagging hotfix %name%" />
     <property name="RELEASE_customTagCommitMessage_text" value="Tagging version %name%" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/app/Poster/Menu" />
+      <recent name="$PROJECT_DIR$/app/Poster/Spot" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Models" />
       <recent name="$PROJECT_DIR$/resources/js" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -210,21 +216,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@f23aa797" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -244,6 +236,12 @@
       <workItem from="1571342508818" duration="574000" />
       <workItem from="1571428290811" duration="415000" />
       <workItem from="1571428850016" duration="356000" />
+      <workItem from="1600372582098" duration="5735000" />
+      <workItem from="1600413232220" duration="637000" />
+      <workItem from="1600721567495" duration="4523000" />
+      <workItem from="1600758589954" duration="48000" />
+      <workItem from="1600868926506" duration="653000" />
+      <workItem from="1601201873252" duration="7704000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor">
       <created>1571429219447</created>
@@ -256,23 +254,76 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactor" />
     <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="324" y="159" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600372644710">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="324" y="159" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/41.27.1639.1023@41.27.1639.1023" timestamp="1600372644710" />
+    <state x="649" y="218" width="412" height="638" key="#com.intellij.ide.util.MemberChooser" timestamp="1601207311004">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="649" y="218" width="412" height="638" key="#com.intellij.ide.util.MemberChooser/41.27.1639.1023@41.27.1639.1023" timestamp="1601207311004" />
+    <state x="675" y="313" width="762" height="449" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600376603201">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="675" y="313" width="762" height="449" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/41.27.1639.1023@41.27.1639.1023" timestamp="1600376603201" />
+    <state x="593" y="295" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601207515625">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="593" y="295" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/41.27.1639.1023@41.27.1639.1023" timestamp="1601207515625" />
+    <state x="425" y="105" width="860" height="864" key="CommitChangelistDialog2" timestamp="1601203921892">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="425" y="105" width="860" height="864" key="CommitChangelistDialog2/41.27.1639.1023@41.27.1639.1023" timestamp="1601203921892" />
+    <state x="643" y="295" width="424" height="484" key="FileChooserDialogImpl" timestamp="1600420421991">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="643" y="295" width="424" height="484" key="FileChooserDialogImpl/41.27.1639.1023@41.27.1639.1023" timestamp="1600420421991" />
+    <state x="639" y="257" width="577" height="561" key="NewPhpClassDialog" timestamp="1601207244107">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="639" y="257" width="577" height="561" key="NewPhpClassDialog/41.27.1639.1023@41.27.1639.1023" timestamp="1601207244107" />
+    <state x="349" y="172" key="SettingsEditor" timestamp="1601208009508">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="349" y="172" key="SettingsEditor/41.27.1639.1023@41.27.1639.1023" timestamp="1601208009508" />
+    <state x="546" y="240" width="754" height="773" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600722677034">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="546" y="240" width="754" height="773" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/41.27.1639.1023@41.27.1639.1023" timestamp="1600722677034" />
+    <state x="551" y="276" width="618" height="522" key="find.popup" timestamp="1600420406504">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="551" y="276" width="618" height="522" key="find.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1600420406504" />
+    <state x="524" y="246" key="run.anything.popup" timestamp="1601205006808">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="524" y="246" key="run.anything.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1601205006808" />
+    <state x="523" y="250" width="672" height="678" key="search.everywhere.popup" timestamp="1601209014626">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="523" y="250" width="672" height="678" key="search.everywhere.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1601209014626" />
+    <state x="585" y="451" width="540" height="172" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1600376443034">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="585" y="451" width="540" height="172" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/41.27.1639.1023@41.27.1639.1023" timestamp="1600376443034" />
   </component>
 </project>
