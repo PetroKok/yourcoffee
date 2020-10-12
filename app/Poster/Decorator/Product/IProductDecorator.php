@@ -4,9 +4,8 @@
 namespace App\Poster\Decorator\Product;
 
 
-interface IProductDecorator
-{
-    public function find($ids);
+use App\Poster\Decorator\IDecorator;
 
-    public function loadProductsInMemory();
+interface IProductDecorator extends IDecorator
+{
 }

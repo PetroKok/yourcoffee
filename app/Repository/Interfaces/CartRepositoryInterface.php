@@ -17,4 +17,6 @@ interface CartRepositoryInterface
     public function delete(CartDto $cartDto);
 
     public function clearCart(CartDto $cartDto);
+
+    public function mapCache(array $carts);
 }

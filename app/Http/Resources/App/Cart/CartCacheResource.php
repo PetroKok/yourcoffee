@@ -26,11 +26,11 @@ class CartCacheResource extends JsonResource
             'qty' => $item['qty'],
             'amount' => $item['amount'],
             'product' => [
-                'id' => $item['product']['id'],
-                'name' => $item['product']['name'],
-                'category_id' => $item['product']['category_id'],
-                'price' => $item['product']['price'],
-                'image' => $item['product']['image'],
+                'id' => $item['product']['product_id'],
+                'name' => $item['product']['product_name'],
+                'category_id' => $item['product']['menu_category_id'],
+                'price' => $item['price'],
+                'image' => $item['product']['photo'],
             ]
         ];
     }

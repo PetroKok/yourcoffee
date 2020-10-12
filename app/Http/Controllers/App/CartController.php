@@ -28,7 +28,7 @@ class CartController extends Controller
         $cart = new CartDto();
         $cart->setUserId(Auth::guard('customer')->user() ? Auth::guard('customer')->id() : null);
 
-        $carts = $this->cart->index($cart)->toArray(true);
+        $carts = $this->cart->index($cart);
 
         $cities = $this->city->indexPluck();
 

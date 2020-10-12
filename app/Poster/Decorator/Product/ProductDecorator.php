@@ -4,42 +4,30 @@
 namespace App\Poster\Decorator\Product;
 
 use App\Memory\Redis\IRedisStorage;
+use App\Poster\Decorator\Decorator;
 use App\Poster\Menu\IRProduct;
 use Illuminate\Database\Eloquent\Collection;
 
-class ProductDecorator implements IProductDecorator
+class ProductDecorator extends Decorator implements IProductDecorator
 {
-    private IRProduct $product;
     private IRedisStorage $storage;
-    private $products = [];
+    public IRProduct $repository;
 
     public function __construct(IRProduct $product, IRedisStorage $storage)
     {
-        $this->product = $product;
+        $this->repository = $product;
         $this->storage = $storage;
     }
 
-    public function all()
+    public function loadEntitiesInMemory()
     {
-        $this->loadProductsInMemory();
-        return $this->products;
-    }
-
-    public function find($ids)
-    {
-        $this->loadProductsInMemory();
-    }
-
-    public function loadProductsInMemory()
-    {
-        $this->products = $this->storage->get(config('cache_keys.products.key'));
-        if (is_null($this->products)) {
-            $this->products = $this->product->all();
-//            foreach ($poster_products as $key => $product) {
-//                $this->products[$product->product_id] = $product;
-//            }
-            $this->products = Collection::make($this->products);
-            unset($poster_products);
+        $this->es = $this->storage->get(config('cache_keys.products.key'));
+        if (is_null($this->es)) {
+            $this->es = $this->repository->all();
+            foreach ($this->es as $e) {
+                $this->es[$e->product_id] = $e;
+            }
+            $this->storage->set(config('cache_keys.products.key'),$this->es, config('cache_keys.products.time'));
         }
     }
 }

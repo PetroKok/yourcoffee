@@ -33,11 +33,11 @@ class CacheCartRepository implements ICacheCart
 
             $full_amount = 0;
             foreach ($qty as $key => $q) {
-                $full_amount += $qty[$key] * $prices[$key];
+                $full_amount += ($qty[$key] * $prices[$key]) / 100;
             }
 
             if ($ses) {
-                return [array_sum(array_column($ses, 'qty')), $full_amount];
+                return [array_sum(array_column($ses, 'qty')), price_format($full_amount)];
             }
         }
         return [0, 0];
@@ -51,18 +51,17 @@ class CacheCartRepository implements ICacheCart
 
         $product = $this->product->find($cartDto->getProductId());
 
-        dd($product);
-
         if ($cartDto->getQty() === 0) {
             unset($carts[$cartDto->getProductId()]);
         } else {
-            if ($cartDto->isReplace()) {
 
-                /** TODO: SET price based on the "spot" location **/
+            /** TODO: SET price based on the "spot" location **/
+            $price = collect($product->get('price'))->get('1');
+            if ($cartDto->isReplace()) {
 
                 $carts[$cartDto->getProductId()] = [
                     'product_id' => $cartDto->getProductId(),
-                    'price' => collect($product['price'])->get('1'),
+                    'price' => $price,
                     'qty' => $cartDto->getQty(),
                     'created_at' => Carbon::now()->format('y-m-d H:m:i'),
                 ];
@@ -75,7 +74,7 @@ class CacheCartRepository implements ICacheCart
                 } else {
                     $carts[$cartDto->getProductId()] = [
                         'product_id' => $cartDto->getProductId(),
-                        'price' => collect($product['price'])->get('1'),
+                        'price' => $price,
                         'qty' => $cartDto->getQty(),
                         'created_at' => Carbon::now()->format('y-m-d H:m:i'),
                     ];
@@ -101,17 +100,12 @@ class CacheCartRepository implements ICacheCart
 
     public function mapCache(array $carts)
     {
-        $product_ids = array_column($carts, 'product_id');
-        dd($product_ids);
-        $products = Product::find($product_ids);
-
-        $products = $products->toArray();
         foreach ($carts as $key => $cart) {
-            $pos = array_search($cart['product_id'], array_column($products, 'id'));
-            if ($pos !== false) {
-                $carts[$key]['price'] = price_format($carts[$key]['price']);
-                $carts[$key]['amount'] = price_format((int)$carts[$key]['qty'] * (float)$carts[$key]['price']);
-                $carts[$key]['product'] = $products[$pos];
+            $product = $this->product->find($cart['product_id']);
+            if ($product !== false) {
+                $carts[$key]['price'] = (float)$carts[$key]['price'] / 100;
+                $carts[$key]['amount'] = (int)$carts[$key]['qty'] * (float)$carts[$key]['price'];
+                $carts[$key]['product'] = $product;
             }
         }
         return $carts;

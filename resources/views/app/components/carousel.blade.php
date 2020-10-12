@@ -4,13 +4,5 @@
             <img src="{{asset('images/site-images/static/carousel.jpg', config('app.https'))}}" class="d-block w-100 carousel-image"
                  alt="...">
         </div>
-        <div class="carousel-item">
-            <img src="{{asset('images/site-images/static/carousel.jpg', config('app.https'))}}" class="d-block w-100 carousel-image"
-                 alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="{{asset('images/site-images/static/carousel.jpg', config('app.https'))}}" class="d-block w-100 carousel-image"
-                 alt="...">
-        </div>
     </div>
 </div>

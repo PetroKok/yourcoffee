@@ -454,13 +454,12 @@ input[type=checkbox]:checked + label {
 .notification-error {
     display: block;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     right: 1%;
     text-align: end;
     background-color: yellow;
     width: auto;
-    padding: 10px 10px;
-    border: 1px solid;
+    padding: 10px 15px;
     border-radius: 3px;
     margin-top: .25rem;
     font-size: 80%;

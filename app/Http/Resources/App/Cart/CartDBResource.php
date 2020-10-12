@@ -15,17 +15,23 @@ class CartDBResource extends JsonResource
      */
     public function toArray($request)
     {
+        $item = parent::toArray($request);
+
+        if (!count($item)) {
+            return [];
+        }
+
         return [
-            'product_id' => $this->product_id,
-            'price' => $this->price,
-            'qty' => $this->qty,
-            'amount' => $this->amount,
+            'product_id' => $item['product_id'],
+            'price' => $item['price'],
+            'qty' => $item['qty'],
+            'amount' => $item['amount'],
             'product' => [
-                'id' => $this->product->id,
-                'name' => $this->product->name,
-                'category_id' => $this->product->category_id,
-                'price' => $this->product->price,
-                'image' => $this->product->image,
+                'id' => $item['product']['product_id'],
+                'name' => $item['product']['product_name'],
+                'category_id' => $item['product']['menu_category_id'],
+                'price' => $item['price'],
+                'image' => $item['product']['photo'],
             ]
         ];
     }

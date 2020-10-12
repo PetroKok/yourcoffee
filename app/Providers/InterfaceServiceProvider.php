@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Memory\Redis\IRedisStorage;
 use App\Memory\Redis\RedisStorage;
+use App\Poster\Decorator\Category\CategoryDecorator;
+use App\Poster\Decorator\Category\ICategoryDecorator;
 use App\Poster\Decorator\Product\IProductDecorator;
 use App\Poster\Decorator\Product\ProductDecorator;
 use App\Repository\Implementation\Admin\CityRepository;
@@ -85,6 +87,8 @@ class InterfaceServiceProvider extends ServiceProvider
         CityGetServiceInterface::class => CityGetService::class,
 
         IProductDecorator::class => ProductDecorator::class,
+
+        ICategoryDecorator::class => CategoryDecorator::class,
 
         /** CACHE STORAGE **/
         IRedisStorage::class => RedisStorage::class

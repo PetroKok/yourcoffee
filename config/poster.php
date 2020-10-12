@@ -33,6 +33,12 @@ return [
                     'url' => 'spots.getTableHallTables',
                     'method' => 'GET',
                 ],
+            ],
+            'incomingOrders' => [
+                'createIncomingOrder' => [
+                    'url' => 'incomingOrders.createIncomingOrder',
+                    'method' => 'GET',
+                ],
             ]
         ]
     ],

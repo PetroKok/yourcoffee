@@ -5,22 +5,28 @@ namespace App\Repository\Implementation\App\Cart;
 use App\DTO\CartDto;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Poster\Decorator\Product\IProductDecorator;
+use App\Repository\Interfaces\CartRepositoryInterface;
+use App\Repository\Interfaces\ICacheCart;
 use App\Repository\Interfaces\IDBCart;
 
 class DBCartRepository implements IDBCart
 {
-    public $model;
-    public $product;
+    public Cart $model;
+    public IProductDecorator $product;
+    public CacheCartRepository $cacheCart;
 
-    public function __construct(Cart $model, Product $product)
+    public function __construct(Cart $model, IProductDecorator $product, CacheCartRepository $cacheCart)
     {
         $this->model = $model;
+        $this->cacheCart = $cacheCart;
         $this->product = $product;
     }
 
     public function index(CartDto $cartDto)
     {
-        return $this->model->where('customer_id', $cartDto->getUserId())->with('product.translation')->get();
+        $carts = $this->model->where('customer_id', $cartDto->getUserId())->get()->toArray();
+        return $this->cacheCart->mapCache($carts);
     }
 
     public function count(CartDto $cartDto)
@@ -46,9 +52,12 @@ class DBCartRepository implements IDBCart
         $product = $this->product->find($cartDto->getProductId());
 
         if ($product) {
+            /** TODO: SET price based on the "spot" location **/
+            $price = collect($product->get('price'))->get('1');
+
             $model_new = $this->model->updateOrCreate(
                 ['customer_id' => $cartDto->getUserId(), 'product_id' => $cartDto->getProductId()],
-                ['price' => $product->price]
+                ['price' => $price]
             )->where(['customer_id' => $cartDto->getUserId(), 'product_id' => $cartDto->getProductId()])->first();
 
             if ($cartDto->getQty() === 0) {
@@ -63,11 +72,10 @@ class DBCartRepository implements IDBCart
                     }
                 }
             }
+
+            return $this->index($cartDto);
         }
-
-        $model_new->load('product.translation');
-
-        return $model_new;
+        return null;
     }
 
     public function delete(CartDto $cartDto)
@@ -92,5 +100,10 @@ class DBCartRepository implements IDBCart
     public function clearCart(CartDto $cartDto)
     {
         return $this->model->where('customer_id', $cartDto->getUserId())->delete();
+    }
+
+    public function mapCache(array $carts)
+    {
+        // TODO: Implement mapCache() method.
     }
 }

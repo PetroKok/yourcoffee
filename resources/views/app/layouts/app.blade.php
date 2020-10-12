@@ -15,11 +15,10 @@
     <!-- Styles -->
     <style>
         html, body {
-            background-color: black !important;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
-            height: 100vh;
             margin: 0;
+            background-color: #000000!important;
         }
     </style>
 
@@ -29,7 +28,6 @@
     @stack('styles')
 </head>
 <body>
-
 @include('app.bars.menu_bar')
 
 @yield('content')

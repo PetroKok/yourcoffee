@@ -49,7 +49,7 @@ class CartService implements CartServiceInterface
     public function store(CartDto $cartDto)
     {
         if ($cartDto->getUserId()) {
-            return new CartDBResource($this->db->store($cartDto));
+            return CartDBResource::collection($this->db->store($cartDto));
         }
         return new CartCacheResource($this->cache->store($cartDto));
     }
