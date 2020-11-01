@@ -19,7 +19,7 @@ class KitchenRepository extends RepositoryAbstract implements KitchenRepositoryI
 
     public function index(): Collection
     {
-        return $this->model->orderBy('id', 'ASC')->with('city')->get();
+        return $this->model->orderBy('id', 'ASC')->with('city_relation.translation')->get();
     }
 
     public function store(array $attributes): Model

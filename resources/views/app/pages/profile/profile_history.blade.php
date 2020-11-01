@@ -24,7 +24,7 @@
                                 <h5 class="mb-0 row">
                                     <div
                                         class="col-lg-5 col-md-5 col-6 order-title d-flex justify-content-between flex-column flex-lg-row">
-                                        <span>Замовлення #{{$order->id}} </span>
+                                        <span>Замовлення #{{$order->incoming_order_id}} </span>
                                         <span>{{ $order->created_at->format('d M H:i')}}</span>
                                     </div>
                                     <div class="row col-lg-7 col-md-7 col-6 p-0">
@@ -44,28 +44,33 @@
                                 @foreach($order->lines as $line)
                                     <div
                                         class="d-flex justify-content-between align-items-center position-relative order-product-title"
-                                        id="cart-line-{{$line->product->id}}"
+                                        id="cart-line-{{$line->product['product_id']}}"
                                         style="border-bottom: 1px solid #ffffff40;">
                                         <div class="col-2 col-sm-2 pl-0">
-                                            <img src="{{$line->product->image}}" class="order-product-image"
-                                                 alt="{{$line->product->name}}">
+                                            <img
+                                                src="{{$line->product['photo'] ? 'https://joinposter.com'.$line->product['photo']: asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                                class="order-product-image"
+                                                alt="{{$line->product['product_name']}}">
                                         </div>
 
                                         <div class="col-4 cart-product-text pr-0">
-                                            {{$line->product->name}}
+                                            {{$line->product['product_name']}}
                                         </div>
 
                                         <div class="col-5 col-sm-4 p-0">
                                             <div class="d-flex justify-content-around">
                                                 <div class="cart-product-text">
-                                                    <span id="price-{{$line->product->id}}">{{$line->qty}}</span>x
-                                                </div>
-                                                <div class="cart-product-text">
-                                                    <span id="amount-{{$line->product->id}}">{{$line->price}}</span> грн
+                                                    <span
+                                                        id="price-{{$line->product['product_id']}}">{{$line->qty}}</span>x
                                                 </div>
                                                 <div class="cart-product-text">
                                                     <span
-                                                        id="amount-{{$line->product->id}}">{{$line->price * $line->qty}}</span>
+                                                        id="amount-{{$line->product['product_id']}}">{{$line->price}}</span>
+                                                    грн
+                                                </div>
+                                                <div class="cart-product-text">
+                                                    <span
+                                                        id="amount-{{$line->product['product_id']}}">{{$line->price * $line->qty}}</span>
                                                     грн
                                                 </div>
                                             </div>

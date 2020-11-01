@@ -93,6 +93,11 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+$(document).ready(function () {
+  var city = document.getElementById('city_id');
+  var city_id = city.options[city.selectedIndex].value;
+  changeDeliveryAmount(city_id);
+});
 $(document).on('click', '.cart-inc-dec', function (e) {
   var product_id = this.getAttribute('data-product-id');
   var desktop_button = document.getElementById('count-product-' + product_id);
@@ -144,6 +149,9 @@ $(document).on('click', '.cart-inc-dec', function (e) {
       document.getElementById('full-amount').innerHTML = data.full_amount;
     });
   }
+});
+$(document).on('load', function (selected) {
+  changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
 $(document).on('change', '#city_id', function (selected) {
   changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);

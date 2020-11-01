@@ -52,7 +52,7 @@ class CityController extends Controller
         return view('admin.city.create', compact('city'));
     }
 
-    public function update(KitchenUpdateRequest $request, City $city)
+    public function update(CityCreateRequest $request, City $city)
     {
         $data = $request->validated();
 

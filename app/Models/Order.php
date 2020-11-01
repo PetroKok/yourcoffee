@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @method create(array $data)
@@ -12,6 +14,7 @@ class Order extends Model
     protected $fillable = [
         'customer_id',
         'city_id',
+        'city',
         'door_code',
         'address',
         'entrance',
@@ -23,10 +26,10 @@ class Order extends Model
         'apartment',
         'updated_at',
         'type',
-        'city',
         'sandbox',
         'phone',
-        'name'
+        'name',
+        'incoming_order_id',
     ];
 
     protected $appends = ['amount'];
@@ -63,16 +66,31 @@ class Order extends Model
     {
         $amount = 0;
         foreach ($this->lines as $line) {
-            $amount += $line->qty * $line->price;
+            $amount += (int)$line->qty * ((float)$line->price / 100);
         }
         return $amount;
     }
 
+    public function setIncomingOrderId(int $incoming_order_id)
+    {
+        $this->incoming_order_id = $incoming_order_id;
+        $this->save();
+    }
+
     /** RELATIONS **/
 
-    public function lines()
+    public function lines(): HasMany
     {
         return $this->hasMany(OrderLine::class, 'order_id', 'id');
     }
 
+    public function city_relation(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
+    }
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

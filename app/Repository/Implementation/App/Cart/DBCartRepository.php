@@ -39,9 +39,8 @@ class DBCartRepository implements IDBCart
 
             $full_amount = 0;
             foreach ($qty as $key => $q) {
-                $full_amount += $qty[$key] * $prices[$key];
+                $full_amount += $qty[$key] * ($prices[$key] / 100);
             }
-
             return [array_sum(array_column($cart, 'qty')), $full_amount];
         }
         return [0, 0];

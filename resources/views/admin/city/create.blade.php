@@ -27,6 +27,16 @@
             </div>
         @endif
 
+        <div class="form-group row">
+            <div class="col mb-3 mb-sm-0">
+                {!! Form::label('name', trans('admin.city.spot_id')); !!}
+                {!! Form::text('spot_id', isset($city) ? $city->spot_id : '',[
+                    'placeholder' => trans('admin.city.spot_id'),
+                    'class' => 'form-control form-control-user'
+                ]); !!}
+            </div>
+        </div>
+
         <ul class="nav nav-tabs">
             @foreach($locales as $locale)
                 <li class="nav-item">

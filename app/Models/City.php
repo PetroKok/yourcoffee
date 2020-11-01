@@ -13,7 +13,7 @@ class City extends Model implements TranslatableContract, FieldsInterface
 
     protected $table = 'cities';
 
-    protected $fillable = [];
+    protected $fillable = ['spot_id'];
 
     protected $translatedAttributes = ['name'];
 

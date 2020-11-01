@@ -34,9 +34,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">{{trans('admin.sidebar.for_products')}}</h6>
-                <a class="collapse-item" href="{{route('admin::products.index')}}">{{trans('admin.menu.products')}}</a>
+                <a class="collapse-item" href="#{{route('admin::products.index')}}">{{trans('admin.menu.products')}}</a>
                 <a class="collapse-item"
-                   href="{{route('admin::categories.index')}}">{{trans('admin.menu.categories')}}</a>
+                   href="#{{route('admin::categories.index')}}">{{trans('admin.menu.categories')}}</a>
                 <a class="collapse-item" href="{{route('admin::label.index')}}">{{trans('admin.menu.labels')}}</a>
                 <a class="collapse-item"
                    href="{{route('admin::ingredients.index')}}">{{trans('admin.menu.ingredients')}}</a>

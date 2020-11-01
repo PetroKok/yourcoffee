@@ -37,7 +37,7 @@ return [
             'incomingOrders' => [
                 'createIncomingOrder' => [
                     'url' => 'incomingOrders.createIncomingOrder',
-                    'method' => 'GET',
+                    'method' => 'POST',
                 ],
             ]
         ]
@@ -55,6 +55,10 @@ return [
         [
             'i' => \App\Poster\Menu\IRProduct::class, // interface => i
             'c' => \App\Poster\Menu\RProduct::class, // class => c
+        ],
+        [
+            'i' => \App\Poster\IncomingOrder\IIncOrder::class, // interface => i
+            'c' => \App\Poster\IncomingOrder\IncOrder::class, // class => c
         ],
     ]
 

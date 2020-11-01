@@ -7,16 +7,19 @@ use App\Http\Resources\App\Profile\Order\OrderHistoryResource;
 use App\Models\Address;
 use App\Models\City;
 use App\Service\Interfaces\CityServiceInterface;
+use App\Service\Interfaces\OrderServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public $city;
+    public CityServiceInterface $city;
+    public OrderServiceInterface $orderService;
 
-    public function __construct(CityServiceInterface $city)
+    public function __construct(CityServiceInterface $city, OrderServiceInterface $orderService)
     {
         $this->city = $city;
+        $this->orderService = $orderService;
     }
 
     public function index(Request $request)
@@ -31,11 +34,11 @@ class ProfileController extends Controller
         $orders = Auth::guard('customer')
             ->user()
             ->orders()
-            ->with('lines.product')
             ->orderBy('orders.updated_at', 'desc')
-            ->get();
+            ->pluck('id');
 
-        $orders = OrderHistoryResource::collection($orders);
+        $orders = $this->orderService->getOrders($orders->toArray());
+
         return view('app::pages.profile.profile_history', compact('orders'));
     }
 

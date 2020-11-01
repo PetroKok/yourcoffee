@@ -17,7 +17,7 @@ class OrderStoreRequest extends FormRequest
 
             'address' => 'nullable|string',
 
-            'pay_type' => 'nullable|string',
+            'pay_type' => 'required|in:'.Order::PAY_TYPE['CARD'].','.Order::PAY_TYPE['CASH'],
 
             'apartment' => 'nullable|string',
             'entrance' => 'nullable|string',
@@ -33,16 +33,11 @@ class OrderStoreRequest extends FormRequest
             $rules['city_id'] = 'required|exists:cities,id';
         }
 
-        if (!in_array(mb_strtoupper($this->pay_type), Order::PAY_TYPE) && !empty($this->pay_type)) {
-            $rules['pay_type'] = 'required|numeric';
-        }
-
         if (in_array(mb_strtoupper($this->order), Order::ORDER_TYPE)) {
             $order_type = Order::ORDER_TYPE[mb_strtoupper($this->order)];
             switch ($order_type) {
                 case Order::ORDER_TYPE['DELIVERY']:
                     $rules['address'] = 'required|string';
-                    $rules['pay_type'] = 'required|numeric';
                     break;
             }
         } else {

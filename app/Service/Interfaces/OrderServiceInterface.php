@@ -2,10 +2,14 @@
 
 namespace App\Service\Interfaces;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 interface OrderServiceInterface
 {
-    public function makeOrder(array $data): Model;
+    public function makeOrder(array $data): Order;
+
+    public function getOrder(int $id): Order;
+
+    public function getOrders(array $ids): Collection;
 }

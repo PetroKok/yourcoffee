@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\App;
 
+use App\Events\OrderShipped;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\App\Order\OrderStoreRequest;
 use App\Models\Order;
@@ -16,7 +17,8 @@ class OrderController extends Controller
     public function __construct(
         OrderServiceInterface $orderService,
         CityGetServiceInterface $cityGetService
-    ) {
+    )
+    {
         $this->cityGetService = $cityGetService;
         $this->orderService = $orderService;
     }
@@ -24,14 +26,15 @@ class OrderController extends Controller
     public function makeOrder(OrderStoreRequest $request)
     {
         $order = $this->orderService->makeOrder($request->validated());
-        [$data, $add] = $this->cityGetService->show($order->city_id);
+
+        event(new OrderShipped($order));
 
         return redirect()->route('success_order', $order->id);
     }
 
     public function getSuccess($order)
     {
-        $order = Order::with('lines.product.translation')->findOrFail($order);
+        $order = $this->orderService->getOrder($order);
 
         [$city,] = $this->cityGetService->show($order->city_id);
 

@@ -26,6 +26,7 @@ class CityCreateRequest extends FormRequest
         $locales = config('translatable.locales');
 
         $rules = [];
+        $rules['spot_id'] = 'nullable|integer';
 
         foreach ($locales as $locale) {
             $rules[$locale . '.name'] = 'required|string';

@@ -1,3 +1,10 @@
+$( document ).ready(function() {
+    const city = document.getElementById('city_id');
+    const city_id = city.options[city.selectedIndex].value;
+    changeDeliveryAmount(city_id);
+});
+
+
 $(document).on('click', '.cart-inc-dec', function (e) {
     const product_id = this.getAttribute('data-product-id')
 
@@ -49,6 +56,9 @@ $(document).on('click', '.cart-inc-dec', function (e) {
             document.getElementById('full-amount').innerHTML = data.full_amount;
         });
     }
+});
+$(document).on('load', function (selected) {
+    changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
 
 $(document).on('change', '#city_id', function (selected) {

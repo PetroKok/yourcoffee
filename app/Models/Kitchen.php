@@ -19,9 +19,9 @@ class Kitchen extends Model implements FieldsInterface
     const CLOSED = 0;
     const OPENED = 1;
 
-    public function city()
+    public function city_relation()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 
     public function cities()
@@ -60,7 +60,7 @@ class Kitchen extends Model implements FieldsInterface
             ],
             [
                 "title" => trans('admin.kitchen.city'),
-                "field" => 'city.name',
+                "field" => 'city_relation.name',
             ]
         ];
     }

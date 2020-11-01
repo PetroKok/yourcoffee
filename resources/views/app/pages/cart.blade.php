@@ -10,7 +10,7 @@
         <h2 class="mt-5 mb-3 text-center text-white">Ваша корзина пуста</h2>
         <div class="d-flex justify-content-center mt-5">
             <img src="{{asset('images/site-images/static/cart_empty.png', config('app.https'))}}" width="190" alt="">
-       cart </div>
+        </div>
         <h3 class="mt-5 mb-3 text-center text-white">
             <a href="{{route('home')}}" class="btn btn-yellow">Перейти на головну сторінку</a>
         </h3>
@@ -147,7 +147,7 @@
             @enderror
 
             @include('app.components.cart.city-form', [
-                'data' => [1=> 'Картою', 2 => 'Накладним платежем'],
+                'data' => ['CASH' => 'Накладним платежем', 'CARD' => 'Картою'],
                 'name' => 'pay_type',
                 'id' => 'pay_type',
                 'placeholder' => 'Виберіть спосіб оплати',

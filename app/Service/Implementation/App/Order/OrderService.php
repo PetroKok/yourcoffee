@@ -5,9 +5,11 @@ namespace App\Service\Implementation\App\Order;
 use App\DTO\CartDto;
 use App\DTO\User\UserDTO;
 use App\Models\Order;
+use App\Poster\Decorator\Product\IProductDecorator;
 use App\Service\Interfaces\CartServiceInterface;
 use App\Service\Interfaces\OrderServiceInterface;
 use App\Service\Interfaces\UserServiceInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,16 +20,23 @@ class OrderService implements OrderServiceInterface
     public $order;
     public $userService;
     public $cartService;
+    public $productDecorator;
 
-    public function __construct(Order $order, UserServiceInterface $userService, CartServiceInterface $cartService)
+    public function __construct(
+        Order $order,
+        UserServiceInterface $userService,
+        CartServiceInterface $cartService,
+        IProductDecorator $productDecorator
+    )
     {
         $this->order = $order;
         $this->userService = $userService;
         $this->cartService = $cartService;
+        $this->productDecorator = $productDecorator;
     }
 
 
-    public function makeOrder(array $data): Model
+    public function makeOrder(array $data): Order
     {
         $userDTO = new UserDTO();
         $userDTO->setName($data['name']);
@@ -70,6 +79,30 @@ class OrderService implements OrderServiceInterface
             return $order;
         }
         abort(404);
+    }
+
+    public function getOrder(int $ids): Order
+    {
+        $order = $this->order->with('lines')->findOrFail($ids);
+        foreach ($order->lines as $key => $line) {
+            $p_id = $order->lines[$key]['product_id'];
+            $order->lines[$key]['product'] = $this->productDecorator->find($p_id);
+        }
+        return $order;
+    }
+
+    public function getOrders(array $ids): Collection
+    {
+        $orders = [];
+        foreach ($ids as $id) {
+            $order = $this->order->with('lines')->findOrFail($id);
+            foreach ($order->lines as $key => $line) {
+                $p_id = $order->lines[$key]['product_id'];
+                $order->lines[$key]['product'] = $this->productDecorator->find($p_id);
+            }
+            $orders[] = $order;
+        }
+        return Collection::make($orders);
     }
 
     private function storeOrderLines(Order $order, $items)
