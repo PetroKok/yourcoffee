@@ -3,6 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\OrderShipped;
+use App\Models\City;
+use App\Models\Kitchen;
 use App\Models\Order;
 use App\Poster\IncomingOrder\IIncOrder;
 use App\Service\Interfaces\DeliveryServiceInterface;
@@ -41,20 +43,24 @@ class SendShipmentToPoster
         if ($order->city_id) {
             $kitchen = $this->service->index($order->city_relation);
             $data['spot_id'] = $kitchen->spot_id;
-        }else{
-            dd('THERE IS NO CITY');
+            $city = $kitchen->city_relation->name;
+        } else {
+            $kitchen = Kitchen::with('city_relation')->first();
+            $city = $order->city;
         }
+
+        $data['spot_id'] = $kitchen->spot_id;
 
         $data = [
             'first_name' => $order->customer->name,
             'last_name' => $order->customer->surname,
             'email' => !empty($order->customer->email) ? $order->customer->email : '',
-            'comment' => 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . '. Коментар: Тут користувач може написати "без цибулі"!',
+            'comment' => 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . ". Коментар: {$order->comment}",
             'phone' => $order->customer->phone,
         ];
 
         if ($order->type === Order::ORDER_TYPE['DELIVERY']) {
-            $data['address'] = $order->address;
+            $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address;
         }
 
         foreach ($order->lines as $key => $line) {
@@ -63,11 +69,8 @@ class SendShipmentToPoster
                 'count' => $line['qty'],
             ];
         }
-
-        dd('Check send');
-
-//        $response = $this->incoming_order->store($data);
-
-//        $order->setIncomingOrderId($response->get('incoming_order_id'));
+        $response = $this->incoming_order->store($data);
+        $order->setIncomingOrderId($response->get('incoming_order_id'));
+//        $order->setIncomingOrderId(rand(1, 100));
     }
 }

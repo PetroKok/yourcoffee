@@ -15,8 +15,8 @@
         </div>
 
         <div class="customer-information mt-3 text-black ml-3 order-title">
-            <div class="customer-name"><a href="{{route('profile.index')}}">Адреси</a></div>
-            <div class="customer-name mt-2"><a href="{{route('profile.history')}}">Мої замовлення</a></div>
+{{--            <div class="customer-name"><a href="{{route('profile.index')}}">Адреси</a></div>--}}
+{{--            <div class="customer-name mt-2"><a href="{{route('profile.history')}}">Мої замовлення</a></div>--}}
         </div>
     </div>
 </div>

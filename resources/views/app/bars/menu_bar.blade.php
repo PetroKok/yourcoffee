@@ -40,7 +40,7 @@
             </ul>
         @else
             <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
-                <a href="{{route('profile.index')}}">
+                <a href="{{route('profile.history')}}">
                     <li class="nav-item text-white">
                         <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">
                     </li>

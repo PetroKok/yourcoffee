@@ -66,7 +66,7 @@ class Order extends Model
     {
         $amount = 0;
         foreach ($this->lines as $line) {
-            $amount += (int)$line->qty * ((float)$line->price / 100);
+            $amount += (int)$line->qty * (float)$line->price;
         }
         return $amount;
     }

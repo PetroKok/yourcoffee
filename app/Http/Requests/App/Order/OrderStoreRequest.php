@@ -17,6 +17,8 @@ class OrderStoreRequest extends FormRequest
 
             'address' => 'nullable|string',
 
+            'comment' => 'nullable|string',
+
             'pay_type' => 'required|in:'.Order::PAY_TYPE['CARD'].','.Order::PAY_TYPE['CASH'],
 
             'apartment' => 'nullable|string',

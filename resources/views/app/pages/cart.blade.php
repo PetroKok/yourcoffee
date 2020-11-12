@@ -145,14 +145,19 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-
+            {!! Form::text('comment', null, [
+                            'placeholder' => trans('app.cart.comment'),
+                            'class' => 'text-white mb-3'
+                        ]); !!}
             @include('app.components.cart.city-form', [
-                'data' => ['CASH' => 'Накладним платежем', 'CARD' => 'Картою'],
+                'data' => ['CASH' => trans('app.payment.cash'), 'CARD' => trans('app.payment.card')],
                 'name' => 'pay_type',
                 'id' => 'pay_type',
                 'placeholder' => 'Виберіть спосіб оплати',
                 'class' => 'js-select-payment-type cart-select',
             ])
+
+
             {{--            <div class="d-flex mb-3">--}}
             {{--                <input type="checkbox" class="is_delivery_radio" id="notcallme" name="call" value="true"/>--}}
             {{--                <label class="text-white radio-call-me" for="notcallme" id="delivery-label"></label>--}}

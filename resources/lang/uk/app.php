@@ -22,6 +22,7 @@ return [
     'cart' => [
         'address' => 'Адрес',
         'delivery' => 'Доставка',
+        'comment' => 'Коментар',
         'apartment' => 'Квартира',
         'entrance' => 'Під\'їзд',
         'floor' => 'Поверх',
@@ -30,7 +31,6 @@ return [
         'CASH' => 'Готівкою',
         'CARD' => 'Картою',
     ],
-
     'shortcut' => [
         'city' => 'м.',
         'street' => 'вул.',

@@ -18,7 +18,13 @@ class OrderLine extends Model
 
     public function getAmountAttribute()
     {
-        return (int)$this->qty * ((float)$this->price / 100);
+        return (int)$this->qty * (float)$this->price;
+    }
+
+
+    public function getPriceAttribute($price)
+    {
+        return (float)$price / 100;
     }
 
 
