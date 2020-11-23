@@ -21,7 +21,7 @@ class DeliveryService implements DeliveryServiceInterface
             ->join('cities', 'kitchens.city_id', 'cities.id')
             ->join('cities_l10n', 'cities_l10n.city_id', 'cities.id')
             ->where('cities_l10n.locale', '=', App::getLocale())
-            ->where('kitchens.is_open', '<>', Kitchen::CLOSED)
+            ->where('kitchens.is_open', '=', Kitchen::OPENED)
             ->first();
     }
 }
