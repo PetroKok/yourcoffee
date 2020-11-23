@@ -38,7 +38,13 @@ class SendShipmentToPoster
         $order = $event->order;
         $order->load('lines', 'city_relation', 'customer');
 
-        $data = [];
+        $data = [
+            'first_name' => $order->customer->name,
+            'last_name' => $order->customer->surname,
+            'email' => !empty($order->customer->email) ? $order->customer->email : '',
+            'comment' => 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . ". Коментар: {$order->comment}",
+            'phone' => $order->customer->phone,
+        ];
 
         if ($order->city_id) {
             $kitchen = $this->service->index($order->city_relation);
@@ -51,14 +57,6 @@ class SendShipmentToPoster
 
         $data['spot_id'] = $kitchen->spot_id;
 
-        $data = [
-            'first_name' => $order->customer->name,
-            'last_name' => $order->customer->surname,
-            'email' => !empty($order->customer->email) ? $order->customer->email : '',
-            'comment' => 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . ". Коментар: {$order->comment}",
-            'phone' => $order->customer->phone,
-        ];
-
         if ($order->type === Order::ORDER_TYPE['DELIVERY']) {
             $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address;
         }
@@ -69,6 +67,7 @@ class SendShipmentToPoster
                 'count' => $line['qty'],
             ];
         }
+
         $response = $this->incoming_order->store($data);
         $order->setIncomingOrderId($response->get('incoming_order_id'));
 //        $order->setIncomingOrderId(rand(1, 100));
