@@ -43,7 +43,7 @@ class SendShipmentToPoster
         if ($order->city_id) {
             $kitchen = $this->service->index($order->city_relation);
             $data['spot_id'] = $kitchen->spot_id;
-            $city = $kitchen->city_relation->name;
+            $city = $kitchen->city;
         } else {
             $kitchen = Kitchen::with('city_relation')->first();
             $city = $order->city;
