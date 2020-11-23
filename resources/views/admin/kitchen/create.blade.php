@@ -38,6 +38,13 @@
                         ]); !!}
                     </div>
                     <div class="col-6 col-sm-6 col-md-4 mb-3 mb-sm-0">
+                        {!! Form::label('spot_id', trans('admin.kitchen.spot_id')); !!}
+                        {!! Form::text('spot_id', isset($kitchen) ? $kitchen->spot_id : '',[
+                            'placeholder' => trans('admin.kitchen.spot_id'),
+                            'class' => 'form-control form-control-user'
+                        ]); !!}
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-4 mb-3 mb-sm-0">
                         {!! Form::label('address', trans('admin.kitchen.address')); !!}
                         {!! Form::text('address', isset($kitchen) ? $kitchen->address : '',[
                             'placeholder' => trans('admin.kitchen.address'),
