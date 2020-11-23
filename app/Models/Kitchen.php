@@ -13,7 +13,8 @@ class Kitchen extends Model implements FieldsInterface
         'address',
         'phone',
         'email',
-        'city_id'
+        'city_id',
+        'spot_id',
     ];
 
     const CLOSED = 0;
