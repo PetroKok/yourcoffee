@@ -29,6 +29,7 @@ class KitchenCreateRequest extends FormRequest
             'phone' => 'required|numeric',
             'email' => 'required|email',
             'city_id' => 'required|exists:cities,id',
+            'spot_id' => 'required|integer',
             'delivery' => 'nullable|array',
         ];
     }

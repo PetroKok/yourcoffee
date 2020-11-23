@@ -28,6 +28,7 @@ class KitchenUpdateRequest extends FormRequest
             'address' => 'required|string',
             'phone' => 'required|numeric',
             'email' => 'required|email',
+            'spot_id' => 'required|integer',
             'city_id' => 'required|exists:cities,id',
             'delivery' => 'nullable|array',
             'delivery.*.price_delivery' => 'required|numeric',
