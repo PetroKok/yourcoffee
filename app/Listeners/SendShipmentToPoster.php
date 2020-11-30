@@ -44,21 +44,25 @@ class SendShipmentToPoster
             'email' => !empty($order->customer->email) ? $order->customer->email : '',
             'comment' => 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . ". Коментар: {$order->comment}",
             'phone' => $order->customer->phone,
+            'service_mode' => Order::SERVICE_MODE_POSTER[$order->type]
         ];
 
         if ($order->city_id) {
             $kitchen = $this->service->index($order->city_relation);
             $data['spot_id'] = $kitchen->spot_id;
+            $delivery_price = $kitchen->price_delivery;
             $city = $kitchen->city;
         } else {
             $kitchen = Kitchen::with('city_relation')->first();
             $city = $order->city;
+            $delivery_price = 0;
         }
 
         $data['spot_id'] = $kitchen->spot_id;
 
         if ($order->type === Order::ORDER_TYPE['DELIVERY']) {
             $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address;
+            $data['delivery_price'] = $delivery_price;
         }
 
         foreach ($order->lines as $key => $line) {

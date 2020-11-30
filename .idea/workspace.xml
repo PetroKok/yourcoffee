@@ -4,39 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c31e2609-6cbc-426b-98d8-ab088c8403de" name="Default Changelist" comment="Added Procfile">
-      <change afterPath="$PROJECT_DIR$/app/Poster/IncomingOrder/IIncOrder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Poster/IncomingOrder/IncOrder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/app/layouts/footer.blade.php" afterDir="false" />
+    <list default="true" id="c31e2609-6cbc-426b-98d8-ab088c8403de" name="Default Changelist" comment="Delivery price">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/App/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/App/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/App/Profile/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/App/Profile/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/App/Order/OrderStoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/App/Order/OrderStoreRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/City/CityCreateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/City/CityCreateRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/City.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Kitchen.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Kitchen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/SendShipmentToPoster.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/SendShipmentToPoster.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/OrderLine.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/OrderLine.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Implementation/Admin/KitchenRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Implementation/Admin/KitchenRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Implementation/App/Cart/DBCartRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Implementation/App/Cart/DBCartRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Service/Implementation/App/Order/OrderService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/Implementation/App/Order/OrderService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Service/Interfaces/OrderServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Service/Interfaces/OrderServiceInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/poster.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/poster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/front_side/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/front_side/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/front_side/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/front_side/js/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/front/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/front/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/uk/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/uk/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/uk/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/uk/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/city/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/city/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/common/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/common/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/cart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/order_success.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/order_success.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/pages/profile/profile_history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/pages/profile/profile_history.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,6 +155,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="HOTFIX_customHotfixCommitMessage_text" value="Tagging hotfix %name%" />
     <property name="RELEASE_customTagCommitMessage_text" value="Tagging version %name%" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -256,6 +228,11 @@
       <workItem from="1603311949640" duration="4289000" />
       <workItem from="1603352443577" duration="173000" />
       <workItem from="1604247550324" duration="5976000" />
+      <workItem from="1604306263049" duration="17000" />
+      <workItem from="1605208653884" duration="3043000" />
+      <workItem from="1605529291512" duration="15000" />
+      <workItem from="1606158902222" duration="3317000" />
+      <workItem from="1606765191071" duration="6030000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor">
       <created>1571429219447</created>
@@ -264,7 +241,56 @@
       <option name="project" value="LOCAL" />
       <updated>1571429219448</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Spot_id field">
+      <created>1606159247920</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606159247920</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Spoot">
+      <created>1606159614896</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606159614896</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Spot iD">
+      <created>1606159806943</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606159806943</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Procfile">
+      <created>1606160343058</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606160343058</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Procfile">
+      <created>1606160563229</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606160563229</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Procfile">
+      <created>1606160770656</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606160770656</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Migrations">
+      <created>1606160921590</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606160921590</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +310,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
+    <MESSAGE value="Spot_id field" />
+    <MESSAGE value="Spoot" />
+    <MESSAGE value="Spot iD" />
+    <MESSAGE value="Migrations" />
+    <MESSAGE value="Added Procfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Procfile" />
   </component>
   <component name="WindowStateProjectService">
     <state x="324" y="159" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600372644710">
@@ -303,14 +334,18 @@
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
     <state x="593" y="295" width="524" height="484" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/41.27.1639.1023@41.27.1639.1023" timestamp="1604253273624" />
-    <state x="425" y="105" width="860" height="864" key="CommitChangelistDialog2" timestamp="1601203921892">
+    <state x="90" y="96" width="1525" height="869" key="CommitChangelistDialog2" timestamp="1606770896326">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
-    <state x="425" y="105" width="860" height="864" key="CommitChangelistDialog2/41.27.1639.1023@41.27.1639.1023" timestamp="1601203921892" />
+    <state x="90" y="96" width="1525" height="869" key="CommitChangelistDialog2/41.27.1639.1023@41.27.1639.1023" timestamp="1606770896326" />
     <state x="643" y="295" width="424" height="484" key="FileChooserDialogImpl" timestamp="1600420421991">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
     <state x="643" y="295" width="424" height="484" key="FileChooserDialogImpl/41.27.1639.1023@41.27.1639.1023" timestamp="1600420421991" />
+    <state width="225" height="518" key="Git.Branch.Popup" timestamp="1606159269184">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state width="225" height="518" key="Git.Branch.Popup/41.27.1639.1023@41.27.1639.1023" timestamp="1606159269184" />
     <state x="639" y="257" width="577" height="561" key="NewPhpClassDialog" timestamp="1601582387430">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
@@ -319,6 +354,10 @@
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
     <state x="349" y="172" key="SettingsEditor/41.27.1639.1023@41.27.1639.1023" timestamp="1601208009508" />
+    <state x="455" y="259" width="800" height="556" key="Vcs.Push.Dialog.v2" timestamp="1606160922641">
+      <screen x="41" y="27" width="1639" height="1023" />
+    </state>
+    <state x="455" y="259" width="800" height="556" key="Vcs.Push.Dialog.v2/41.27.1639.1023@41.27.1639.1023" timestamp="1606160922641" />
     <state x="385" y="208" width="679" height="588" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603315099110">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
@@ -327,18 +366,18 @@
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
     <state x="546" y="240" width="754" height="773" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/41.27.1639.1023@41.27.1639.1023" timestamp="1603227840540" />
-    <state x="551" y="276" width="618" height="522" key="find.popup" timestamp="1603314760962">
+    <state x="551" y="276" width="618" height="522" key="find.popup" timestamp="1605209798026">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
-    <state x="551" y="276" width="618" height="522" key="find.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1603314760962" />
-    <state x="524" y="246" width="672" height="677" key="run.anything.popup" timestamp="1603313422799">
+    <state x="551" y="276" width="618" height="522" key="find.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1605209798026" />
+    <state x="524" y="246" width="672" height="677" key="run.anything.popup" timestamp="1605209278221">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
-    <state x="524" y="246" width="672" height="677" key="run.anything.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1603313422799" />
-    <state x="564" y="281" width="672" height="678" key="search.everywhere.popup" timestamp="1604253131192">
+    <state x="524" y="246" width="672" height="677" key="run.anything.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1605209278221" />
+    <state x="564" y="281" width="672" height="678" key="search.everywhere.popup" timestamp="1606770607969">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>
-    <state x="564" y="281" width="672" height="678" key="search.everywhere.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1604253131192" />
+    <state x="564" y="281" width="672" height="678" key="search.everywhere.popup/41.27.1639.1023@41.27.1639.1023" timestamp="1606770607969" />
     <state x="585" y="451" width="540" height="172" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1604251697830">
       <screen x="41" y="27" width="1639" height="1023" />
     </state>

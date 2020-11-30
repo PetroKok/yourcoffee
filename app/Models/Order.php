@@ -35,8 +35,14 @@ class Order extends Model
     protected $appends = ['amount'];
 
     const ORDER_TYPE = [
-        'DELIVERY' => 'DELIVERY',  // доставка
         'SELF-PICKUP' => 'SELF-PICKUP', // самовивіз
+        'DELIVERY' => 'DELIVERY',  // доставка
+    ];
+
+    const SERVICE_MODE_POSTER = [
+        '????' => '1', // в закладі
+        'SELF-PICKUP' => '2', // самовивіз
+        'DELIVERY' => '3',  // доставка
     ];
 
     const PAY_TYPE = [
