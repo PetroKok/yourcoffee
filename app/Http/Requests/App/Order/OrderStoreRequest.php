@@ -19,8 +19,6 @@ class OrderStoreRequest extends FormRequest
 
             'comment' => 'nullable|string',
 
-            'pay_type' => 'required|in:'.Order::PAY_TYPE['CARD'].','.Order::PAY_TYPE['CASH'],
-
             'apartment' => 'nullable|string',
             'entrance' => 'nullable|string',
             'floor' => 'nullable|numeric',
@@ -40,6 +38,7 @@ class OrderStoreRequest extends FormRequest
             switch ($order_type) {
                 case Order::ORDER_TYPE['DELIVERY']:
                     $rules['address'] = 'required|string';
+                    $rules['pay_type'] = 'required|in:'.Order::PAY_TYPE['CARD'].','.Order::PAY_TYPE['CASH'];
                     break;
             }
         } else {

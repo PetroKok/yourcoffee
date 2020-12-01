@@ -28,9 +28,8 @@
                                         <span
                                             class="card-body brand-color price">{{ ((array)$product->price)[1]/100 }}грн</span>
                                         <img
-                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"
-                                            class="card-img-top swiper-lazy"
-                                            data-src="{{$product->photo_origin ? 'https://joinposter.com'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"                                            class="card-img-top swiper-lazy"
+                                            data-src="{{$product->photo ? 'https://joinposter.com'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
                                             height="350"
                                             alt="Card image cap">
                                         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
