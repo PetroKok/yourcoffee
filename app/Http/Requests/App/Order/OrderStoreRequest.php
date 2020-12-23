@@ -10,7 +10,7 @@ class OrderStoreRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'phone' => 'required|numeric',
+            'phone' => 'required|phone:UA',
             'name' => 'required|string',
 
             'city_id' => 'required|string',

@@ -112,10 +112,12 @@
         </div>
 
         <div class="cart-element mt-4">
-            {!! Form::text('phone', Auth::guard('customer')->check() ? Auth::guard('customer')->user()->phone : null, [
-                'placeholder' => trans('app.fields.phone'),
-                'class' => 'text-white mb-3'
+            {!! Form::text('phone', Auth::guard('customer')->check() ? Auth::guard('customer')->user()->phone : (old('order') ? old('order') : null), [
+                'id' => 'phone',
+                'placeholder' => '+38 (0__) ___-__-__',
+                'class' => 'text-white mb-3 phone-mask'
             ]); !!}
+
             @error('phone')
             <span class="cart-element invalid-feedback" role="alert" style="display: block">
                     <strong>{{ $message }}</strong>
@@ -206,12 +208,14 @@
 @endsection
 
 @push('javascript')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script src="{{asset('front_side/js/cart.js', config('app.https'))}}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script defer src="{{asset('front_side/js/cart.js', config('app.https'))}}"></script>
+    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
         $(document).ready(function () {
             $('.js-example-basic-single').select2({tags: true});
             $('.js-select-payment-type').select2({minimumResultsForSearch: -1});
         });
+        $(".phone-mask").inputmask("+38 (099) 999-99-99");
     </script>
 @endpush

@@ -34,11 +34,11 @@
 
 @include('app.layouts.footer')
 </body>
-<script src="{{asset('js/app.js', config('app.https'))}}"></script>
+{{--<script defer src="{{asset('js/app.js', config('app.https'))}}"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="{{asset('bootstrap/js/bootstrap.bundle.js', config('app.https'))}}"></script>
-<script src="{{asset('front_side/js/front.js', config('app.https'))}}"></script>
-<script>
+<script defer src="{{asset('bootstrap/js/bootstrap.bundle.min.js', config('app.https'))}}"></script>
+<script defer src="{{asset('front_side/js/front.js', config('app.https'))}}"></script>
+<script defer>
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
