@@ -100,6 +100,7 @@ $(document).ready(function () {
 });
 $(document).on('click', '.cart-inc-dec', function (e) {
   var product_id = this.getAttribute('data-product-id');
+  console.log(123);
   var desktop_button = document.getElementById('count-product-' + product_id);
   var mobile_button = document.getElementById('count-product-mobile-' + product_id);
   var count = parseInt(desktop_button.innerHTML);

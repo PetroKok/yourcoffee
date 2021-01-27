@@ -7,7 +7,7 @@ $( document ).ready(function() {
 
 $(document).on('click', '.cart-inc-dec', function (e) {
     const product_id = this.getAttribute('data-product-id')
-
+    console.log(123);
     const desktop_button = document.getElementById('count-product-' + product_id);
     const mobile_button = document.getElementById('count-product-mobile-' + product_id);
 

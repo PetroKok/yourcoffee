@@ -40,28 +40,22 @@ $(document).on('click', '.add_to_cart', function (e) {
     });
 });
 
-var mybutton = document.getElementById("cart-button-dynamic");
+var btn = $('#up-button');
+var mybutton = $('#cart-button');
 
-window.onscroll = function () {
-    scrollFunction()
-};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        if (mybutton !== null) {
-            mybutton.style.opacity = '1';
-            mybutton.style.display = 'block';
-        }
+$(window).scroll(function() {
+    console.log('scroll')
+    console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 300) {
+        btn.addClass('show');
+        mybutton.addClass('show');
     } else {
-        if (mybutton !== null) {
-            mybutton.style.opacity = '0';
-            mybutton.style.display = 'none';
-        }
+        btn.removeClass('show');
+        mybutton.removeClass('show');
     }
-}
+});
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
+btn.on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({scrollTop:0}, '300');
+});

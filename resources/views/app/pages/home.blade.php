@@ -7,40 +7,43 @@
 
 @section('content')
     {{--    <div class="bg-image"></div>--}}
-
     @include('app.components.carousel')
 
     @include('app.components.cart-button')
 
-    <div class="container">
+    <div class="container" id="home" style="opacity: 0; width: 100%">
 
-        @foreach($products as $item)
-            <h2 class="mt-5 mb-3 text-center text-white">{{$item[0]->category_name}}</h2>
 
-            <div class="d-flex flex-wrap justify-content-around">
+        @foreach($products as $key => $item)
+            @if(!in_array($item[0]->menu_category_id, [8, 17, 18]))
+                <h2 class="mt-5 mb-3 text-center text-white diagonal-box family-bold">{{$item[0]->category_name}}</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($item as $key => $product)
                             @if(!empty($product->price))
                                 <div class="swiper-slide">
-                                    <div class="card ml-md-5 mr-md-5" style="/*width: 18rem;*/">
-                                        <span class="card-body text-white">{{$product->product_name}}</span>
-                                        <span
-                                            class="card-body brand-color price">{{ ((array)$product->price)[1]/100 }}грн</span>
+                                    <div class="card ml-md-5 mr-md-5" style="margin: 0 auto">
+                                        <h5 class="card-body text-white family-bold mb-0">{{$product->product_name}}</h5>
+
                                         <img
-                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"                                            class="card-img-top swiper-lazy"
-                                            data-src="{{$product->photo ? 'https://joinposter.com'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
-                                            height="350"
+                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                            class="card-img-top m-auto swiper-lazy"
+                                            data-src="{{$product->photo ? 'https://joinposter.com'.$product->photo : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                            style="max-width: 350px; max-height: 350px"
                                             alt="Card image cap">
                                         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-                                        <div class="card-body">
-                                            <p class="card-text d-flex text-white">{{$product->description ?? 'Тут мав би бути опис, але нажаль автор його не написав('}}</p>
+                                        <div class="d-flex">
+                                            <p class="card-text text-center text-white family-light pl-2 pr-2">{{config("descriptions.$product->product_id")}}</p>
                                         </div>
-                                        <div class="card-body">
-                                            <button data-product-id="{{$product->product_id}}"
-                                                    class="btn btn-outline btn-orange mt-1 add_to_cart">
-                                                До кошика
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <button
+                                                data-product-id="{{$product->product_id}}"
+                                                class="btn btn-outline btn-yellow mt-1 ml-2 family-medium card-text add_to_cart"
+                                            >
+                                                Замовити
                                             </button>
+                                            <span
+                                                class="text-white family-medium">{{ ((array)$product->price)[1]/100 }} грн</span>
                                         </div>
                                     </div>
                                 </div>
@@ -50,9 +53,7 @@
                     <div class="brand-color swiper-button-next tours-btn_next"></div>
                     <div class="brand-color swiper-button-prev tours-btn_prev"></div>
                 </div>
-
-
-            </div>
+            @endif
         @endforeach
 
     </div>
@@ -69,12 +70,9 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            slidesPerView: 1,
             breakpoints: {
-                450: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                480: {
+                500: {
                     slidesPerView: 2,
                     spaceBetween: 30
                 }
@@ -85,5 +83,7 @@
             // Enable lazy loading
             lazy: true
         });
+
+        $("#home").delay(500).animate({opacity: 1}, 500);
     </script>
 @endpush

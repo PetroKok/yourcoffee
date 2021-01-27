@@ -9,7 +9,7 @@
         </a>
 
         <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav family-bold">
                 <li class="nav-item pl-5 text-white">
                     <a class="nav-link" href="{{route('home')}}">Меню</a>
                 </li>
