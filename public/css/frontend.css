@@ -513,11 +513,6 @@ input[type=checkbox]:checked + label {
     .card-text {
         font-size: 13px;
     }
-
-    .btn {
-        font-size: 15px;
-        padding: 5px 20px;
-    }
 }
 
 
@@ -548,6 +543,7 @@ input[type=checkbox]:checked + label {
 /**  SIZE 499  **/
 @media screen and (max-width: 575px) {
     .btn {
+        width: 90%;
         font-size: 20px;
         padding: 5px 40px;
         text-decoration: none;
@@ -560,7 +556,7 @@ input[type=checkbox]:checked + label {
 /**  SIZE 499  **/
 @media screen and (max-width: 499px) {
     .btn {
-        font-size: 20px;
+        font-size: 15px;
         padding: 5px 40px;
         text-decoration: none;
         cursor: pointer;
