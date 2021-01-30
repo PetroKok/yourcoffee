@@ -27,7 +27,7 @@
                                         <img
                                             src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"
                                             class="card-img-top m-auto swiper-lazy"
-                                            data-src="{{$product->photo ? '/assets/poster/'.$product->photo : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                            data-src="{{$product->photo_origin ? '/assets/poster/'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
                                             style="max-width: 350px; max-height: 350px"
                                             alt="Card image cap">
                                         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
