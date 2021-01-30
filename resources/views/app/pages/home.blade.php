@@ -25,12 +25,13 @@
                                         <h5 class="card-body text-white family-bold mb-0">{{$product->product_name}}</h5>
 
                                         <img
-                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+{{--                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"--}}
                                             class="card-img-top m-auto swiper-lazy"
-                                            data-src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                            src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+{{--                                            data-src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"--}}
                                             style="max-width: 350px; max-height: 350px"
                                             alt="Card image cap">
-                                        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+{{--                                        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>--}}
                                         <div class="d-flex">
                                             <p class="card-text text-center text-white family-light pl-2 pr-2">{{config("descriptions.$product->product_id")}}</p>
                                         </div>
@@ -78,9 +79,9 @@
             },
 
             // Disable preloading of all images
-            preloadImages: false,
+            // preloadImages: false,
             // Enable lazy loading
-            lazy: true
+            // lazy: true
         });
 
         $("#home").delay(500).animate({opacity: 1}, 500);
