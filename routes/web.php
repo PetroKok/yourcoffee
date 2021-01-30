@@ -8,6 +8,7 @@ Route::auth();
 Route::get('auth/{provider}', 'Auth\SocialLoginController@redirectTo')->name('auth.provider');
 Route::get('auth/{provider}/callback', 'Auth\SocialLoginController@handleCallback');
 
+Route::get('/assets/poster/{search}', 'PosterAssetController@index')->where('search', '.*');;
 
 Route::group(['middleware' => 'cart_info'], function () {
 

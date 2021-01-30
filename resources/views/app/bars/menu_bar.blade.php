@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark pl-4 pr-4">
+<nav class="navbar navbar-line-bottom navbar-expand-lg navbar-dark bg-dark pl-4 pr-4">
     <div class="container">
         <button class="navbar-toggler" type="button" id="openbtn" data-toggle="modal" data-target="#backWall"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -32,28 +32,28 @@
         </ul>
 
         @guest('customer')
-            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" data-toggle="modal"
-                data-target="#login-modal">
-                <li class="nav-item text-white">
-                    <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">
-                </li>
-            </ul>
+{{--            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block" data-toggle="modal"--}}
+{{--                data-target="#login-modal">--}}
+{{--                <li class="nav-item text-white">--}}
+{{--                    <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">--}}
+{{--                </li>--}}
+{{--            </ul>--}}
         @else
-            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
-                <a href="{{route('profile.history')}}">
-                    <li class="nav-item text-white">
-                        <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">
-                    </li>
-                </a>
-            </ul>
-            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">
-                <li class="nav-item text-white">
-                    <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block"
-                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        <img src="{{asset('images/site-images/static/logout.png', config('app.https'))}}" class="menu-icon" alt="">
-                    </a>
-                </li>
-            </ul>
+{{--            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">--}}
+{{--                <a href="{{route('profile.history')}}">--}}
+{{--                    <li class="nav-item text-white">--}}
+{{--                        <img src="{{asset('images/site-images/static/profile.png', config('app.https'))}}" class="menu-icon" alt="">--}}
+{{--                    </li>--}}
+{{--                </a>--}}
+{{--            </ul>--}}
+{{--            <ul class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block">--}}
+{{--                <li class="nav-item text-white">--}}
+{{--                    <a href="#" class="navbar-nav float-right d-none d-sm-none d-md-none d-lg-block"--}}
+{{--                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">--}}
+{{--                        <img src="{{asset('images/site-images/static/logout.png', config('app.https'))}}" class="menu-icon" alt="">--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
         @endguest
 
 
@@ -66,14 +66,14 @@
     <a href="#">Конструктор</a>
     <a href="#">Про нас</a>
     @guest('customer')
-        <span data-toggle="modal" data-target="#backWall">
-            <a href="#" id="login_sidebar" data-toggle="modal" data-target="#login-modal">Ввійти</a>
-        </span>
+{{--        <span data-toggle="modal" data-target="#backWall">--}}
+{{--            <a href="#" id="login_sidebar" data-toggle="modal" data-target="#login-modal">Ввійти</a>--}}
+{{--        </span>--}}
     @else
-        <a href="{{route('profile.index')}}">Профіль, {{Auth::guard('customer')->user()->name}}</a>
-        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            Вийти
-        </a>
+{{--        <a href="{{route('profile.index')}}">Профіль, {{Auth::guard('customer')->user()->name}}</a>--}}
+{{--        <a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">--}}
+{{--            Вийти--}}
+{{--        </a>--}}
     @endguest
 
 </div>

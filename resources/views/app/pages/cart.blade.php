@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    <div class="container {{count($carts) === 0 ?'':'d-none'}}" id="empty-cart">
+    <div class="container {{count($carts) === 0 ?'':'d-none'}}" id="empty-cart" style="padding-bottom: 30%">
         <h2 class="mt-5 mb-3 text-center text-white">Ваша корзина пуста</h2>
         <div class="d-flex justify-content-center mt-5">
             <img src="{{asset('images/site-images/static/cart_empty.png', config('app.https'))}}" width="190" alt="">
@@ -152,7 +152,7 @@
                             'class' => 'text-white mb-3'
                         ]); !!}
             @include('app.components.cart.city-form', [
-                'data' => ['CASH' => trans('app.payment.cash'), 'CARD' => trans('app.payment.card')],
+                'data' => ['CASH' => trans('app.cart.CASH'), 'CARD' => trans('app.cart.CARD')],
                 'name' => 'pay_type',
                 'id' => 'pay_type',
                 'placeholder' => 'Виберіть спосіб оплати',

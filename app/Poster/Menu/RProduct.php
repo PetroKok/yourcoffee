@@ -54,7 +54,7 @@ class RProduct extends Poster implements IRProduct
             if ($item->menu_category_id == 0) {
                 continue;
             }
-            $a[$categories[$item->menu_category_id]->sort_order][] = $item;
+            $a[$categories[$item->menu_category_id]->sort_order][$item->product_id] = $item;
         }
         ksort($a);
         return $a;

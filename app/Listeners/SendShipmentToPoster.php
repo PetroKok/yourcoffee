@@ -3,13 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\OrderShipped;
-use App\Models\City;
 use App\Models\Kitchen;
 use App\Models\Order;
 use App\Poster\IncomingOrder\IIncOrder;
 use App\Service\Interfaces\DeliveryServiceInterface;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendShipmentToPoster
 {
@@ -50,18 +47,22 @@ class SendShipmentToPoster
         if ($order->city_id) {
             $kitchen = $this->service->index($order->city_relation);
             $data['spot_id'] = $kitchen->spot_id;
-            $delivery_price = $kitchen->price_delivery*100;
-            $city = $kitchen->city;
+            $delivery_price = $kitchen->price_delivery * 100;
+            $city = $order->city_relation->name;
         } else {
             $kitchen = Kitchen::with('city_relation')->first();
-            $city = $order->city;
+            $city = $order->city_relation->name;
             $delivery_price = 0;
         }
 
         $data['spot_id'] = $kitchen->spot_id;
 
         if ($order->type === Order::ORDER_TYPE['DELIVERY']) {
-            $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address;
+            $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address.'. ';
+            $data['address'] .= !is_null($order->apartment) ? 'Kвартира: ' . $order->apartment . '. ' : '';
+            $data['address'] .= !is_null($order->entrance) ? 'Під\'їзд: ' . $order->entrance . '. ' : '';
+            $data['address'] .= !is_null($order->floor) ? 'Поверх: ' . $order->floor . '. ' : '';
+            $data['address'] .= !is_null($order->door_code) ? 'Код дверей: ' . $order->door_code . '. ' : '';;
             $data['delivery_price'] = $delivery_price;
         }
 

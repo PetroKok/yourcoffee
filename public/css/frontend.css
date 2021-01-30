@@ -166,8 +166,19 @@ select:focus {
     background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.navbar {
+.navbar-line-bottom {
     border-bottom: 1px solid #ffd112 !important;
+}
+
+.navbar-line-top {
+    border-top: 1px solid #ffd112 !important;
+}
+
+.footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
 }
 
 .brand-color {
@@ -186,10 +197,10 @@ select:focus {
 
 .up-button {
     position: fixed;
-    right: 33px;
-    bottom: 84px;
+    right: 20px;
+    bottom: 80px;
     background-color: #ffd112;
-    padding: 15px;
+    padding: 16px;
     border-radius: 50%;
     -webkit-transition: .2s;
     transition: background-color .3s,

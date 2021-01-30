@@ -6,29 +6,28 @@
 
 
 @section('content')
-    {{--    <div class="bg-image"></div>--}}
+
     @include('app.components.carousel')
 
     @include('app.components.cart-button')
 
     <div class="container" id="home" style="opacity: 0; width: 100%">
 
-
         @foreach($products as $key => $item)
-            @if(!in_array($item[0]->menu_category_id, [8, 17, 18]))
-                <h2 class="mt-5 mb-3 text-center text-white diagonal-box family-bold">{{$item[0]->category_name}}</h2>
+            @if(!in_array(reset($item)->menu_category_id, [8, 17, 18, 19]))
+                <h2 class="mt-5 mb-3 text-center text-white diagonal-box family-bold">{{reset($item)->category_name}}</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($item as $key => $product)
                             @if(!empty($product->price))
-                                <div class="swiper-slide">
+                                <div class="swiper-slide align-items-stretch">
                                     <div class="card ml-md-5 mr-md-5" style="margin: 0 auto">
                                         <h5 class="card-body text-white family-bold mb-0">{{$product->product_name}}</h5>
 
                                         <img
                                             src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"
                                             class="card-img-top m-auto swiper-lazy"
-                                            data-src="{{$product->photo ? 'https://joinposter.com'.$product->photo : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
+                                            data-src="{{$product->photo ? '/assets/poster/'.$product->photo : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
                                             style="max-width: 350px; max-height: 350px"
                                             alt="Card image cap">
                                         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
@@ -38,12 +37,12 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <button
                                                 data-product-id="{{$product->product_id}}"
-                                                class="btn btn-outline btn-yellow mt-1 ml-2 family-medium card-text add_to_cart"
+                                                class="btn btn-outline btn-yellow mt-4 ml-2 family-medium card-text add_to_cart"
                                             >
                                                 Замовити
                                             </button>
                                             <span
-                                                class="text-white family-medium">{{ ((array)$product->price)[1]/100 }} грн</span>
+                                                class="text-white family-medium mt-3">{{ ((array)$product->price)[1]/100 }} грн</span>
                                         </div>
                                     </div>
                                 </div>

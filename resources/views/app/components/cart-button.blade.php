@@ -1,4 +1,5 @@
 <a href="#" id="up-button" class="up-button">
+    <img src="{{asset('images/site-images/static/up.png', config('app.https'))}}" width="25" alt="">
 </a>
 
 <a href="{{route('cart.index')}}" id="cart-button-dynamic" class="cart-button-dynamic">
