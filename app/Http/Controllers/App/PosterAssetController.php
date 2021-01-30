@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class PosterAssetController extends Controller
 {
     public string $poster = "https://joinposter.com/";
-    public string $path = "public/products/";
+    public string $path = "/public/products/";
     public $fileService;
 
     public function __construct(FileServiceInterface $fileService)
