@@ -12,7 +12,7 @@
             <img src="{{asset('images/site-images/static/cart_empty.png', config('app.https'))}}" width="190" alt="">
         </div>
         <h3 class="mt-5 mb-3 text-center text-white">
-            <a href="{{route('home')}}" class="btn btn-yellow">Перейти на головну сторінку</a>
+            <a href="{{route('home')}}" class="btn cart-btn btn-yellow">Перейти на головну сторінку</a>
         </h3>
     </div>
 

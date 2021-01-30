@@ -543,13 +543,15 @@ input[type=checkbox]:checked + label {
 /**  SIZE 499  **/
 @media screen and (max-width: 575px) {
     .btn {
-        width: 90%;
         font-size: 20px;
         padding: 5px 40px;
         text-decoration: none;
         cursor: pointer;
         transition: .2s;
         -webkit-transition: .2s;
+    }
+    .cart-btn {
+        width: 90%;
     }
 }
 

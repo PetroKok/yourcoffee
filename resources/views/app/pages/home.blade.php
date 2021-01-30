@@ -43,7 +43,7 @@
                                                 Замовити
                                             </button>
                                             <span
-                                                class="text-white family-medium mt-3">{{ ((array)$product->price)[1]/100 }} грн</span>
+                                                class="text-white family-medium mt-4>{{ ((array)$product->price)[1]/100 }} грн</span>
                                         </div>
                                     </div>
                                 </div>
