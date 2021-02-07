@@ -96,13 +96,13 @@
             'placeholder' => 'Виберіть місто',
         ])
 
-        <div class="d-flex justify-content-center cart-product-text">
-            <label class="text-white pointer-cursor delivery" style="margin-right: 18%" for="delivery">Доставка</label>
+        <div class="d-flex radio-position cart-product-text">
+            <label class="text-white pointer-cursor delivery" for="delivery">Доставка</label>
             <label class="text-white pointer-cursor self-pickup" for="self-pickup">Самовивіз</label>
         </div>
 
 
-        <div class="d-flex justify-content-center">
+        <div class="d-flex radio-position">
             <input type="radio" class="is_delivery_radio" id="delivery" name="order"
                    {{ old('order') == 'self-pickup' ? '' : 'checked' }} value="delivery"/>
             <label class="text-white" for="delivery" id="delivery-label"></label>
@@ -210,7 +210,8 @@
 @push('javascript')
     <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script defer src="{{asset('front_side/js/cart.js', config('app.https'))}}"></script>
-    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <script type='text/javascript'
+            src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
         $(document).ready(function () {
             $('.js-example-basic-single').select2({tags: true});

@@ -29,8 +29,9 @@
                                             class="card-img-top m-auto swiper-lazy"
                                             src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
 {{--                                            data-src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"--}}
-                                            style="max-width: 350px; max-height: 350px"
-                                            alt="Card image cap">
+                                            style="max-width: 350px; height: 300px; object-fit: cover"
+                                            alt="Card image cap"
+                                            loading="lazy">
 {{--                                        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>--}}
                                         <div class="d-flex">
                                             <p class="card-text text-center text-white family-light pl-2 pr-2">{{config("descriptions.$product->product_id")}}</p>
@@ -79,7 +80,7 @@
             },
 
             // Disable preloading of all images
-            // preloadImages: false,
+            preloadImages: false,
             // Enable lazy loading
             // lazy: true
         });
