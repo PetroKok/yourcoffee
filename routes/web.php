@@ -27,6 +27,10 @@ Route::group(['middleware' => 'cart_info'], function () {
 
     Route::get('/city/delivery_amount/{city?}', 'CityController@show');
 
+    Route::get('/about_us', 'AboutUsController')->name('about_us');
+
+    Route::get('/constructor', 'ConstructorController')->name('constructor');
+
 
     Route::group(['middleware' => 'auth:customer', 'prefix' => 'profile', 'namespace' => 'Profile'], function () {
         Route::get('/', 'ProfileController@index')->name('profile.index');

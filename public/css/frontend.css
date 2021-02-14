@@ -185,6 +185,10 @@ select:focus {
     color: #ffd112 !important;
 }
 
+.text-gray{
+    color: #bbbbbb !important;
+}
+
 .brand-background-color {
     background-color: #ffd112 !important;
 }
@@ -513,10 +517,6 @@ input[type=checkbox]:checked + label {
 
 /**  SIZE 600  **/
 @media screen and (max-width: 600px) {
-
-    .navbar {
-        height: 90px;
-    }
 
     .cart-icon {
         height: 25px;

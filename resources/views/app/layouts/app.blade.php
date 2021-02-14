@@ -23,7 +23,7 @@
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css?v1', config('app.https'))}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css?v2', config('app.https'))}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front_side/css/burger.css', config('app.https'))}}">
     @stack('styles')
 </head>
