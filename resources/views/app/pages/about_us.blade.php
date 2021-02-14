@@ -73,13 +73,13 @@
         <p class="text-white ml-2">
             <img src="{{asset('images/site-images/facebook.png', config('app.https'))}}"
                  style="width: 30px"
-                 alt="facebook picture your burger">
+                 alt="facebook 1 picture your burger">
             <a href="https://www.facebook.com/yourburgercom" class="brand-color" target="_blank">https://www.facebook.com/ yourburgercom</a>.
         </p>
         <p class="text-white ml-2">
             <img src="{{asset('images/site-images/facebook.png', config('app.https'))}}"
                  style="width: 30px"
-                 alt="facebook picture your burger">
+                 alt="facebook 2 picture your burger">
             <a href="https://www.facebook.com/yourburgercomua" class="brand-color" target="_blank">https://www.facebook.com/ yourburgercomua</a>.
         </p>
     </div>
