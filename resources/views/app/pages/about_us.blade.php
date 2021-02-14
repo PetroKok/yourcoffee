@@ -68,7 +68,7 @@
             <img src="{{asset('images/site-images/instagram.png', config('app.https'))}}"
                  style="width: 30px"
                  alt="instagram picture your burger">
-            <a href="https://www.instagram.com/your__burger" class="brand-color" target="_blank">https://www.instagram.com/ your__burger.</a>
+            <a href="https://www.instagram.com/your__burger" class="brand-color" target="_blank">https://www.instagram.com/ your__burger</a>.
         </p>
         <p class="text-white ml-2">
             <img src="{{asset('images/site-images/facebook.png', config('app.https'))}}"
@@ -80,7 +80,7 @@
             <img src="{{asset('images/site-images/facebook.png', config('app.https'))}}"
                  style="width: 30px"
                  alt="facebook picture your burger">
-            <a href="https://www.facebook.com/yourburgercomua" class="brand-color" target="_blank">https://www.facebook.com/ yourburgercomua.</a>
+            <a href="https://www.facebook.com/yourburgercomua" class="brand-color" target="_blank">https://www.facebook.com/ yourburgercomua</a>.
         </p>
     </div>
 @endsection
