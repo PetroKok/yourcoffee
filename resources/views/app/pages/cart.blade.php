@@ -135,6 +135,13 @@
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
+        <div class="cart-element">
+            {!! Form::text('comment', null, [
+                            'placeholder' => trans('app.cart.comment'),
+                            'class' => 'text-white mb-3'
+                        ]); !!}
+        </div>
+
         <div class="cart-element" id="tab-delivery" style="{{ old('order') != 'self-pickup' ? : 'display: none' }}">
 
             {!! Form::text('address', null, [
@@ -147,10 +154,6 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-            {!! Form::text('comment', null, [
-                            'placeholder' => trans('app.cart.comment'),
-                            'class' => 'text-white mb-3'
-                        ]); !!}
             @include('app.components.cart.city-form', [
                 'data' => ['CASH' => trans('app.cart.CASH'), 'CARD' => trans('app.cart.CARD')],
                 'name' => 'pay_type',

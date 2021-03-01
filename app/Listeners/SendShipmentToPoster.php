@@ -73,8 +73,10 @@ class SendShipmentToPoster
             ];
         }
 
-        $response = $this->incoming_order->store($data);
-        $order->setIncomingOrderId($response->get('incoming_order_id'));
+        dd($data);
+
+//        $response = $this->incoming_order->store($data);
+//        $order->setIncomingOrderId($response->get('incoming_order_id'));
 //        $order->setIncomingOrderId(rand(1, 100));
     }
 }

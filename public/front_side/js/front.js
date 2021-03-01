@@ -122,8 +122,10 @@ for (var i = 0; i < elements.length; i++) {
 
 $(document).on('click', '.add_to_cart', function (e) {
   var product_id = this.getAttribute('data-product-id');
+  var modificator_id = this.getAttribute('data-modificator-id');
   var cartItem = {
-    id: product_id
+    id: product_id,
+    modificator_id: modificator_id || null
   };
   var button = this;
   $.post("/cart", cartItem, function (data, status) {

@@ -27,9 +27,11 @@ for (var i = 0; i < elements.length; i++) {
 }
 
 $(document).on('click', '.add_to_cart', function (e) {
-    var product_id = this.getAttribute('data-product-id')
+    const product_id = this.getAttribute('data-product-id')
+    const modificator_id = this.getAttribute('data-modificator-id')
     const cartItem = {
-        id: product_id
+        id: product_id,
+        modificator_id: modificator_id || null
     }
     const button = this;
 
