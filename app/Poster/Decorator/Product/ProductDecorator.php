@@ -21,13 +21,18 @@ class ProductDecorator extends Decorator implements IProductDecorator
 
     public function loadEntitiesInMemory()
     {
+        $new = [];
         $this->es = $this->storage->get(config('cache_keys.products.key'));
         if (is_null($this->es)) {
             $this->es = $this->repository->all();
             foreach ($this->es as $e) {
-                $this->es[$e->product_id] = $e;
+                if (!in_array($e->menu_category_id, [0, 8, 15, 16, 17, 18, 19, 24])) {
+                    $new[$e->product_id] = $e;
+                }
             }
-            $this->storage->set(config('cache_keys.products.key'),$this->es, config('cache_keys.products.time'));
+            $this->es = collect($new);
+            unset($new);
+            $this->storage->set(config('cache_keys.products.key'), $this->es, config('cache_keys.products.time'));
         }
     }
 }

@@ -53,13 +53,15 @@
             створили свою швидку доставку. Тож
             телефонуйте та замовляйте:</p>
         <p class="text-white">
-            &emsp;Дрогобич: <span class="brand-color">+38 068 06 68 278.</span></p>
-        <p class="text-white">
-            &emsp;Стебник: <span class="brand-color">+38 068 06 68 277.</span></p>
-        <p class="text-white">
             &emsp;Графік роботи: <span class="brand-color">Щодня з 11 до 23 години.</span></p>
         <p class="text-white">
-            &emsp;Адреса: <span class="brand-color">Дрогобич, Війтівська Гора, 64а, (навпроти суду), Стебник, Грушевського, 6/1.</span>
+            &emsp;Адреса:
+        <p class="text-white">
+            &emsp;&emsp;Дрогобич:<span class="brand-color"> Війтівська Гора, 64а, (навпроти суду), </span>+38 068 06 68
+            278.
+        </p>
+        <p class="text-white">
+            &emsp;&emsp;Стебник:<span class="brand-color"> Грушевського, 6/1, </span>+38 068 06 68 277.
         </p>
         <p class="text-white">
             Ми в соц. мережах:
@@ -68,19 +70,22 @@
             <img src="{{asset('images/site-images/instagram.png', config('app.https'))}}"
                  style="width: 30px"
                  alt="instagram picture your burger">
-            <a href="https://www.instagram.com/your__burger" class="brand-color" target="_blank">https://www.instagram.com/ your__burger</a>.
+            <a href="https://www.instagram.com/your__burger" class="brand-color" target="_blank">https://www.instagram.com/
+                your__burger</a>.
         </p>
         <p class="text-white ml-2">
             <img src="{{asset('images/site-images/facebook.png', config('app.https'))}}"
                  style="width: 30px"
                  alt="facebook 1 picture your burger">
-            <a href="https://www.facebook.com/yourburgercom" class="brand-color" target="_blank">https://www.facebook.com/ yourburgercom</a>.
+            <a href="https://www.facebook.com/yourburgercom" class="brand-color" target="_blank">https://www.facebook.com/
+                yourburgercom</a>.
         </p>
         <p class="text-white ml-2">
             <img src="{{asset('images/site-images/facebook.png', config('app.https'))}}"
                  style="width: 30px"
                  alt="facebook 2 picture your burger">
-            <a href="https://www.facebook.com/yourburgercomua" class="brand-color" target="_blank">https://www.facebook.com/ yourburgercomua</a>.
+            <a href="https://www.facebook.com/yourburgercomua" class="brand-color" target="_blank">https://www.facebook.com/
+                yourburgercomua</a>.
         </p>
     </div>
 @endsection

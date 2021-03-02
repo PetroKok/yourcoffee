@@ -39,7 +39,7 @@ class SendShipmentToPoster
             'first_name' => $order->customer->name,
             'last_name' => $order->customer->surname,
             'email' => !empty($order->customer->email) ? $order->customer->email : '',
-            'comment' => 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . ". Коментар: {$order->comment}",
+            'comment' => "Коментар: {$order->comment}.",
             'phone' => $order->customer->phone,
             'service_mode' => Order::SERVICE_MODE_POSTER[$order->type]
         ];
@@ -58,12 +58,15 @@ class SendShipmentToPoster
         $data['spot_id'] = $kitchen->spot_id;
 
         if ($order->type === Order::ORDER_TYPE['DELIVERY']) {
-            $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address.'. ';
+            $payment_type = 'Спосіб оплати: ' . trans('app.cart.' . $order->pay_type) . '. ';
+
+            $data['address'] = 'Місто: ' . $city . ', адрес: ' . $order->address . '. ';
             $data['address'] .= !is_null($order->apartment) ? 'Kвартира: ' . $order->apartment . '. ' : '';
             $data['address'] .= !is_null($order->entrance) ? 'Під\'їзд: ' . $order->entrance . '. ' : '';
             $data['address'] .= !is_null($order->floor) ? 'Поверх: ' . $order->floor . '. ' : '';
             $data['address'] .= !is_null($order->door_code) ? 'Код дверей: ' . $order->door_code . '. ' : '';;
             $data['delivery_price'] = $delivery_price;
+            $data['comment'] .= ' ' . $payment_type;
         }
 
         foreach ($order->lines as $key => $line) {
@@ -75,6 +78,5 @@ class SendShipmentToPoster
 
         $response = $this->incoming_order->store($data);
         $order->setIncomingOrderId($response->get('incoming_order_id'));
-//        $order->setIncomingOrderId(rand(1, 100));
     }
 }
