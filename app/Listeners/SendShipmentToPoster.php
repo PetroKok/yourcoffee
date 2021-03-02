@@ -35,6 +35,7 @@ class SendShipmentToPoster
         $order = $event->order;
         $order->load('lines', 'city_relation', 'customer');
 
+
         $data = [
             'first_name' => $order->customer->name,
             'last_name' => $order->customer->surname,

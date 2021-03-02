@@ -14,15 +14,14 @@
     <div class="container" id="home" style="opacity: 0; width: 100%">
 
         @foreach($products as $key => $item)
-            @if(!in_array(reset($item)->menu_category_id, [8, 17, 18, 19]))
+            @if(!in_array(reset($item)->menu_category_id, [8, 15, 17, 18, 19]))
                 <h2 class="mt-5 mb-3 text-center text-white diagonal-box family-bold">{{reset($item)->category_name}}</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         @foreach($item as $key => $product)
                             @if(!empty($product->price))
-                                <div class="swiper-slide align-items-stretch">
-                                    <div class="card ml-md-5 mr-md-5" style="margin: 0 auto">
-                                        <h5 class="card-body text-white family-bold mb-0">{{$product->product_name}}</h5>
+                                @include('app.components.product-card')
+                            @endif
 
                                     <img
                                         {{--                                            src="{{asset('images/site-images/zaglushka.svg', config('app.https'))}}"--}}
