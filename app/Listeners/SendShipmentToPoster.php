@@ -76,8 +76,8 @@ class SendShipmentToPoster
                 'count' => $line['qty'],
             ];
         }
-
-        $response = $this->incoming_order->store($data);
-        $order->setIncomingOrderId($response->get('incoming_order_id'));
+dd($data);
+//        $response = $this->incoming_order->store($data);
+//        $order->setIncomingOrderId($response->get('incoming_order_id'));
     }
 }
