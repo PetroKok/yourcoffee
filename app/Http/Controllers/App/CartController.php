@@ -37,7 +37,6 @@ class CartController extends Controller
 
     public function store(CartCreateRequest $request)
     {
-        dd($request->all());
         $cart = new CartDto();
         $cart->setProductId($request->get('id'));
         $cart->setQty($request->get('qty') ?? 1);
