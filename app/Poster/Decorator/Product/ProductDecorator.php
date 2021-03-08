@@ -26,7 +26,7 @@ class ProductDecorator extends Decorator implements IProductDecorator
         if (is_null($this->es)) {
             $this->es = $this->repository->all();
             foreach ($this->es as $e) {
-                if (!in_array($e->menu_category_id, [0, 8, 15, 16, 17, 18, 19, 24])) {
+                if (!in_array($e->menu_category_id, [0, 8, 15, 16, 17, 18, 19, 20, 24])) {
                     $new[$e->product_id] = $e;
                 }
             }
