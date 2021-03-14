@@ -211,7 +211,7 @@
 
 @push('javascript')
     <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script defer src="{{asset('front_side/js/cart.js?v3', config('app.https'))}}"></script>
+    <script defer src="{{asset('front_side/js/cart.js?v4', config('app.https'))}}"></script>
     <script type='text/javascript'
             src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
