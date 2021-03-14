@@ -1,6 +1,6 @@
 <?php
 
-$ttl = 60*100;
+$ttl = 1 || 60*100;
 
 return [
     'products' => [

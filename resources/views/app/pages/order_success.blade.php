@@ -112,7 +112,7 @@
     <script src="{{asset('front_side/js/cart.js', config('app.https'))}}"></script>
     <script>
         $(document).ready(function () {
-            $('.js-example-basic-single').select2({tags: true});
+            $('.js-city-select2').select2({tags: true});
             $('.js-select-payment-type').select2({minimumResultsForSearch: -1});
         });
     </script>

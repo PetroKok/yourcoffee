@@ -88,21 +88,12 @@
         {{ Form::open(['url' => '/cart/order', 'method' => 'POST']) }}
 
 
-        @include('app.components.cart.city-form', [
-            'data' => $cities->toArray(true),
-            'name' => 'city_id',
-            'id' => 'city_id',
-            'class' => 'js-example-basic-single cart-select',
-            'placeholder' => 'Виберіть місто',
-        ])
-
         <div class="d-flex radio-position cart-product-text">
             <label class="text-white pointer-cursor delivery" for="delivery">Доставка</label>
             <label class="text-white pointer-cursor self-pickup" for="self-pickup">Самовивіз</label>
         </div>
 
-
-        <div class="d-flex radio-position">
+        <div class="d-flex radio-position mb-5">
             <input type="radio" class="is_delivery_radio" id="delivery" name="order"
                    {{ old('order') == 'self-pickup' ? '' : 'checked' }} value="delivery"/>
             <label class="text-white" for="delivery" id="delivery-label"></label>
@@ -110,6 +101,14 @@
                    {{ old('order') != 'self-pickup' ? '' : 'checked' }} value="self-pickup"/>
             <label class="text-white" for="self-pickup" id="self-pickup-label"></label>
         </div>
+
+        @include('app.components.cart.city-form', [
+            'data' => $cities->toArray(true),
+            'name' => 'city_id',
+            'id' => 'js-city-select2',
+            'class' => 'js-city-select2 cart-select mt-3',
+            'placeholder' => 'Виберіть місто',
+        ])
 
         <div class="cart-element mt-4">
             {!! Form::text('phone', Auth::guard('customer')->check() ? Auth::guard('customer')->user()->phone : (old('order') ? old('order') : null), [
@@ -212,12 +211,14 @@
 
 @push('javascript')
     <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script defer src="{{asset('front_side/js/cart.js', config('app.https'))}}"></script>
+    <script defer src="{{asset('front_side/js/cart.js?v3', config('app.https'))}}"></script>
     <script type='text/javascript'
             src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
     <script>
         $(document).ready(function () {
-            $('.js-example-basic-single').select2({tags: true});
+            $('.js-city-select2').select2({
+                tags: true
+            });
             $('.js-select-payment-type').select2({minimumResultsForSearch: -1});
         });
         $(".phone-mask").inputmask("+38 (099) 999-99-99");

@@ -94,7 +94,7 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  var city = document.getElementById('city_id');
+  var city = document.getElementById('js-city-select2');
   var city_id = city.options[city.selectedIndex].value;
   changeDeliveryAmount(city_id);
 });
@@ -158,8 +158,9 @@ $(document).on('change', '#city_id', function (selected) {
   changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
 $(document).on('change', '#delivery', function (item) {
-  var city = document.getElementById('city_id');
+  var city = document.getElementById('js-city-select2');
   var city_id = city.options[city.selectedIndex].value;
+  setCitiesForSelect('all');
   changeDeliveryAmount(city_id);
   $('#tab-delivery').show(500);
 });
@@ -168,9 +169,10 @@ $(document).on('change', '#self-pickup', function (item) {
   var total_amount = document.getElementById('total-amount').innerHTML;
   console.log(total_amount, delivery_amount);
   document.getElementById('total-amount').innerHTML = total_amount - delivery_amount;
-  var city = document.getElementById('city_id');
+  var city = document.getElementById('js-city-select2');
   var city_id = city.options[city.selectedIndex].value;
   changeDeliveryAmount(city_id);
+  setCitiesForSelect('kitchenCities');
   $('#tab-delivery').hide(500);
 });
 
@@ -179,7 +181,6 @@ function changeDeliveryAmount() {
   $.get("/city/delivery_amount/" + city_id, function (data) {
     var _data$data$specify;
 
-    console.log(data);
     var text = data.data.city !== null && data.data.address !== null ? data.data.city + ', ' + data.data.address : (_data$data$specify = data.data.specify) !== null && _data$data$specify !== void 0 ? _data$data$specify : '';
 
     if (!document.getElementById('self-pickup').checked) {
@@ -194,6 +195,21 @@ function changeDeliveryAmount() {
       }
     }
   });
+}
+
+function setCitiesForSelect(cityKind) {
+  var citySelect = $('#js-city-select2');
+  citySelect.html(""); // console.log(citySelect.html(""));
+
+  if (cityKind === 'kitchenCities' || cityKind === 'all') {
+    $.get("/city/" + cityKind, function (data) {
+      var keys = Object.keys(data);
+      keys.map(function (o) {
+        var option = new Option(data[o], o, false, false);
+        citySelect.append(option).trigger('change');
+      });
+    });
+  }
 }
 
 function submitForm(form) {

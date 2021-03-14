@@ -1,5 +1,5 @@
-$( document ).ready(function() {
-    const city = document.getElementById('city_id');
+$(document).ready(function () {
+    const city = document.getElementById('js-city-select2');
     const city_id = city.options[city.selectedIndex].value;
     changeDeliveryAmount(city_id);
 });
@@ -66,8 +66,9 @@ $(document).on('change', '#city_id', function (selected) {
 });
 
 $(document).on('change', '#delivery', function (item) {
-    const city = document.getElementById('city_id');
+    const city = document.getElementById('js-city-select2');
     const city_id = city.options[city.selectedIndex].value;
+    setCitiesForSelect('all');
     changeDeliveryAmount(city_id);
     $('#tab-delivery').show(500);
 });
@@ -77,15 +78,15 @@ $(document).on('change', '#self-pickup', function (item) {
     var total_amount = document.getElementById('total-amount').innerHTML;
     console.log(total_amount, delivery_amount)
     document.getElementById('total-amount').innerHTML = total_amount - delivery_amount;
-    const city = document.getElementById('city_id');
+    const city = document.getElementById('js-city-select2');
     const city_id = city.options[city.selectedIndex].value;
     changeDeliveryAmount(city_id);
+    setCitiesForSelect('kitchenCities');
     $('#tab-delivery').hide(500);
 });
 
 function changeDeliveryAmount(city_id = '') {
     $.get("/city/delivery_amount/" + city_id, function (data) {
-        console.log(data);
 
         const text = data.data.city !== null
         && data.data.address !== null
@@ -105,7 +106,23 @@ function changeDeliveryAmount(city_id = '') {
     });
 }
 
-function submitForm(form){
+function setCitiesForSelect(cityKind) {
+    const citySelect = $('#js-city-select2');
+    citySelect.html("")
+    // console.log(citySelect.html(""));
+
+    if (cityKind === 'kitchenCities' || cityKind === 'all') {
+        $.get("/city/" + cityKind, function (data) {
+            const keys = Object.keys(data);
+            keys.map(function (o) {
+                var option = new Option(data[o], o, false, false);
+                citySelect.append(option).trigger('change');
+            })
+        });
+    }
+}
+
+function submitForm(form) {
     console.log(form)
 }
 

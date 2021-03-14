@@ -10,7 +10,7 @@
     {!! Form::select($name, $data, [], [
         'placeholder' => $placeholder,
         'id' => $id,
-        'class' => (isset($class) ? $class : 'js-example-basic-single')." form-control form-control-user invalid-feedback ". $invalid_class,
+        'class' => (isset($class) ? $class : 'js-city-select2')." form-control form-control-user invalid-feedback ". $invalid_class,
     ]); !!}
 </div>
 @error($name)

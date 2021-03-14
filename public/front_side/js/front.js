@@ -137,12 +137,16 @@ $(document).on('click', '.add_to_cart', function (e) {
 var btn = $('#up-button');
 var mybutton = $('#cart-button');
 $(window).scroll(function () {
-  console.log('scroll');
-  console.log($(window).scrollTop());
+  var body = document.body,
+      html = document.documentElement;
+  var height = body.offsetHeight - html.clientHeight;
 
-  if ($(window).scrollTop() > 300) {
+  if ($(window).scrollTop() > 150 && $(window).scrollTop() < height - 100) {
     btn.addClass('show');
     mybutton.addClass('show');
+  } else if ($(window).scrollTop() > height - 100) {
+    btn.removeClass('show');
+    mybutton.removeClass('show');
   } else {
     btn.removeClass('show');
     mybutton.removeClass('show');

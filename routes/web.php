@@ -26,6 +26,8 @@ Route::group(['middleware' => 'cart_info'], function () {
         ->name('success_order');
 
     Route::get('/city/delivery_amount/{city?}', 'CityController@show');
+    Route::get('/city/all', 'CityController@allCities');
+    Route::get('/city/kitchenCities', 'CityController@kitchenCities');
 
     Route::get('/about_us', 'AboutUsController')->name('about_us');
 

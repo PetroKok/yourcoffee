@@ -21,8 +21,8 @@ class OrderStoreRequest extends FormRequest
 
             'apartment' => 'nullable|string',
             'entrance' => 'nullable|string',
-            'floor' => 'nullable|numeric',
-            'door_code' => 'nullable|numeric',
+            'floor' => 'nullable|string',
+            'door_code' => 'nullable|string',
 
             'order' =>
                 'required|in:' . mb_strtolower(Order::ORDER_TYPE['DELIVERY']) .
@@ -38,7 +38,7 @@ class OrderStoreRequest extends FormRequest
             switch ($order_type) {
                 case Order::ORDER_TYPE['DELIVERY']:
                     $rules['address'] = 'required|string';
-                    $rules['pay_type'] = 'required|in:'.Order::PAY_TYPE['CARD'].','.Order::PAY_TYPE['CASH'];
+                    $rules['pay_type'] = 'required|in:' . Order::PAY_TYPE['CARD'] . ',' . Order::PAY_TYPE['CASH'];
                     break;
             }
         } else {

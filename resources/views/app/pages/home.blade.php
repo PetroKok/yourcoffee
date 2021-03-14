@@ -38,8 +38,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <button
                                             data-product-id="{{$product->product_id}}"
-                                            class="btn btn-outline btn-yellow mt-4 ml-2 family-medium card-text add_to_cart"
-                                        >
+                                            class="btn btn-outline btn-yellow mt-4 ml-2 family-medium home-cart-btn card-text add_to_cart">
                                             Замовити
                                         </button>
                                         <span
@@ -54,7 +53,6 @@
                 <div class="brand-color swiper-button-prev tours-btn_prev"></div>
             </div>
         @endforeach
-
     </div>
 
 @endsection

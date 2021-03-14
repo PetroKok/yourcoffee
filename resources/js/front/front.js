@@ -45,19 +45,25 @@ $(document).on('click', '.add_to_cart', function (e) {
 var btn = $('#up-button');
 var mybutton = $('#cart-button');
 
-$(window).scroll(function() {
-    console.log('scroll')
-    console.log($(window).scrollTop())
-    if ($(window).scrollTop() > 300) {
+$(window).scroll(function () {
+    var body = document.body,
+        html = document.documentElement;
+
+    const height = body.offsetHeight - html.clientHeight;
+
+    if ($(window).scrollTop() > 150 && $(window).scrollTop() < (height - 100)) {
         btn.addClass('show');
         mybutton.addClass('show');
+    } else if ($(window).scrollTop() > (height - 100)) {
+        btn.removeClass('show');
+        mybutton.removeClass('show');
     } else {
         btn.removeClass('show');
         mybutton.removeClass('show');
     }
 });
 
-btn.on('click', function(e) {
+btn.on('click', function (e) {
     e.preventDefault();
-    $('html, body').animate({scrollTop:0}, '300');
+    $('html, body').animate({scrollTop: 0}, '300');
 });

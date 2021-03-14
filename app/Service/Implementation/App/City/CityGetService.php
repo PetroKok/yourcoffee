@@ -25,7 +25,7 @@ class CityGetService implements CityGetServiceInterface
 
     public function show($city_id)
     {
-        $city = City::find($city_id);
+        $city = City::findOrFail($city_id);
 
         if (!$city) {
             $city = new City();

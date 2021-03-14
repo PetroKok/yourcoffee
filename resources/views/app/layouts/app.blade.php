@@ -23,8 +23,8 @@
     </style>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css?v2', config('app.https'))}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('front_side/css/burger.css', config('app.https'))}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/frontend.css?v3', config('app.https'))}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front_side/css/burger.css?v3', config('app.https'))}}">
     @stack('styles')
 </head>
 <body>
@@ -37,7 +37,7 @@
 {{--<script defer src="{{asset('js/app.js', config('app.https'))}}"></script>--}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="{{asset('bootstrap/js/bootstrap.bundle.min.js', config('app.https'))}}"></script>
-<script defer src="{{asset('front_side/js/front.js', config('app.https'))}}"></script>
+<script defer src="{{asset('front_side/js/front.js?v3', config('app.https'))}}"></script>
 <script defer>
     $.ajaxSetup({
         headers: {
