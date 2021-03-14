@@ -29,7 +29,7 @@
                                         src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"
                                         {{--                                            data-src="{{$product->photo_origin ? '/assets/poster'.$product->photo_origin : asset('images/site-images/zaglushka.svg', config('app.https'))}}"--}}
                                         style="max-width: 350px; height: 300px; object-fit: cover"
-                                        alt="Card image cap"
+                                        alt="{{$product->product_name}}"
                                         loading="lazy">
                                     {{--                                        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>--}}
                                     <div class="d-flex">

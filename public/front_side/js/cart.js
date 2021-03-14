@@ -154,7 +154,7 @@ $(document).on('click', '.cart-inc-dec', function (e) {
 $(document).on('load', function (selected) {
   changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
-$(document).on('change', '#city_id', function (selected) {
+$(document).on('change', '#js-city-select2', function (selected) {
   changeDeliveryAmount(selected.currentTarget[selected.currentTarget.selectedIndex].value);
 });
 $(document).on('change', '#delivery', function (item) {
